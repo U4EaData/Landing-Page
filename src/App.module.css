@@ -1,0 +1,18 @@
+.stickynav {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+}
+
+.backgroundimage {
+  background: url(./images/u4eabackground.png) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+* {
+  font-family: 'Abril Fatface', cursive !important;
+}

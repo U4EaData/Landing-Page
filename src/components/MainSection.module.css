@@ -1,0 +1,101 @@
+.background {
+  height: 100%;
+  padding-top: 35px;
+  margin-bottom: 66px;
+}
+
+.heading {
+  padding-top: 65px !important;
+  margin-right: 45px !important;
+}
+
+.headingImage {
+  padding-top: 25px !important;
+}
+
+.buttonsize {
+  width: 170px !important;
+  background-color: rgb(117, 99, 219) !important;
+}
+
+.buttonsize:hover {
+  background-color: #8034f6 !important;
+}
+
+.heavier {
+  font-family: 'Roboto', sans-serif !important;
+  font-weight: 600 !important;
+}
+
+.h1class {
+  margin-bottom: 4vh !important;
+  font-size: 65px !important;
+  line-height: 1.4em !important;
+}
+
+.pclass {
+  font-family: 'Roboto', sans-serif !important;
+  font-size: 17px !important;
+  margin-bottom: 6rem !important;
+  width: 75%;
+}
+
+.mainsectionimage {
+  min-height: 308px !important;
+}
+
+@media only screen and (max-width: 1200px) {
+  .pclass {
+    margin-bottom: 2rem !important;
+  }
+
+  .mainsectionimage {
+    padding-top: 55px;
+  }
+}
+
+@media only screen and (max-width: 995px) {
+  .h1class {
+    font-size: 45px !important;
+  }
+
+  .pclass {
+    font-size: 15px !important;
+  }
+}
+
+@media only screen and (max-width: 790px) {
+  .mobileflex {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .heading {
+    width: 100% !important;
+    text-align: center;
+    padding-top: 25px !important;
+  }
+
+  .h1class {
+    font-size: 55px !important;
+  }
+
+  .headingImage {
+    width: 100% !important;
+    text-align: center !important;
+    padding-top: 0px !important;
+  }
+
+  .pclass {
+    width: 100% !important;
+    font-size: 20px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  .mainsectionimage {
+    /* width: 50%; */
+    padding-top: 60px;
+    max-width: 350px !important;
+  }
+}
