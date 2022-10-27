@@ -1,9 +1,9 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
-import { Container, Col, Row } from 'react-bootstrap';
-import Demo2 from '../images/Page5Demo.jpg';
-import  './Page4_5_6.css';
-import classes from './AboutSection.module.css';
+import React from "react";
+import "bootstrap/dist/css/bootstrap.css";
+import { Container, Col, Row } from "react-bootstrap";
+import Demo2 from "../images/Page5Demo.jpg";
+import "./Page4_5_6.css";
+import classes from "./AboutSection.module.css";
 function Product2() {
   return (
     <Container className="py-5 ">
@@ -12,9 +12,8 @@ function Product2() {
           <img className="pic " src={Demo2} alt="..."></img>
         </Col>
 
-        <Col class="col-lg-7 py-5 align-items-center">
-          <div class="p-5 p-md-5 ">
-         
+        <Col className="col-lg-7 py-5 align-items-center">
+          <div className="p-5 p-md-5 ">
             <h1 className={classes.h1class}>Sentiment Analysis</h1>
             <p className={classes.pclass}>
               Track your mood and what impacts your mood, from media you consume
