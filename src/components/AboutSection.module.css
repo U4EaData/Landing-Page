@@ -47,6 +47,29 @@
   max-height: 100%;
 }
 
+.sciencetext {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.sciencelink {
+  color: black;
+  font-family: 'Roboto', sans-serif !important;
+}
+
+.sciencelink:hover {
+  color: #8034f6;
+}
+
+.linkrow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
 @media only screen and (max-width: 1200px) {
   .pclass {
     margin-bottom: 2rem !important;
