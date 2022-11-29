@@ -34,20 +34,23 @@ function AboutSection() {
             listeners to shift into healing states of mind.
           </p>
           <Button
+            href="https://www.u4eaapp.com/how"
             variant="primary"
             size="lg"
             className={classes.buttonsize}
             onClick={() => setModalShow(true)}
+            target="_blank"
+            rel="noreferrer"
           >
             How it works
           </Button>
 
-          <Popup
+          {/* <Popup
             show={modalShow}
             onHide={() => setModalShow(false)}
             text={aboutText}
             title={aboutTitle}
-          />
+          /> */}
         </Col>
       </Row>
     </Container>
