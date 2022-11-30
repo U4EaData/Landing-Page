@@ -58,14 +58,13 @@
 .movingtext {
   font-family: 'Roboto', sans-serif !important;
   color: #8034f6;
-  font-size: 1.7rem;
+  font-size: 1.4rem;
   font-weight: 900;
   text-decoration: underline;
 }
 
 .subtext {
- 
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-family: 'Roboto', sans-serif !important;
 }
 

@@ -74,9 +74,11 @@ function JourneySection() {
               <div className="col-lg-9 mx-auto">
                 <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
                   <div className="col-lg-4 d-flex justify-content-center">
-                    <Card style={{ width: "18rem", height: "22rem" }}>
+                    <Card
+                      className={styles.journeyimg}
+                      style={{ width: "18rem", height: "22rem" }}
+                    >
                       <Card.Img
-                        className={styles.journeyimg}
                         style={{ width: "18rem", height: "22rem" }}
                         variant="top"
                         src={imgYellow}
@@ -103,9 +105,11 @@ function JourneySection() {
                     </Card>
                   </div>
                   <div className="col-lg-4 d-flex justify-content-center">
-                    <Card style={{ width: "18rem", height: "22rem" }}>
+                    <Card
+                      className={styles.journeyimg}
+                      style={{ width: "18rem", height: "22rem" }}
+                    >
                       <Card.Img
-                        className={styles.journeyimg}
                         style={{ width: "18rem", height: "22rem" }}
                         variant="top"
                         src={imgOrange}
@@ -124,9 +128,11 @@ function JourneySection() {
                     </Card>
                   </div>
                   <div className="col-lg-4 d-flex justify-content-center">
-                    <Card style={{ width: "18rem", height: "22rem" }}>
+                    <Card
+                      className={styles.journeyimg}
+                      style={{ width: "18rem", height: "22rem" }}
+                    >
                       <Card.Img
-                        className={styles.journeyimg}
                         style={{ width: "18rem", height: "22rem" }}
                         variant="top"
                         src={imgRed}
@@ -153,9 +159,11 @@ function JourneySection() {
               <div className="col-lg-9 mx-auto">
                 <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
                   <div className="col-lg-4 d-flex justify-content-center">
-                    <Card style={{ width: "18rem", height: "22rem" }}>
+                    <Card
+                      className={styles.journeyimg}
+                      style={{ width: "18rem", height: "22rem" }}
+                    >
                       <Card.Img
-                        className={styles.journeyimg}
                         style={{ width: "18rem", height: "22rem" }}
                         variant="top"
                         src={imgIndigo}
@@ -173,9 +181,11 @@ function JourneySection() {
                     </Card>
                   </div>
                   <div className="col-lg-4 d-flex justify-content-center">
-                    <Card style={{ width: "18rem", height: "22rem" }}>
+                    <Card
+                      className={styles.journeyimg}
+                      style={{ width: "18rem", height: "22rem" }}
+                    >
                       <Card.Img
-                        className={styles.journeyimg}
                         style={{ width: "18rem", height: "22rem" }}
                         variant="top"
                         src={imgBlue}
@@ -193,9 +203,11 @@ function JourneySection() {
                     </Card>
                   </div>
                   <div className="col-lg-4 d-flex justify-content-center">
-                    <Card style={{ width: "18rem", height: "22rem" }}>
+                    <Card
+                      className={styles.journeyimg}
+                      style={{ width: "18rem", height: "22rem" }}
+                    >
                       <Card.Img
-                        className={styles.journeyimg}
                         style={{ width: "18rem", height: "22rem" }}
                         variant="top"
                         src={imgGreen}
@@ -222,9 +234,11 @@ function JourneySection() {
               <div className="col-lg-9 mx-auto">
                 <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
                   <div className="col-lg-4 d-flex justify-content-center">
-                    <Card style={{ width: "18rem", height: "22rem" }}>
+                    <Card
+                      className={styles.journeyimg}
+                      style={{ width: "18rem", height: "22rem" }}
+                    >
                       <Card.Img
-                        className={styles.journeyimg}
                         style={{ width: "18rem", height: "22rem" }}
                         variant="top"
                         src={imgPurple}
