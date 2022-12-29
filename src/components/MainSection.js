@@ -16,7 +16,15 @@ function MainSection() {
       typeSpeed: 50,
       backSpeed: 60,
       backDelay: 1500,
-      strings: ["mental state 1", "mental state 2", "mental state 3"],
+      strings: [
+        "Stress",
+        "Anxiety",
+        "Depression",
+        "Sleep",
+        "Motivation",
+        "Better Moods",
+        "Relation",
+      ],
     });
   }, []);
   return (
@@ -24,10 +32,7 @@ function MainSection() {
       <Row className={classes.mobileflex}>
         <Col xs={6} className={classes.heading}>
           <h1 className={classes.h1class}>The Healing Power of Sound</h1>
-          {/* <p className={classes.pclass}>
-            Treating Mental, Emotional, and Physical Pain with{' '}
-            <span className={classes.heavier}>Personalized Sound Scapes</span>
-          </p> */}
+
           <div className={classes.movingtextcontainer}>
             <p className={classes.subtext}>Personalized audio solutions for</p>
             <p>

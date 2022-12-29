@@ -16,9 +16,7 @@ const Popup = (props) => {
           {props.title}
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        <p>{props.text}</p>
-      </Modal.Body>
+      <Modal.Body>{props.text}</Modal.Body>
       <Modal.Footer>
         <Button className={styles.closeBtn} onClick={props.onHide}>
           Close

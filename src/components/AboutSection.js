@@ -33,7 +33,7 @@ function AboutSection() {
             <span className={classes.heavier}>binaural beats</span>, enabling
             listeners to shift into healing states of mind.
           </p>
-          <Button
+          {/* <Button
             href="https://www.u4eaapp.com/how"
             variant="primary"
             size="lg"
@@ -43,7 +43,7 @@ function AboutSection() {
             rel="noreferrer"
           >
             How it works
-          </Button>
+          </Button> */}
 
           {/* <Popup
             show={modalShow}

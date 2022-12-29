@@ -4,8 +4,12 @@ import { Container, Row, Col } from "react-bootstrap";
 import Demo1 from "../images/Page4Demo.jpg";
 import "./Page4_5_6.css";
 import classes from "./AboutSection.module.css";
+import Button from "react-bootstrap/Button";
+import { useNavigate } from "react-router-dom";
 
 function Product1() {
+  const navigate = useNavigate();
+
   return (
     <Container className="py-5 ">
       <Row className={classes.mobileflex}>
@@ -27,6 +31,14 @@ function Product1() {
               Telling U4Ea how you feel helps us recommend solutions ideal for
               you!
             </p>
+            <Button
+              variant="primary"
+              size="lg"
+              className={classes.buttonsize}
+              onClick={() => navigate("/davinci")}
+            >
+              Try it out
+            </Button>
           </div>
         </Col>
       </Row>

@@ -37,18 +37,16 @@ function JourneySection() {
   const [hover, setHover] = useState(false);
 
   const playAudio = (e) => {
-    console.log("playing", "current song:", song);
     play();
   };
 
   const stopAudio = () => {
     setAudioPlaying(false);
-    console.log("stopping", song);
+
     stop();
   };
 
   const onHover = () => {
-    console.log("hover");
     setHover(true);
   };
 

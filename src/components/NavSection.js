@@ -1,9 +1,9 @@
-import React from 'react';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import Button from 'react-bootstrap/Button';
-import classes from './NavSection.module.css';
+import React from "react";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import Button from "react-bootstrap/Button";
+import classes from "./NavSection.module.css";
 
 // Needed to use React Bootstrap in order to have collapsing menu
 
@@ -27,7 +27,7 @@ function NavSection() {
               variant="outline-primary"
             >
               Login
-            </Button>{' '}
+            </Button>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
