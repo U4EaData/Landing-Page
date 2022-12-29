@@ -31,6 +31,7 @@
   margin-bottom: 4vh !important;
   font-size: 65px !important;
   line-height: 1.4em !important;
+  margin: 0 !important;
 }
 
 .pclass {
@@ -42,6 +43,30 @@
 
 .mainsectionimage {
   min-height: 308px !important;
+}
+
+.movingtextcontainer {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  height: 20vh;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.movingtext {
+  font-family: 'Roboto', sans-serif !important;
+  color: #8034f6;
+  font-size: 1.4rem;
+  font-weight: 900;
+  text-decoration: underline;
+  
+}
+
+.subtext {
+  font-size: 1.4rem;
+  font-family: 'Roboto', sans-serif !important;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -94,7 +119,6 @@
   }
 
   .mainsectionimage {
-    /* width: 50%; */
     padding-top: 60px;
     max-width: 350px !important;
   }

@@ -23,12 +23,11 @@ function SignUpSection() {
               contribute to the future of mental health.
             </p>
             <div className="d-grid gap-2 d-md-flex justify-content-md-start">
-              <button
-                type="button"
-                className="btn btn-outline-primary btn-lg px-4 me-md-2"
-              >
-                Enter email address
-              </button>
+              <input
+                className="px-2 me-md-2 "
+                type="text"
+                placeholder="Enter email address "
+              />
               <button
                 type="button"
                 className="btn btn-outline-secondary btn-lg px-4"
