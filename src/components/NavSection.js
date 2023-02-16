@@ -7,7 +7,7 @@ import classes from "./NavSection.module.css";
 
 // Needed to use React Bootstrap in order to have collapsing menu
 
-function NavSection() {
+function NavSection(props) {
   return (
     <Container className={classes.mynavcontainer}>
       <Navbar collapseOnSelect expand="lg" className={classes.mainbackground}>
@@ -25,6 +25,7 @@ function NavSection() {
               id={classes.buttonspacing}
               className="mx-2 px-5"
               variant="outline-primary"
+              onClick={() => props.loginBtnClicked()}
             >
               Login
             </Button>

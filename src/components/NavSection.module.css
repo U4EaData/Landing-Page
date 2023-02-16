@@ -20,6 +20,13 @@
 
 #buttonspacing {
   margin-left: 45px !important;
+  background-color: rgb(117, 99, 219) !important;
+  color: white
+
+}
+
+#buttonspacing:hover {
+  background-color: #8034f6 !important;
 }
 
 #linkspacing > * {

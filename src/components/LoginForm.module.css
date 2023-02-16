@@ -1,0 +1,108 @@
+.loginform {
+  position: absolute;
+  width: 450px;
+  height: 518px;
+  left: calc(50% - 450px / 2);
+  top: calc(50% - 518px / 2);
+  border-radius: 10px;
+  z-index: 10;
+  box-shadow: 0 0 10px;
+  animation-name: form-animation;
+  animation-duration: 0.25s;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes form-animation {
+  0% {
+    opacity: 0.2;
+  }
+  25% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  75% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.login_header {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.form {
+  height: 100%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFF;
+  padding: 25px;
+  gap: 10px;
+  
+}
+
+.form_input_box {
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  width: 100%;
+}
+
+.password_input_box {
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  width: 100%;
+}
+
+.form_btn {
+  width: 100%;
+  border-radius: 5px;
+  background-color: rgb(117, 99, 219);
+  color: white;
+  border: none;
+  padding: 12px;
+}
+
+.form_btn:hover {
+  background-color: #8034f6;
+}
+
+.form_signup {
+  font-size: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
+.form_link {
+  font-size: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
+.form_link:hover {
+  color: #8034f6;
+  cursor: pointer;
+}
+
+.form_switch {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 30px;
+}

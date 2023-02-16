@@ -11,8 +11,8 @@
 }
 
 .chakra_img {
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
     border-radius: 15%;
 }
 
@@ -79,8 +79,8 @@
 .sound_healing {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    padding: 15px;
+    gap: 40px;
+    padding: 0px 0px 15px 0px;
 }
 
 @media only screen and (max-width: 995px) {
@@ -106,13 +106,8 @@
   }
 
   @media only screen and (max-width: 500px)  {
-    /* .chakra {
-        width: 90vw;
-        overflow-x: hidden;
-        overflow-y: hidden;
-      } */
       .chakra {
- 
+
         padding: 10px 25px 10px 25px;
    
     }
