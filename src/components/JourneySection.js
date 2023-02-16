@@ -31,10 +31,9 @@ import indigo from "../audio/tra_foc_med-ind.mp3";
 function JourneySection() {
   const [audioPlaying, setAudioPlaying] = useState(false);
   const [currentId, setCurrentId] = useState(null);
-  const [display, setDisplay] = useState("hidden");
   const [song, setSong] = useState(red);
   const [play, { stop }] = useSound(song);
-  const [hover, setHover] = useState(false);
+  //const [hover, setHover] = useState(false);
 
   const playAudio = (e) => {
     play();
@@ -42,12 +41,7 @@ function JourneySection() {
 
   const stopAudio = () => {
     setAudioPlaying(false);
-
     stop();
-  };
-
-  const onHover = () => {
-    setHover(true);
   };
 
   const onLeave = () => {
@@ -83,14 +77,10 @@ function JourneySection() {
                         id={1}
                         onMouseEnter={() => {
                           setSong(yellow);
-                          onHover(true);
-                          setDisplay("visible");
                         }}
                         onClick={() => playAudio()}
                         onMouseLeave={() => {
                           stop();
-                          onHover(false);
-                          setDisplay("hidden");
                         }}
                       />
                       <Card.Body>

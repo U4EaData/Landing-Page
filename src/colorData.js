@@ -27,10 +27,10 @@ import spectrumViolet from "./images/spectrum-violet.png";
 import spectrumIndigo from "./images/spectrum-indigo.png";
 
 // sound healing image imports
-import soundHealingOrange from "./images/sound-healing-orange.png";
-import soundHealingBlue from "./images/sound-healing-blue.png";
-import soundHealingGreen from "./images/sound-healing-green.png";
-import soundHealingTeal from "./images/sound-healing-teal.png";
+import soundHealingOrange from "./images/sound-healing-orange.svg";
+import soundHealingBlue from "./images/sound-healing-blue.svg";
+import soundHealingGreen from "./images/sound-healing-green.svg";
+import soundHealingTeal from "./images/sound-healing-teal.svg";
 
 // gland and organ image imports
 import testicles from "./images/testicles.png";
@@ -334,12 +334,12 @@ const colors = [
       {
         id: "penis",
         content: "Penis",
-        img: testicles,
+        img: penis,
       },
       {
         id: "vagina",
         content: "Vagina",
-        img: bladder,
+        img: vagina,
       },
     ],
   },

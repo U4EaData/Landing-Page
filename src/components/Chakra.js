@@ -192,7 +192,7 @@ const Chakra = (props) => {
           {props.color.soundHealing &&
             props.color.soundHealing.map((sound, index) => (
               <img
-                className={classes.sound_healing_qr}
+                style={{ height: 100, width: 100 }}
                 src={sound}
                 alt=""
                 key={index}

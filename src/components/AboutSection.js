@@ -9,7 +9,6 @@ import Popup from "./Popup.js";
 import classes from "./AboutSection.module.css";
 
 function AboutSection() {
-  const [modalShow, setModalShow] = React.useState(false);
   const aboutTitle = "Title from about";
   const aboutText = "Text from about";
   return (
@@ -33,24 +32,6 @@ function AboutSection() {
             <span className={classes.heavier}>binaural beats</span>, enabling
             listeners to shift into healing states of mind.
           </p>
-          {/* <Button
-            href="https://www.u4eaapp.com/how"
-            variant="primary"
-            size="lg"
-            className={classes.buttonsize}
-            onClick={() => setModalShow(true)}
-            target="_blank"
-            rel="noreferrer"
-          >
-            How it works
-          </Button> */}
-
-          {/* <Popup
-            show={modalShow}
-            onHide={() => setModalShow(false)}
-            text={aboutText}
-            title={aboutTitle}
-          /> */}
         </Col>
       </Row>
     </Container>
