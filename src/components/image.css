@@ -1,0 +1,64 @@
+.pic {
+  height: 700px;
+  width: 500px;
+  object-fit: none;
+  padding: 0;
+  object-position: 50% 50%;
+}
+
+.imageSize {
+  height: 100%;
+  width: 100%;
+}
+
+.pic2 {
+  object-fit: contain;
+  padding: 0;
+  object-position: 50% 50%;
+}
+
+@media only screen and (max-width: 995) {
+  .pic {
+    object-fit: contain;
+    padding-left: 50px;
+    padding-right: 50px;
+
+    object-position: 50% 50%;
+  }
+
+  .pic2 {
+    height: 400px;
+    width: 400px;
+    object-fit: contain;
+    padding: 0;
+    object-position: 50% 50%;
+  }
+}
+
+@media only screen and (max-width: 790px) {
+  .pic {
+    max-width: 200%;
+    max-height: 200%;
+    object-fit: none;
+    padding-left: 50px;
+    padding-right: 50px;
+
+    object-position: 50% 50%;
+  }
+
+  .pic2 {
+    height: 50%;
+    width: 50%;
+    object-fit: contain;
+    padding: 0;
+    object-position: 50% 50%;
+  }
+
+
+}
+
+@media only screen and (max-width: 480px) {
+  .pic {
+
+  }
+}

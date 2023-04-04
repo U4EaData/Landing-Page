@@ -1,0 +1,151 @@
+.mainbackground {
+  min-height: 90px;
+  border-radius: 45px;
+  z-index: 2;
+}
+
+.usercontainer {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.downarrow {
+  width: 30px;
+  height: 30px;
+}
+
+.downarrow:hover {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.navlogincontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.navLogin {
+  cursor: pointer;
+  transition: all 250ms linear;
+  color: #FFFF;
+}
+
+.navLogin:hover {
+  transition: all 250ms linear;
+  color: #8034f6;
+}
+
+.usericon {
+  width: 25px;
+  height: 25px;
+}
+
+.username {
+  color: #ffff;
+  font-weight: 800;
+}
+
+.userdropdown {
+  list-style: none;
+  background-color: #ffff;
+  position: absolute;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  right: 0;
+  left: 10;
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.dropdowncontainer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.userdropdown li {
+  cursor: pointer;
+  color: grey;
+}
+
+.navbarbrand {
+  font-size: 22px;
+  color: #ffff !important;
+}
+
+#itemfont {
+  align-items: center;
+}
+
+#itemfont > * {
+  font-size: 16px !important;
+}
+
+#buttonspacing {
+  background-color: #8e2de2  !important;
+  text-decoration: none;
+  background: none;
+  color: white;
+  text-decoration: none;
+  border: none;
+}
+
+#buttonspacing:hover {
+  background-color: #8034f6 !important;
+}
+
+#linkspacing > * {
+  margin-right: 20px !important;
+}
+
+.dropdowncontainerMobile {
+  display: none;
+}
+
+.usernameMobile {
+  padding: 8px 0px;
+  color: #ffff;
+}
+
+@media only screen and (max-width: 992px) {
+  .dropdowncontainerMobile {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0px 0px 20px 0px;
+    flex: 1;
+  }
+
+  .dropdowncontainerMobile hr {
+    padding: 0px;
+    margin: 0;
+  }
+
+  .navHr {
+    padding: 10px 20px 0px 20px;
+  }
+
+  .dropdowncontainer {
+    display: none;
+  }
+
+  #linkspacing > * {
+    margin-right: 0 !important;
+  }
+}
+
+@media only screen and (max-width: 980px) {
+  #buttonspacing {
+    margin-left: 0px !important;
+    margin-right: 10px !important;
+  }
+}

@@ -1,0 +1,24 @@
+.dashboardContainer {
+height: 100vh;
+
+}
+
+.welcomeContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px
+}
+
+.userName {
+    font-size: 2rem;
+}
+
+.comingSoon {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+#navDash {
+    background-color: blue !important;
+}

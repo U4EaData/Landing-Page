@@ -1,35 +1,102 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import React, { Fragment, useEffect, useState } from "react";
-import NavSection from "./components/NavSection";
-import MainSection from "./components/MainSection";
-import AboutSection from "./components/AboutSection";
-import Product1 from "./components/Product1Section";
-import Product2 from "./components/Product2Section";
-import Science from "./components/ScienceSection";
-import SignUpSection from "./components/SignUpSection";
-import TestimonialsSection from "./components/TestimonialsSection";
-import JourneySection from "./components/JourneySection";
-import LoginForm from "./components/LoginForm";
-import RegisterForm from "./components/RegisterForm";
-import "./components/TestimonialsSection.module.css";
+import React, { Fragment, useEffect, useState, useRef } from "react";
+import NavSection from "./components/navbar/NavSection";
+import MainSection from "./components/main/MainSection";
+import About from "./components/about/About";
+import Product1 from "./components/product1/Product1Section";
+import Product2 from "./components/product2/Product2Section";
+import Science from "./components/science/ScienceSection";
+import TestimonialsSection from "./components/testimonials/TestimonialsSection";
+import JourneySection from "./components/journey/JourneySection";
+import UserDashboard from "./components/userdashboard/UserDashboard";
+import Mobile from "./components/mobile-experience/Mobile";
+import Footer from "./components/footer/Footer";
+import "./components/testimonials/TestimonialsSection.module.css";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
+import axios from "axios";
 
 import classes from "./App.module.css";
-import DaVinci from "./components/DaVinci";
+import DaVinci from "./components/davinci/DaVinci";
 
 function App() {
-  const [showForm, setShowForm] = useState(false);
-  const [form, setForm] = useState("register");
+  const [route, setRoute] = "";
+  const [isSignedin, setIsSignedin] = useState(false);
+  const [formOpen, setFormOpen] = useState(false);
 
-  const loginBtnClicked = () => {
+  const [showForm, setShowForm] = useState(false);
+
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  /* uncomment when ready to deploy */
+  useEffect(() => {
+    // axios
+    //   .get("/")
+    //   .then((res) => console.log("route / Success"))
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+  }, [user]);
+
+  /* Form Input Handlers */
+  const onEmailChange = (e) => {
+    setUser((prevData) => {
+      return {
+        ...prevData,
+        email: e.target.value,
+      };
+    });
+  };
+
+  const onPasswordChange = (e) => {
+    setUser((prevData) => {
+      return {
+        ...prevData,
+        password: e.target.value,
+      };
+    });
+  };
+
+  const onNameChange = (e) => {
+    setUser((prevData) => {
+      return {
+        ...prevData,
+        name: e.target.value,
+      };
+    });
+  };
+
+  const loadUser = (updateUser) => {
+    const userObj = {
+      name: updateUser.data.name,
+    };
+    setUser({
+      name: updateUser.data.name,
+      email: updateUser.data.email,
+      password: updateUser.data.password,
+    });
+    localStorage.setItem("u4ea-user", JSON.stringify(userObj));
+  };
+
+  const signout = () => {
+    console.log("Signed out!");
+    setUser({
+      name: "",
+      email: "",
+      password: "",
+    });
+    localStorage.clear();
+  };
+
+  const loginBtnClicked = (e) => {
     setShowForm((prev) => !prev);
   };
 
-  const toggleForm = (e) => {
-    console.log("toggle form:", e.target.id);
-    e.target.id === "signInLink"
-      ? setForm((prev) => "login")
-      : setForm((prev) => "register");
+  const closeForm = () => {
+    setShowForm(false);
   };
 
   return (
@@ -42,31 +109,47 @@ function App() {
               element={
                 <Fragment>
                   <div className={classes.stickynav}>
-                    <NavSection loginBtnClicked={loginBtnClicked} />
+                    <NavSection
+                      user={user}
+                      signout={signout}
+                      onEmailChange={onEmailChange}
+                      onPasswordChange={onPasswordChange}
+                      onNameChange={onNameChange}
+                      loadUser={loadUser}
+                      loginBtnClicked={loginBtnClicked}
+                      closeForm={closeForm}
+                      showForm={showForm}
+                    />
                   </div>
                   <MainSection />
-                  <AboutSection />
                   <Product1 />
                   <Product2 />
                   <Science />
                   <JourneySection />
                   <TestimonialsSection />
-                  <SignUpSection />
-                  {showForm && form === "login" ? (
-                    <LoginForm
-                      loginBtnClicked={loginBtnClicked}
-                      toggleForm={toggleForm}
-                    />
-                  ) : showForm ? (
-                    <RegisterForm
-                      loginBtnClicked={loginBtnClicked}
-                      toggleForm={toggleForm}
-                    />
-                  ) : null}
+                  <Mobile
+                    user={user}
+                    signout={signout}
+                    onEmailChange={onEmailChange}
+                    onPasswordChange={onPasswordChange}
+                    onNameChange={onNameChange}
+                    loadUser={loadUser}
+                    loginBtnClicked={loginBtnClicked}
+                    closeForm={closeForm}
+                    showForm={showForm}
+                  />
+                  <Footer />
+                  {/* <SignUpSection /> */}
                 </Fragment>
               }
             />
+            <Route path="/about" element={<About />} />
             <Route path="/davinci" element={<DaVinci />} />
+
+            <Route
+              path="/userdashboard"
+              element={<UserDashboard user={user} />}
+            />
           </Routes>
         </Router>
       </div>
