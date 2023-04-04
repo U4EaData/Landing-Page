@@ -85,7 +85,7 @@ function NavSection(props) {
             <Nav.Link href="#home" id={navLink.nlink}>
               Home
             </Nav.Link>
-            <Nav.Link href="about" id={navLink.nlink}>
+            <Nav.Link href="/about" id={navLink.nlink}>
               About
             </Nav.Link>
             <Nav.Link href="#solutions" id={navLink.nlink}>

@@ -38,10 +38,6 @@ const LoginForm = (props) => {
     console.log("error");
   };
 
-  useEffect(() => {
-    console.log("length", formElement.length);
-  }, [formElement.length]);
-
   return (
     <div className={classes.loginform} id="formElement">
       <div className={classes.form}>
