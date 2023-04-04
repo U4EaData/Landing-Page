@@ -1,7 +1,74 @@
 .stickynav {
-  position: sticky;
-  top: 0;
-  z-index: 3;
+  position: fixed;
+  min-height: 90px;
+  width: 100vw;
+  z-index: 100;
+
+  background: rgb(46, 6, 61);
+  background: -moz-linear-gradient(
+    90deg,
+    rgba(46, 6, 61, 1) 20%,
+    rgba(57, 16, 84, 1) 29%,
+    rgba(69, 16, 115, 1) 37%,
+    rgba(85, 22, 139, 1) 57%,
+    rgba(142, 45, 226, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    90deg,
+    rgba(46, 6, 61, 1) 20%,
+    rgba(57, 16, 84, 1) 29%,
+    rgba(69, 16, 115, 1) 37%,
+    rgba(85, 22, 139, 1) 57%,
+    rgba(142, 45, 226, 1) 100%
+  );
+  background: linear-gradient(
+    90deg,
+    rgba(46, 6, 61, 1) 20%,
+    rgba(57, 16, 84, 1) 29%,
+    rgba(69, 16, 115, 1) 37%,
+    rgba(85, 22, 139, 1) 57%,
+    rgba(142, 45, 226, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2e063d",endColorstr="#8e2de2",GradientType=1);
+}
+
+.dashNav {
+  min-height: 90px;
+  width: 100vw;
+  background: rgb(46, 6, 61);
+  background: -moz-linear-gradient(
+    90deg,
+    rgba(46, 6, 61, 1) 20%,
+    rgba(57, 16, 84, 1) 29%,
+    rgba(69, 16, 115, 1) 37%,
+    rgba(85, 22, 139, 1) 57%,
+    rgba(142, 45, 226, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    90deg,
+    rgba(46, 6, 61, 1) 20%,
+    rgba(57, 16, 84, 1) 29%,
+    rgba(69, 16, 115, 1) 37%,
+    rgba(85, 22, 139, 1) 57%,
+    rgba(142, 45, 226, 1) 100%
+  );
+  background: linear-gradient(
+    90deg,
+    rgba(46, 6, 61, 1) 20%,
+    rgba(57, 16, 84, 1) 29%,
+    rgba(69, 16, 115, 1) 37%,
+    rgba(85, 22, 139, 1) 57%,
+    rgba(142, 45, 226, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2e063d",endColorstr="#8e2de2",GradientType=1);
+}
+
+.sectionContainer {
+  padding: 20px 0px;
+}
+
+.mainSectionContainer {
+  padding: 150px 0px 50px 0px;
 }
 
 .backgroundimage {
@@ -14,12 +81,29 @@
 }
 
 * {
-  font-family: 'Abril Fatface', cursive !important;
+  font-family: "Abril Fatface", cursive !important;
 }
 
-html, #root, body, .App {
+html,
+#root,
+body,
+.App {
   height: 100%;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+ul, p {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#nlink {
+  color: #ffffff !important;
+}
+
+#nlink:hover {
+  color: rgba(255, 255, 255, 0.7) !important;
 }

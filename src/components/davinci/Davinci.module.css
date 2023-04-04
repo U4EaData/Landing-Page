@@ -1,0 +1,257 @@
+.container {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Main container */
+.davinci {
+  overflow: hidden;
+}
+
+.davinci_img {
+  height: 75%;
+  width: 75%;
+  overflow: hidden;
+}
+
+.davinci_spectrum_img {
+  /* height: 520px;
+  width: 250px; */
+  height: 75%;
+  width: 75%;
+  overflow: hidden;
+}
+
+.davinci_container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.davinci_spectrum {
+  padding: 20px 0px 0px 0px;
+}
+
+.davinci_middle_section {
+  display: flex;
+  flex: 2 0 800px;
+  flex-direction: column;
+}
+
+.davinci_left_section {
+  display: flex;
+  flex: 1 0 200px;
+  background-color: #abebbd;
+  border-radius: 25px;
+  justify-content: center;
+  align-items: center;
+}
+
+.davinci_last_section {
+  flex: 1 0 200px;
+  background-color: #abebbd;
+  border-radius: 25px;
+  text-align: center;
+}
+
+.dropdown_container {
+  margin-left: auto;
+}
+
+select {
+  border: none;
+  border-radius: 5px;
+  padding: 2px;
+  background-color: rgba(233, 223, 219, 0.8);
+}
+
+.davinci_popup {
+  color: black;
+  position: fixed;
+  width: 60vw;
+  height: 70vh;
+  background-color: rgba(233, 223, 219, 0.8);
+  border-radius: 4px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+.davinci_area:hover {
+  cursor: pointer;
+}
+
+.davinci_heading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: grey;
+}
+
+.davinci_text {
+  padding: 15px;
+}
+
+.davinci_pclass {
+  padding: 20px;
+  font-family: "Roboto", sans-serif !important;
+}
+
+.davinci_desc {
+  font-family: "Roboto", sans-serif !important;
+}
+
+.davinci_title {
+  margin: 0;
+  padding: 0;
+}
+
+.davinci_hz {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif !important;
+}
+
+.davinci_btn_container {
+  margin-top: auto;
+  align-self: flex-end;
+}
+
+.davinci_btn {
+  width: 10vw;
+  height: 6vh;
+  border: 0px;
+  border-radius: 5px;
+  background-color: rgb(117, 99, 219);
+  /* margin: 10px; */
+}
+
+.davinci_btn:hover {
+  background-color: #8034f6;
+}
+
+.h1class {
+  margin-bottom: 4vh !important;
+  font-size: 65px !important;
+  line-height: 1.4em !important;
+}
+
+.pclass {
+  font-family: "Roboto", sans-serif !important;
+  font-size: 17px !important;
+  margin-bottom: 6rem !important;
+  width: 75%;
+}
+
+@media only screen and (max-width: 1824px) {
+
+
+  .davinci_middle_section {
+    flex: 2 0 500px;
+  }
+
+  .davinci_left_section {
+    flex: 1 0 100px;
+  }
+
+  .davinci_last_section {
+    flex: 1 0 100px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+.davinci-container {
+
+    flex-direction: column;
+  }
+
+  .pclass {
+    margin-bottom: 2rem !important;
+  }
+
+  .davinci_middle_section {
+    flex: 1;
+  }
+
+  .davinci_left_section {
+    flex: 0.5;
+  }
+
+  .davinci_last_section {
+    flex: 0.5;
+  }
+}
+
+@media only screen and (max-width: 995px) {
+
+  .davinci_img {
+    height: 70%;
+    width: 160px;
+ 
+  }
+
+  .davinci_spectrum_img {
+    height: 70%;
+    width: 160px;
+  }
+
+  .davinci_container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .h1class {
+    font-size: 45px !important;
+  }
+
+  .pclass {
+    font-size: 15px !important;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .davinci-container {
+  
+    flex-direction: column;
+  }
+
+  .davinci {
+    max-width: 500px;
+  }
+
+  .davinci_middle_section {
+    flex: 1;
+  }
+
+  .davinci_left_section {
+    flex: 1;
+  }
+
+  .davinci_last_section {
+    flex: 1;
+  }
+
+  .h1class {
+    font-size: 55px !important;
+  }
+
+  .pclass {
+    width: 100% !important;
+    font-size: 20px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .davinci_img {
+    height: 60%;
+    width: 120px;
+ 
+  }
+
+  .davinci_spectrum_img {
+    height: 60%;
+    width: 120px;
+  }
+}

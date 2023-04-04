@@ -1,0 +1,20 @@
+.popup {
+  padding: 50px;
+}
+
+.popupBtn {
+    width: 220px !important;
+    background-color: rgb(117, 99, 219) !important;
+  }
+  
+  .popupBtn:hover {
+    background-color: #8034f6 !important;
+  }
+
+.closeBtn {
+    background-color: rgb(117, 99, 219) !important;
+}
+
+.closeBtn:hover {
+    background-color: #8034f6 !important;
+  }

@@ -1,0 +1,57 @@
+.footerContainer {
+  /* background-color: grey; */
+  /* height: 20vh; */
+  /* height: 20vh;
+    display: flex;
+    justify-content: center; */
+  background: #8e2de2;
+}
+
+.emailIcon {
+  width: 25px;
+  height: 25px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.emailLink {
+  text-decoration: none;
+  color: black;
+}
+
+.footerColumnTitle {
+  font-size: 1.2rem;
+  font-weight: 900px;
+  color: #ffff;
+}
+
+.emailLink:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.emailContainer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.copyright {
+  font-size: 1rem;
+  text-align: center;
+  color: #FFFF;
+}
+
+.columnContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footerLink {
+  font-weight: 100px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.footerLink:hover {
+  color: rgba(255, 255, 255, 0.7);
+}

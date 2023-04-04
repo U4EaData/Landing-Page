@@ -1,0 +1,98 @@
+.title {
+  text-align: center;
+}
+
+.testimonialSection {
+  height: 90vh;
+}
+.cloudContainer {
+  position: relative;
+  text-align: center;
+  left: 20px;
+}
+
+.cloudContainer2 {
+  position: relative;
+  text-align: center;
+  left: 200px;
+  bottom: 120px;
+}
+
+.cloudContainer3 {
+  position: relative;
+  text-align: center;
+  left: 50px;
+  bottom: 200px;
+}
+
+.cloudContainer4 {
+  position: relative;
+  text-align: center;
+  right: 250px;
+  bottom: 600px;
+}
+
+.cloudTextContainer {
+  position: absolute;
+  top: 55%;
+  left: 47%;
+  transform: translate(-50%, -50%);
+}
+
+.cloudTextContainer2 {
+  position: absolute;
+  top: 63%;
+  left: 48%;
+  transform: translate(-50%, -50%);
+}
+
+.cloudTextContainer3 {
+  position: absolute;
+  top: 58%;
+  left: 48%;
+  transform: translate(-50%, -50%);
+}
+
+.cloudTextContainer4 {
+  position: absolute;
+  top: 57%;
+  left: 52%;
+  transform: translate(-50%, -50%);
+}
+
+.cloudText {
+  width: 200px;
+  height: 120px;
+  word-wrap: break-word;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.cloud {
+  height: 250px;
+  width: 400px;
+}
+
+.body {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position: absolute;
+  height: 30%;
+  bottom: -1%;
+  left: 0%;
+  width: 100.5%;
+  font-size: 70%;
+  background: rgba(0, 0, 0, 0.5);
+}
+.text {
+  position: absolute;
+  bottom: 20%;
+  left: 5%;
+  top: 10%;
+  width: 50%;
+
+  color: #fff;
+}
+
+.whitetext {
+  color: #fff;
+}

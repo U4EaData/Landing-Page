@@ -1,0 +1,25 @@
+.getStartedContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px
+}
+
+.webExperience, .mobileExperience {
+    background-color: #FFFF;
+    border: 1.3px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.experienceArrow {
+    height: 35px;
+    width: 35px;
+    color: #8e2de2;
+    cursor: pointer;
+}
+
+.experienceArrow:hover {
+
+    color: grey;
+
+}
