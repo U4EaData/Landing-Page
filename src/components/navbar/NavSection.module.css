@@ -1,6 +1,5 @@
 .mainbackground {
   min-height: 90px;
-  border-radius: 45px;
   z-index: 2;
 }
 
@@ -32,11 +31,12 @@
   cursor: pointer;
   transition: all 250ms linear;
   color: #FFFF;
+  font-weight: 700;
 }
 
 .navLogin:hover {
   transition: all 250ms linear;
-  color: #8034f6;
+  color: #E9CDFA;
 }
 
 .usericon {
@@ -79,7 +79,14 @@
 
 .navbarbrand {
   font-size: 22px;
+  font-weight: 700;
   color: #ffff !important;
+  transition: all 250ms linear;
+}
+
+.navbarbrand:hover {
+  color: #E9CDFA !important;
+  transition: all 250ms linear;
 }
 
 #itemfont {
@@ -140,6 +147,7 @@
 
   #linkspacing > * {
     margin-right: 0 !important;
+
   }
 }
 
@@ -147,5 +155,5 @@
   #buttonspacing {
     margin-left: 0px !important;
     margin-right: 10px !important;
-  }
+    }
 }

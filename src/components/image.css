@@ -1,14 +1,19 @@
 .pic {
-  height: 700px;
-  width: 500px;
-  object-fit: none;
-  padding: 0;
-  object-position: 50% 50%;
+  height: 600px;
+  width: 400px;
 }
 
 .imageSize {
   height: 100%;
   width: 100%;
+  background-color: #1a192e;
+  border-radius: 50%;
+}
+
+.davinciImg {
+  height: 100%;
+  width: 65%;
+  border-radius: 10px;
 }
 
 .pic2 {
@@ -17,14 +22,11 @@
   object-position: 50% 50%;
 }
 
-@media only screen and (max-width: 995) {
-  .pic {
-    object-fit: contain;
-    padding-left: 50px;
-    padding-right: 50px;
-
-    object-position: 50% 50%;
-  }
+@media only screen and (max-width: 995px) {
+  .imageSize {
+    height: 80%;
+    width: 80%;
+  }  
 
   .pic2 {
     height: 400px;
@@ -36,15 +38,12 @@
 }
 
 @media only screen and (max-width: 790px) {
-  .pic {
-    max-width: 200%;
-    max-height: 200%;
-    object-fit: none;
-    padding-left: 50px;
-    padding-right: 50px;
-
-    object-position: 50% 50%;
+  .imageSize {
+    height: 80%;
+    width: 80%;
+  
   }
+  
 
   .pic2 {
     height: 50%;
@@ -58,7 +57,12 @@
 }
 
 @media only screen and (max-width: 480px) {
+  .imageSize {
+    height: 85%;
+    width: 85%;
+  }
   .pic {
-
+    height: 500px;
+    width: 300px;
   }
 }

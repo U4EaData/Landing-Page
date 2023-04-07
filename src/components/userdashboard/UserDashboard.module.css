@@ -1,24 +1,57 @@
 .dashboardContainer {
-height: 100vh;
-
+  height: 100vh;
 }
 
 .welcomeContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 
 .userName {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 .comingSoon {
-    text-align: center;
-    font-size: 1.2rem;
+  text-align: center;
+  font-size: 1.2rem;
 }
 
-#navDash {
-    background-color: blue !important;
+.dashNav {
+
+    z-index: 100;
+    background: #8e2de2;
+}
+
+
+
+
+@media only screen and (max-width: 480px) {
+    .welcomeContainer {
+        text-align: center !important;
+    }
+
+    #responsive-navbar-nav {
+        display: flex !important;
+        flex: 1 !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+}
+
+
+@media only screen and (max-width: 320px) {
+
+    .dashy {
+          background-color: grey !important;
+          display: flex !important;
+          flex: 1 !important;
+          justify-content: center !important;
+          align-items: center !important;
+        }
+      
+      
+
 }

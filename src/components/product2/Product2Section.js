@@ -2,25 +2,26 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { Container, Col, Row } from "react-bootstrap";
 import Demo2 from "../../images/Page5Demo.jpg";
-import "../image.css";
-import classes from "../AboutSection.module.css";
 import section from "../../App.module.css";
 import { Fade } from "react-awesome-reveal";
+import appClasses from "../../App.module.css";
+import "../image.css";
+import iphoneScore from "../../images/iphonescore.png";
 
 function Product2() {
   return (
     <Fade duration={900} triggerOnce="true">
-      <section className={section.sectionContainer}>
+      <section className={appClasses.sectionContainer}>
         <Container>
-          <Row className={classes.mobileflex}>
+          <Row className={appClasses.mobileflex}>
             <Col lg={5} className="d-flex justify-content-center">
-              <img className="pic " src={Demo2} alt="..."></img>
+              <img className="pic" src={iphoneScore} alt="iphone"></img>
             </Col>
 
             <Col className="col-lg-7 py-5 align-items-center">
               <div className="p-5 p-md-5 ">
-                <h1 className={classes.h1class}>Sentiment Analysis</h1>
-                <p className={classes.pclass}>
+                <h3 className={appClasses.h3class}>Sentiment Analysis</h3>
+                <p className={appClasses.pclass}>
                   Track your mood and what impacts your mood, from media you
                   consume to the places you go.
                   <br />

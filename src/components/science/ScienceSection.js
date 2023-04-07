@@ -3,7 +3,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import { Container, Col, Row } from "react-bootstrap";
 import circle from "../../images/page6.png";
 import soundScience from "../../images/sound-science.svg";
-import classes from "../AboutSection.module.css";
+import girlBlue from "../../images/girl-blue.png";
+//import classes from "../AboutSection.module.css";
 import Button from "react-bootstrap/Button";
 import Popup from "../../popup/Popup.js";
 import { BsArrowReturnRight } from "react-icons/bs";
@@ -11,11 +12,14 @@ import section from "../../App.module.css";
 import "../image.css";
 import { Fade } from "react-awesome-reveal";
 
+import classes from "./ScienceSection.module.css";
+import appClasses from "../../App.module.css";
+
 function Science() {
   const [modalShow, setModalShow] = React.useState(false);
   const scienceSectionTitle = "Links to Research";
   const scienceSectionText = (
-    <ul className={classes.sciencetext}>
+    <ul className={classes.scienceLinkContainer}>
       <li>
         <a
           className={classes.sciencelink}
@@ -84,13 +88,15 @@ function Science() {
   );
   return (
     <Fade duration={900} triggerOnce="true">
-      <section className={section.sectionContainer}>
+      <section className={appClasses.sectionContainer}>
         <Container>
-          <Row className={classes.mobileflex}>
-            <Col className="col-lg-7align-middle">
-              <div className="p-5 p-md-5 ">
-                <h1 className={classes.h1class}>Sound Science</h1>
-                <p className={classes.pclass}>
+          <Row
+            className={`${appClasses.mobileflex} ${classes.scienceFlexContainer}`}
+          >
+            <Col lg={7} className="align-middle">
+              <div className="p-md-5 p-5">
+                <h3 className={appClasses.h3class}>Sound Science</h3>
+                <p className={appClasses.pclass}>
                   Sound has been used for healing purposes dating back to the
                   earliest civilizations, from indigenous drum circles to
                   Egyptian Temples
@@ -107,7 +113,7 @@ function Science() {
                 <Button
                   variant="primary"
                   size="lg"
-                  className={classes.buttonsize}
+                  className={appClasses.buttonsize}
                   onClick={() => setModalShow(true)}
                 >
                   Learn more
@@ -123,7 +129,11 @@ function Science() {
             </Col>
 
             <Col lg={5} className="py-5 d-flex justify-content-center">
-              <img className="imageSize" src={soundScience} alt="..."></img>
+              <img
+                className="imageSize"
+                src={girlBlue}
+                alt="girlwithbook"
+              ></img>
             </Col>
           </Row>
         </Container>

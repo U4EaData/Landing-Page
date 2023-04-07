@@ -1,14 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { Container, Row, Col } from "react-bootstrap";
-import classes from "../AboutSection.module.css";
-import mobileClasses from "./Mobile.module.css";
 import Button from "react-bootstrap/Button";
-import section from "../../App.module.css";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
 import LoginForm from "../loginform/LoginForm";
 import RegisterForm from "../registerform/RegisterForm";
 import { Fade } from "react-awesome-reveal";
+import appClasses from "../../App.module.css";
+import mobileClasses from "./Mobile.module.css";
 
 function Mobile(props) {
   const [form, setForm] = useState("login");
@@ -37,22 +36,27 @@ function Mobile(props) {
 
   return (
     <Fade duration={900} triggerOnce="true">
-      <section className={section.sectionContainer} id="download">
-        <Container>
-          <Row className={classes.mobileflex}>
+      <section className={appClasses.sectionContainer} id="download">
+        <Container className={mobileClasses.mobileContainer}>
+          <Row className={appClasses.mobileflex}>
             <Col className="col-lg-7 align-items-center">
-              <div className="p-5 p-md-5 ">
-                <h1 className={classes.h1class}>Try it out today</h1>
-                <p className={classes.pclass}>
+              <div className={`p-5 p-md-5 ${mobileClasses.mobilePadding}`}>
+                <h1 className={appClasses.h3class}>Try it out today</h1>
+                <p className={appClasses.pclass}>
                   Enjoy U4Ea right here on the web or on your phone today!
                 </p>
               </div>
             </Col>
-            <Col lg={4} className="py-5 d-flex justify-content-center">
+            <Col
+              lg={4}
+              className={`py-5 d-flex justify-content-center ${mobileClasses.boxContainers}`}
+            >
               <div className={mobileClasses.getStartedContainer}>
                 <div className={mobileClasses.webExperience}>
-                  <h1>U4Eea On The Web</h1>
-                  <p className={classes.pclass}>
+                  <h3 className={mobileClasses.mobileBoxTitle}>
+                    U4Eea On The Web
+                  </h3>
+                  <p className={appClasses.pclass}>
                     Coming Soon!
                     {/* Login to your account or create a free account to get
                     started today. */}
@@ -91,8 +95,8 @@ function Mobile(props) {
                   ) : null}
                 </div>
                 <div className={mobileClasses.mobileExperience}>
-                  <h1>U4Eea Mobile</h1>
-                  <p className={classes.pclass}>Available on iOS devices.</p>
+                  <h3 className={mobileClasses.mobileBoxTitle}>U4Eea Mobile</h3>
+                  <p className={appClasses.pclass}>Available on iOS devices.</p>
                   <div className="appLink">
                     <a
                       href="https://apps.apple.com/us/app/u4ea/id1276634916"

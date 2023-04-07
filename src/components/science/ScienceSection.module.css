@@ -1,0 +1,30 @@
+.scienceLinkContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 15px;
+  font-family: "Roboto", sans-serif !important;
+}
+
+.scienceLinkContainer a {
+  /* text-decoration: none !important; */
+  border: none;
+  color: black !important;
+}
+
+.sciencelink:hover {
+  color: #8034f6 !important;
+}
+
+@media only screen and (max-width: 995px) {
+    .scienceFlexContainer {
+        display: flex;
+        flex-direction: column-reverse;
+
+    }
+}
+
+
+@media only screen and (max-width: 480px) {
+
+}

@@ -5,7 +5,7 @@ import Nav from "react-bootstrap/Nav";
 import classes from "../navbar/NavSection.module.css";
 import userClasses from "./UserDashboard.module.css";
 import { useNavigate } from "react-router-dom";
-import section from "../../App.module.css";
+import appClasses from "../../App.module.css";
 
 const UserDashboard = (props) => {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ const UserDashboard = (props) => {
 
   return (
     <>
-      <div className={section.dashNav}>
+      <div className={userClasses.dashNav}>
         <Container fluid className={classes.dashboardNav}>
           <Navbar
             collapseOnSelect
@@ -25,25 +25,35 @@ const UserDashboard = (props) => {
               U4Ea
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse id="responsive-navbar-nav" className="text-center">
+            <Navbar.Collapse className="text-center">
+              <Nav className="ms-auto" id={classes.linkspacing}>
+                <Nav.Link href="/" id={appClasses.nlink}>
+                  Home
+                </Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+            {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse
+              id="dash-responsive-navbar-nav"
+              className="text-center dashy"
+            >
               <Nav
                 className="ms-auto"
                 id={(classes.itemfont, classes.linkspacing)}
               >
                 <Nav.Link
-                  id={section.nlink}
-                  className="mx-2 px-5"
-                  variant="outline-primary"
+                  id={appClasses.nlink}
+                  className={appClasses.buttonsize}
                   onClick={() => navigate("/")}
                 >
                   Go back
                 </Nav.Link>
               </Nav>
-            </Navbar.Collapse>
+            </Navbar.Collapse> */}
           </Navbar>
         </Container>
       </div>
-      <section className={section.sectionContainer}>
+      <section className={appClasses.sectionContainer}>
         <div className={userClasses.dashboardContainer}>
           <div className={userClasses.welcomeContainer}>
             {user && (

@@ -3,8 +3,15 @@
 }
 
 .testimonialSection {
-  height: 90vh;
+  width: 100%;
+  height: 690px;
+  position: relative; 
 }
+
+.testimonialSection h3 {
+  text-align: center;
+}
+
 .cloudContainer {
   position: relative;
   text-align: center;
@@ -34,16 +41,53 @@
 
 .cloudTextContainer {
   position: absolute;
-  top: 55%;
-  left: 47%;
+  top: 60%;
+  left: 48%;
   transform: translate(-50%, -50%);
+  width: 200px;
+  height: 120px;
 }
 
 .cloudTextContainer2 {
   position: absolute;
-  top: 63%;
+  top: 56%;
   left: 48%;
   transform: translate(-50%, -50%);
+}
+
+.cloudTextContainer2:after {
+  content: "";
+  display: block;
+  width: 200px;
+  height: 120px;
+  animation: cloudTextAnim2 12s linear infinite;
+}
+
+@keyframes cloudTextAnim2 {
+  0% {
+    content: "If you are looking for something mood changing the most natural way then you definitely are in the right place!";
+    opacity: 100%;
+  }
+  25% {
+    opacity: 40%;
+  }
+  35% {
+    opacity: 70%;
+  }
+  50% {
+    content: "At long last - this app is like partnering with an alter ego to help me sleep, create, and study better.";
+    opacity: 100%;
+  }
+  65% {
+    opacity: 40%;
+  }
+  75% {
+    opacity: 20%;
+  }
+  100% {
+    content: "If you are looking for something mood changing the most natural way then you definitely are in the right place!";
+    opacity: 100%;
+  }
 }
 
 .cloudTextContainer3 {
@@ -53,16 +97,86 @@
   transform: translate(-50%, -50%);
 }
 
+.cloudTextContainer3:after {
+  content: "";
+  display: block;
+  width: 200px;
+  height: 120px;
+  animation: cloudTextAnim3 12s linear infinite;
+  animation-delay: 2s;
+}
+
+@keyframes cloudTextAnim3 {
+  0% {
+    content: "It is so user friendly and easy that you don't have to understand frequencies and binaural beats to use it and benefit from it.";
+    opacity: 100%;
+  }
+  25% {
+    opacity: 40%;
+  }
+  35% {
+    opacity: 70%;
+  }
+  50% {
+    content: "I can use it while my music plays on my phone and adjust my settings whenever I want.";
+    opacity: 100%;
+  }
+  65% {
+    opacity: 40%;
+  }
+  75% {
+    opacity: 20%;
+  }
+  100% {
+    content: "It is so user friendly and easy that you don't have to understand frequencies and binaural beats to use it and benefit from it.";
+    opacity: 100%;
+  }
+}
+
 .cloudTextContainer4 {
   position: absolute;
   top: 57%;
-  left: 52%;
+  left: 51%;
   transform: translate(-50%, -50%);
 }
 
-.cloudText {
+.cloudTextContainer4:after {
+  content: "";
+  display: block;
   width: 200px;
   height: 120px;
+  animation: cloudTextAnim4 12s linear infinite;
+  animation-delay: 1s;
+}
+
+@keyframes cloudTextAnim4 {
+  0% {
+    content: "I pop in my AirPods and whether I’m at work or home I can choose what I want according to my mood.";
+    opacity: 100%;
+  }
+  25% {
+    opacity: 40%;
+  }
+  35% {
+    opacity: 70%;
+  }
+  50% {
+    content: "They help me calm my mind while I meditate";
+    opacity: 100%;
+  }
+  65% {
+    opacity: 40%;
+  }
+  75% {
+    opacity: 20%;
+  }
+  100% {
+    content: "I pop in my AirPods and whether I’m at work or home I can choose what I want according to my mood.";
+    opacity: 100%;
+  }
+}
+
+.cloudText {
   word-wrap: break-word;
   color: rgba(0, 0, 0, 0.6);
 }
@@ -72,27 +186,234 @@
   width: 400px;
 }
 
-.body {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  position: absolute;
-  height: 30%;
-  bottom: -1%;
-  left: 0%;
-  width: 100.5%;
-  font-size: 70%;
-  background: rgba(0, 0, 0, 0.5);
-}
-.text {
-  position: absolute;
-  bottom: 20%;
-  left: 5%;
-  top: 10%;
-  width: 50%;
 
-  color: #fff;
+
+@media only screen and (max-width: 960px) {
+
+  .cloud {
+    height: 250px;
+    width: 390px;
+  }
+  
+  .cloudTextContainer {
+    /* top: 75%;
+    left: 47%; */
+  }
+
+  .cloudTextContainer2 {
+    /* top: 70%;
+    left: 45%; */
+  }
+
+  .cloudTextContainer3 {
+    /* position: absolute;
+    top: 73%;
+    left: 45%;
+    transform: translate(-50%, -50%); */
+  }
+
+  .cloudTextContainer4 {
+    /* position: absolute;
+    top: 77%;
+    left: 51%;
+    transform: translate(-50%, -50%); */
+  }
+
+  .cloudContainer {
+    /* left: -70px;
+    top: -20px; */
+  }
+
+  .cloudContainer2 {
+    /* left: 60px;
+    bottom: 85px; */
+  }
+
+  .cloudContainer3 {
+    /* left: -90px;
+    bottom: 150px; */
+  }
+
+  .cloudContainer4 {
+    right: 200px;
+    bottom: 600px;
+  }
+
+  .cloudText {
+    /* font-size: 0.8em; */
+  }
+
+  .cloudTextContainer2:after {
+    font-size: 0.8em;
+  }
+  .cloudTextContainer3:after {
+    font-size: 0.8em;
+  }
+  .cloudTextContainer4:after {
+    font-size: 0.8em;
+  }
 }
 
-.whitetext {
-  color: #fff;
+
+
+@media only screen and (max-width: 768px) {
+  .cloud {
+    height: 220px;
+    width: 310px;
+  }
+
+  .cloudTextContainer {
+    top: 75%;
+    left: 47%;
+  }
+
+  .cloudTextContainer2 {
+    top: 70%;
+    left: 45%;
+  }
+
+  .cloudTextContainer3 {
+    position: absolute;
+    top: 73%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+  }
+
+  .cloudTextContainer4 {
+    position: absolute;
+    top: 77%;
+    left: 51%;
+    transform: translate(-50%, -50%);
+  }
+
+  .cloudContainer {
+    left: -10px;
+    top: -20px;
+  }
+
+  .cloudContainer2 {
+    left: 50px;
+    bottom: 85px;
+  }
+
+  .cloudContainer3 {
+    left: -50px;
+    bottom: 150px;
+  }
+
+  .cloudContainer4 {
+    right: -20px;
+    bottom: 210px;
+  }
+
+  .cloudText {
+    font-size: 0.8em;
+  }
+
+  .cloudTextContainer2:after {
+    font-size: 0.8em;
+  }
+  .cloudTextContainer3:after {
+    font-size: 0.8em;
+  }
+  .cloudTextContainer4:after {
+    font-size: 0.8em;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .testimonialSection {
+    height: 83vh;
+  }
+
+  .cloud {
+    height: 220px;
+    width: 265px;
+  }
+
+  .cloudTextContainer {
+    top: 75%;
+    left: 47%;
+  }
+
+  .cloudTextContainer2 {
+    top: 70%;
+    left: 45%;
+  }
+
+  .cloudTextContainer3 {
+    position: absolute;
+    top: 73%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+  }
+
+  .cloudTextContainer4 {
+    position: absolute;
+    top: 77%;
+    left: 51%;
+    transform: translate(-50%, -50%);
+  }
+
+  .cloudContainer {
+    left: -10px;
+    top: -20px;
+  }
+
+  .cloudContainer2 {
+    left: 50px;
+    bottom: 85px;
+  }
+
+  .cloudContainer3 {
+    left: -50px;
+    bottom: 150px;
+  }
+
+  .cloudContainer4 {
+    right: -20px;
+    bottom: 210px;
+  }
+
+  .cloudText {
+    font-size: 0.8em;
+  }
+
+  .cloudTextContainer2:after {
+    font-size: 0.8em;
+  }
+  .cloudTextContainer3:after {
+    font-size: 0.8em;
+  }
+  .cloudTextContainer4:after {
+    font-size: 0.8em;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .cloudContainer {
+    left: 0px;
+    top: -20px;
+  }
+
+  .cloudContainer2 {
+    left: 8px;
+    bottom: 120px;
+  }
+
+  .cloudContainer3 {
+    left: -5px;
+    bottom: 200px;
+  }
+
+  .cloudContainer4 {
+    right: -7px;
+    bottom: 290px;
+  }
+
+  .cloudText {
+    font-size: 0.8em;
+  }
+
+
 }

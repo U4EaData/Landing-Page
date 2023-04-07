@@ -2,12 +2,12 @@ import React, { useEffect, useState, useRef } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import classes from "./NavSection.module.css";
 import navLink from "../../App.module.css";
 import { IoIosArrowDropdown } from "react-icons/io";
 import { FaUserCircle } from "react-icons/fa";
 import LoginForm from "../loginform/LoginForm";
 import RegisterForm from "../registerform/RegisterForm";
+import classes from "./NavSection.module.css";
 
 function NavSection(props) {
   /* Hooks */
@@ -80,8 +80,8 @@ function NavSection(props) {
           U4Ea
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav" className="text-center">
-          <Nav className="ms-auto" id={(classes.itemfont, classes.linkspacing)}>
+        <Navbar.Collapse className="text-center">
+          <Nav className="ms-auto" id={classes.linkspacing}>
             <Nav.Link href="#home" id={navLink.nlink}>
               Home
             </Nav.Link>

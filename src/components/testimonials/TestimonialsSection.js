@@ -7,7 +7,7 @@ import Card from "react-bootstrap/Card";
 import img3 from "../../images/test1background.png";
 import img2 from "../../images/test2background.png";
 import img1 from "../../images/test3background.png";
-import section from "../../App.module.css";
+import appClasses from "../../App.module.css";
 import cloud1 from "../../images/cloud1.svg";
 import cloud2 from "../../images/cloud2.svg";
 import cloud3 from "../../images/cloud3.svg";
@@ -20,9 +20,9 @@ import { Fade } from "react-awesome-reveal";
 function TestimonialsSection() {
   return (
     <Fade duration={900} triggerOnce="true">
-      <section className={section.sectionContainer}>
+      <section className={appClasses.sectionContainer}>
         <div className={styles.testimonialSection}>
-          <h1 className={styles.title}>What Our Customers Are Saying</h1>
+          <h3 className={appClasses.h3class}>What Our Customers Are Saying</h3>
           <div className={styles.cloudContainer}>
             <img
               src={cloud1}
@@ -31,8 +31,8 @@ function TestimonialsSection() {
             />
             <div className={styles.cloudTextContainer}>
               <p className={styles.cloudText}>
-                &quot;If you are looking for something mood changing the most
-                natural way then you definitely are in the right place!&quot;
+                I found this on the App Store a week or so ago and I&apos;m IN
+                LOVE.
               </p>
             </div>
           </div>
@@ -43,9 +43,7 @@ function TestimonialsSection() {
               className={styles.cloud}
             />
             <div className={styles.cloudTextContainer2}>
-              <p className={styles.cloudText}>
-                &quot;They help me calm my mind while I meditate&quot;
-              </p>
+              <p className={styles.cloudText}></p>
             </div>
           </div>
           <div className={styles.cloudContainer3}>
@@ -55,11 +53,7 @@ function TestimonialsSection() {
               className={styles.cloud}
             />
             <div className={styles.cloudTextContainer3}>
-              <p className={styles.cloudText}>
-                &quot;It is so user friendly and easy that you don&apos;t have
-                to understand frequencies and binaural beats to use it and
-                benefit from it.&quot;
-              </p>
+              <p className={styles.cloudText}></p>
             </div>
           </div>
           <div className={styles.cloudContainer4}>
@@ -69,10 +63,7 @@ function TestimonialsSection() {
               className={styles.cloud}
             />
             <div className={styles.cloudTextContainer4}>
-              <p className={styles.cloudText}>
-                &quot;I pop in my AirPods and whether I&apos;’m at work or home
-                I can choose what I want according to my mood.&quot;
-              </p>
+              <p className={styles.cloudText}></p>
             </div>
           </div>
         </div>

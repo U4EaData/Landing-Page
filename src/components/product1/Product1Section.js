@@ -4,46 +4,46 @@ import { Container, Row, Col } from "react-bootstrap";
 import Demo1 from "../../images/Page4Demo.jpg";
 import feel from "../../images/feel.svg";
 import feel2 from "../../images/feel2.svg";
+import emotions from "../../images/emotions.svg";
+import davinciImg from "../../images/how-do-you-feel.png";
 import "../image.css";
-import classes from "../AboutSection.module.css";
+
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
-import section from "../../App.module.css";
+
 import { Fade } from "react-awesome-reveal";
+import appClasses from "../../App.module.css";
+import classes from "./Product1.module.css";
 
 function Product1() {
   const navigate = useNavigate();
 
   return (
     <Fade duration={900} triggerOnce="true">
-      <section className={section.sectionContainer} id="solutions">
+      <section className={appClasses.sectionContainer} id="solutions">
         <Container id="davinci">
-          <Row className={classes.mobileflex}>
+          <Row className={`${appClasses.mobileflex} ${classes.flexContainer}`}>
             <Col className="col-lg-7 py-5 align-items-center">
               <div className="p-5 p-md-5 ">
-                <h1 className={classes.h1class}>How do you feel?</h1>
-                <p className={classes.pclass}>
+                <h3 className={appClasses.h3class}>How do you feel?</h3>
+                <p className={appClasses.pclass}>
                   Pain can be experienced physically, emotionally, and mentally.
-                  <br />
                   Recognizing how you feel starts the process of making the pain
-                  go away.
-                  <br />
-                  Telling U4Ea how you feel helps us recommend solutions ideal
-                  for you!
-                  <br />
+                  go away. Telling U4Ea how you feel helps us recommend
+                  solutions ideal for you!
                 </p>
                 <Button
                   variant="primary"
                   size="lg"
-                  className={classes.buttonsize}
+                  className={appClasses.buttonsize}
                   onClick={() => navigate("/davinci")}
                 >
                   Try it out
                 </Button>
               </div>
             </Col>
-            <Col lg={5} className="py-5 d-flex justify-content-center">
-              <img className="imageSize" src={feel2} alt="..."></img>
+            <Col lg={5} className=" d-flex justify-content-center">
+              <img className="davinciImg" src={emotions} alt="..."></img>
             </Col>
           </Row>
         </Container>

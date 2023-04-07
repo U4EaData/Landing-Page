@@ -1,3 +1,4 @@
+/* Delete this file eventually. There are still many files that use it at the moment! */
 .background {
   height: 100%;
   padding-top: 25px;
@@ -21,6 +22,8 @@
 .buttonsize {
   width: 220px !important;
   background-color: #8e2de2 !important;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .buttonsize:hover {
@@ -36,11 +39,13 @@
   margin-bottom: 4vh !important;
   font-size: 65px !important;
   line-height: 1.4em !important;
+  font-weight: 700;
 }
 
 .pclass {
   font-family: 'Roboto', sans-serif !important;
-  font-size: 17px !important;
+  font-size: 1.125rem !important;
+  
   margin-bottom: 2rem !important;
   width: 75%;
   line-height: 2rem;
@@ -98,8 +103,6 @@
 
   }
 
- 
-
 }
 
 @media only screen and (max-width: 790px) {
@@ -131,3 +134,5 @@
     padding: 0px 10px;
   }
 }
+
+

@@ -1,17 +1,8 @@
-.title {
-  text-align: center;
-}
 
 .journeydescription {
   font-family: 'Roboto', sans-serif !important;
   font-size: 17px !important;
   text-align: center;
-}
-
-.descriptioncontainer {
-  padding-top: 10px;
-  padding-bottom: 0;
-  margin-bottom: 0;
 }
 
 .notdisplayed {
@@ -20,14 +11,14 @@
 
 .displayed {
   display: flex;
-  height: 20px;
+  height: 20px; 
   margin: auto;
 }
 
-/* .App {
-    background: url(../images/background.png);
-    background-size: cover;
-} */
+.journeySection h3 {
+  text-align: center !important;
+}
+
 
 .whitetext {
   color: #fff;
@@ -85,4 +76,11 @@
 
 .button:hover {
   color: grey;
+}
+
+
+@media only screen and (max-width: 480px) {
+  .journeydescription {
+    text-align: left;
+  }
 }
