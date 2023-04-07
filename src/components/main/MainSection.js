@@ -4,12 +4,12 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Image from "../../images/musicgirl.svg";
-import music from "../../images/music.svg";
+import girlImg from "../../images/girl-profile.png";
 import { init } from "ityped";
 import { Nav } from "react-bootstrap";
 
 import classes from "./MainSection.module.css";
-import section from "../../App.module.css";
+import appClasses from "../../App.module.css";
 
 function MainSection() {
   const textRef = useRef();
@@ -31,11 +31,11 @@ function MainSection() {
     });
   }, []);
   return (
-    <section className={section.mainSectionContainer}>
-      <Container className={classes.background}>
+    <section className={appClasses.mainSectionContainer}>
+      <Container>
         <Row className={classes.mobileflex}>
-          <Col xs={6} className={classes.heading}>
-            <h1 className={classes.h1class}>The Healing Power of Sound</h1>
+          <Col xs={7} className={classes.heading}>
+            <h1 className={appClasses.h1class}>The Healing Power of Sound</h1>
 
             <div className={classes.movingtextcontainer}>
               <p className={classes.subtext}>
@@ -58,8 +58,6 @@ function MainSection() {
             <img
               src={Image}
               alt="girl listening to personalized sound scape"
-              width="100%"
-              height="auto"
               className={classes.mainsectionimage}
             ></img>
           </Col>

@@ -1,0 +1,10 @@
+@media only screen and (max-width: 995px) {
+    .flexContainer {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+
+}

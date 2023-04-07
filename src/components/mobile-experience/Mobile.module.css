@@ -16,10 +16,86 @@
     width: 35px;
     color: #8e2de2;
     cursor: pointer;
+    transition: all 250ms linear;
 }
 
 .experienceArrow:hover {
+    color: #9c50e6 !important;
+    transition: all 250ms linear;
+}
 
-    color: grey;
+.mobileBoxTitle {
+    font-size: 2.5em;
+    font-weight: 600;
+}
 
+@media only screen and (max-width: 960px) {
+    .webExperience, .mobileExperience {
+       padding-left: 50px;
+       padding-right: 50px;
+    }
+    .mobilePadding {
+        padding: 3rem 0px 0px 0px !important;
+    }
+/* 
+    .mobileContainer {
+
+        margin-top: 200px;
+    } */
+}
+
+@media only screen and (max-width: 768px) {
+    .mobileContainer {
+        margin-top: 150px;
+    }
+    .mobilePadding {
+        padding: 3rem 0px 0px 0px !important;
+    }
+    
+}
+
+
+
+@media only screen and (max-width: 640px) {
+
+    
+}
+
+@media only screen and (max-width: 480px) {
+    .mobileContainer {
+        margin-top: 10vh;
+    }
+
+    .experienceArrow {
+        height: 45px;
+        width: 45px;
+    }
+
+    .boxContainers {
+        padding: 0px 0px 50px 0px!important;
+    }
+
+    .mobileExperience {
+        margin-bottom: 60px !important ;
+    }
+
+    .webExperience, .mobileExperience {
+        margin: 20px 20px 0px 20px;
+    }
+    
+}
+
+@media only screen and (max-width: 320px) {
+    .mobileContainer {
+        margin-top: 50px;
+    }
+    
+    .webExperience, .mobileExperience {
+        margin: 20px 20px 0px 20px;
+    }
+    
+    .mobileBoxTitle {
+        font-size: 2em;
+    }
+    
 }

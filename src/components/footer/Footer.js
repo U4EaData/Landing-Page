@@ -10,8 +10,8 @@ import navLink from "../../App.module.css";
 const Footer = () => {
   return (
     <div className={classes.footerContainer}>
-      <Container fluid className="py-4 footerLinks" id="signup">
-        <Row className="pb-5">
+      <Container fluid className="py-4" id="signup">
+        <Row className={`pb-5 ${classes.footerLinks}`}>
           <Col>
             <div className={classes.columnContainer}>
               <h4 className={classes.footerColumnTitle}>U4Ea</h4>
@@ -61,7 +61,7 @@ const Footer = () => {
             </Row>
           </Col>
         </Row>
-        <hr />
+        <hr className={classes.hrLine} />
         <Row className="py-3">
           <h4 className={classes.copyright}>© 2023 U4Ea</h4>
         </Row>
