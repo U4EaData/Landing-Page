@@ -14,45 +14,6 @@ const UserDashboard = (props) => {
 
   return (
     <>
-      <div className={userClasses.dashNav}>
-        <Container fluid className={classes.dashboardNav}>
-          <Navbar
-            collapseOnSelect
-            expand="lg"
-            className={classes.mainbackground}
-          >
-            <Navbar.Brand className={classes.navbarbrand} href="/">
-              U4Ea
-            </Navbar.Brand>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse className="text-center">
-              <Nav className="ms-auto" id={classes.linkspacing}>
-                <Nav.Link href="/" id={appClasses.nlink}>
-                  Home
-                </Nav.Link>
-              </Nav>
-            </Navbar.Collapse>
-            {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse
-              id="dash-responsive-navbar-nav"
-              className="text-center dashy"
-            >
-              <Nav
-                className="ms-auto"
-                id={(classes.itemfont, classes.linkspacing)}
-              >
-                <Nav.Link
-                  id={appClasses.nlink}
-                  className={appClasses.buttonsize}
-                  onClick={() => navigate("/")}
-                >
-                  Go back
-                </Nav.Link>
-              </Nav>
-            </Navbar.Collapse> */}
-          </Navbar>
-        </Container>
-      </div>
       <section className={appClasses.sectionContainer}>
         <div className={userClasses.dashboardContainer}>
           <div className={userClasses.welcomeContainer}>

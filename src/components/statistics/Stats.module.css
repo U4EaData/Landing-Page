@@ -1,0 +1,33 @@
+.statsSection h3 {
+  text-align: center;
+}
+
+.statsFlexContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+
+}
+
+.statsFlexItem {
+text-align: center;
+padding: 20px;
+}
+
+.statsNumber {
+  font-size: 4rem;
+  font-weight: 800;
+  color: #9035CA;
+
+}
+
+.statsDescription {
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 995px) {
+  .statsFlexContainer {
+    flex-direction: column;
+  }
+}

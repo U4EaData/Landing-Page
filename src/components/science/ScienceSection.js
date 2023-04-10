@@ -89,11 +89,11 @@ function Science() {
   return (
     <Fade duration={900} triggerOnce="true">
       <section className={appClasses.sectionContainer}>
-        <Container>
+        <Container className={classes.scienceSection}>
           <Row
-            className={`${appClasses.mobileflex} ${classes.scienceFlexContainer}`}
+            className={`${appClasses.mobileflex} ${classes.scienceFlexContainer} align-items-center`}
           >
-            <Col lg={7} className="align-middle">
+            <Col>
               <div className="p-md-5 p-5">
                 <h3 className={appClasses.h3class}>Sound Science</h3>
                 <p className={appClasses.pclass}>
@@ -128,12 +128,15 @@ function Science() {
               </div>
             </Col>
 
-            <Col lg={5} className="py-5 d-flex justify-content-center">
-              <img
-                className="imageSize"
-                src={girlBlue}
-                alt="girlwithbook"
-              ></img>
+            <Col className="align-content-center">
+              {/* className="col-xs-8 py-5 d-flex justify-content-center" */}
+              <div className="p-md-5 p-5 d-flex justify-content-center ">
+                <img
+                  className="imageSize"
+                  src={girlBlue}
+                  alt="girlwithbook"
+                ></img>
+              </div>
             </Col>
           </Row>
         </Container>

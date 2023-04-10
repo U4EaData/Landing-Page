@@ -3,6 +3,7 @@ import classes from "./LoginForm.module.css";
 import axios from "axios";
 import { AiOutlineClose } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import appClasses from "../../App.module.css";
 
 const LoginForm = (props) => {
   const navigate = useNavigate();
@@ -41,8 +42,8 @@ const LoginForm = (props) => {
   return (
     <div className={classes.loginform} id="formElement">
       <div className={classes.form}>
-        <div className="close" onClick={props.closeForm}>
-          <AiOutlineClose className={classes.close} />
+        <div className="close">
+          <AiOutlineClose className={classes.close} onClick={props.closeForm} />
         </div>
         <h1 className={classes.login_header}>Login</h1>
         <input

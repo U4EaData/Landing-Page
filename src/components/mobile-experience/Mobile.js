@@ -25,6 +25,7 @@ function Mobile(props) {
   document.addEventListener("mousedown", closeUserdropdown);
 
   const closeForm = () => {
+    console.log("close");
     setShowForm(false);
   };
 
@@ -68,7 +69,6 @@ function Mobile(props) {
                   {showForm && form === "login" ? (
                     <span ref={webRef}>
                       <LoginForm
-                        // loginBtnClicked={props.loginBtnClicked}
                         toggleForm={toggleForm}
                         onEmailChange={props.onEmailChange}
                         onPasswordChange={props.onPasswordChange}
@@ -81,14 +81,13 @@ function Mobile(props) {
                   ) : showForm && form === "register" ? (
                     <span ref={webRef}>
                       <RegisterForm
-                        // loginBtnClicked={props.loginBtnClicked}
                         toggleForm={toggleForm}
                         onEmailChange={props.onEmailChange}
                         onPasswordChange={props.onPasswordChange}
                         onNameChange={props.onNameChange}
                         user={props.user}
                         loadUser={props.loadUser}
-                        closeForm={props.closeForm}
+                        closeForm={closeForm}
                         id="mobile-login-form"
                       />
                     </span>

@@ -5,6 +5,7 @@ import MainSection from "./components/main/MainSection";
 import About from "./components/about/About";
 import Product1 from "./components/product1/Product1Section";
 import Product2 from "./components/product2/Product2Section";
+import Stats from "./components/statistics/Stats";
 import Science from "./components/science/ScienceSection";
 import TestimonialsSection from "./components/testimonials/TestimonialsSection";
 import JourneySection from "./components/journey/JourneySection";
@@ -99,32 +100,34 @@ function App() {
     setShowForm(false);
   };
 
+  // Test
+
   return (
     <div id="home" className={classes.App}>
       <div className={classes.backgroundimage}>
         <Router>
+          <div className={classes.stickynav}>
+            <NavSection
+              user={user}
+              signout={signout}
+              onEmailChange={onEmailChange}
+              onPasswordChange={onPasswordChange}
+              onNameChange={onNameChange}
+              loadUser={loadUser}
+              loginBtnClicked={loginBtnClicked}
+              closeForm={closeForm}
+              showForm={showForm}
+            />
+          </div>
           <Routes>
             <Route
               path="/"
               element={
                 <Fragment>
-                  <div className={classes.stickynav}>
-                    <NavSection
-                      user={user}
-                      signout={signout}
-                      onEmailChange={onEmailChange}
-                      onPasswordChange={onPasswordChange}
-                      onNameChange={onNameChange}
-                      loadUser={loadUser}
-                      loginBtnClicked={loginBtnClicked}
-                      closeForm={closeForm}
-                      showForm={showForm}
-                    />
-                  </div>
                   <MainSection />
                   <Product1 />
                   <Product2 />
-                  <Science />
+                  <Stats />
                   <JourneySection />
                   <TestimonialsSection />
                   <Mobile
@@ -139,11 +142,11 @@ function App() {
                     showForm={showForm}
                   />
                   <Footer />
-                  {/* <SignUpSection /> */}
                 </Fragment>
               }
             />
             <Route path="/about" element={<About />} />
+            <Route path="/resources" element={<Science />} />
             <Route path="/davinci" element={<DaVinci />} />
 
             <Route
@@ -155,6 +158,66 @@ function App() {
       </div>
     </div>
   );
+
+  // Test
+
+  // return (
+  //   <div id="home" className={classes.App}>
+  //     <div className={classes.backgroundimage}>
+  //       <Router>
+  //         <Routes>
+  //           <Route
+  //             path="/"
+  //             element={
+  //               <Fragment>
+  //                 <div className={classes.stickynav}>
+  //                   <NavSection
+  //                     user={user}
+  //                     signout={signout}
+  //                     onEmailChange={onEmailChange}
+  //                     onPasswordChange={onPasswordChange}
+  //                     onNameChange={onNameChange}
+  //                     loadUser={loadUser}
+  //                     loginBtnClicked={loginBtnClicked}
+  //                     closeForm={closeForm}
+  //                     showForm={showForm}
+  //                   />
+  //                 </div>
+  //                 <MainSection />
+  //                 <Product1 />
+  //                 <Product2 />
+  //                 {/* <Science /> */}
+  //                 <JourneySection />
+  //                 <TestimonialsSection />
+  //                 <Mobile
+  //                   user={user}
+  //                   signout={signout}
+  //                   onEmailChange={onEmailChange}
+  //                   onPasswordChange={onPasswordChange}
+  //                   onNameChange={onNameChange}
+  //                   loadUser={loadUser}
+  //                   loginBtnClicked={loginBtnClicked}
+  //                   closeForm={closeForm}
+  //                   showForm={showForm}
+  //                 />
+  //                 <Footer />
+  //                 {/* <SignUpSection /> */}
+  //               </Fragment>
+  //             }
+  //           />
+  //           <Route path="/about" element={<About />} />
+  //           <Route path="/resources" element={<Science />} />
+  //           <Route path="/davinci" element={<DaVinci />} />
+
+  //           <Route
+  //             path="/userdashboard"
+  //             element={<UserDashboard user={user} />}
+  //           />
+  //         </Routes>
+  //       </Router>
+  //     </div>
+  //   </div>
+  // );
 }
 
 export default App;

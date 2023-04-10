@@ -2,73 +2,20 @@
   position: fixed;
   min-height: 90px;
   width: 100vw;
-  z-index: 100;
+  z-index: 1;
   background: #8e2de2;
-
-  /* background: rgb(46, 6, 61);
-  background: -moz-linear-gradient(
-    90deg,
-    rgba(46, 6, 61, 1) 20%,
-    rgba(57, 16, 84, 1) 29%,
-    rgba(69, 16, 115, 1) 37%,
-    rgba(85, 22, 139, 1) 57%,
-    rgba(142, 45, 226, 1) 100%
-  );
-  background: -webkit-linear-gradient(
-    90deg,
-    rgba(46, 6, 61, 1) 20%,
-    rgba(57, 16, 84, 1) 29%,
-    rgba(69, 16, 115, 1) 37%,
-    rgba(85, 22, 139, 1) 57%,
-    rgba(142, 45, 226, 1) 100%
-  );
-  background: linear-gradient(
-    90deg,
-    rgba(46, 6, 61, 1) 20%,
-    rgba(57, 16, 84, 1) 29%,
-    rgba(69, 16, 115, 1) 37%,
-    rgba(85, 22, 139, 1) 57%,
-    rgba(142, 45, 226, 1) 100%
-  );
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2e063d",endColorstr="#8e2de2",GradientType=1);
 }
 
-.dashNav {
-  min-height: 90px;
-  width: 100vw;
-  background: rgb(46, 6, 61);
-  background: -moz-linear-gradient(
-    90deg,
-    rgba(46, 6, 61, 1) 20%,
-    rgba(57, 16, 84, 1) 29%,
-    rgba(69, 16, 115, 1) 37%,
-    rgba(85, 22, 139, 1) 57%,
-    rgba(142, 45, 226, 1) 100%
-  );
-  background: -webkit-linear-gradient(
-    90deg,
-    rgba(46, 6, 61, 1) 20%,
-    rgba(57, 16, 84, 1) 29%,
-    rgba(69, 16, 115, 1) 37%,
-    rgba(85, 22, 139, 1) 57%,
-    rgba(142, 45, 226, 1) 100%
-  );
-  background: linear-gradient(
-    90deg,
-    rgba(46, 6, 61, 1) 20%,
-    rgba(57, 16, 84, 1) 29%,
-    rgba(69, 16, 115, 1) 37%,
-    rgba(85, 22, 139, 1) 57%,
-    rgba(142, 45, 226, 1) 100%
-  );
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2e063d",endColorstr="#8e2de2",GradientType=1); */
+
+
+.test {
+  height: 100vh !important;
 }
 
 .sectionContainer {
   padding: 20px 0px;
+ 
 }
-
-
 
 .mainSectionContainer {
   padding: 150px 0px 50px 0px;
@@ -87,8 +34,7 @@
 }
 
 * {
-  /* font-family: "Abril Fatface", cursive !important; */
-  font-family: 'Lato', sans-serif !important;
+  font-family: "Lato", sans-serif !important;
 }
 
 html,
@@ -102,7 +48,8 @@ body,
   scroll-behavior: smooth;
 }
 
-ul, p {
+ul,
+p {
   padding: 0 !important;
   margin: 0 !important;
 }
@@ -121,7 +68,7 @@ ul, p {
   font-size: 65px !important;
   line-height: 1.4em !important;
   font-weight: 700;
-  color: #FFFF;
+  color: #ffff;
 }
 
 .h3class {
@@ -132,11 +79,23 @@ ul, p {
 }
 
 .pclass {
-  font-family: 'Roboto', sans-serif !important;
+  font-family: "Roboto", sans-serif !important;
   font-size: 1.125rem !important;
   margin-bottom: 2rem !important;
-  width: 75%;
+  /* width: 75%; */
   line-height: 2rem;
+}
+
+.pclasscenter {
+  font-family: "Roboto", sans-serif !important;
+  font-size: 1.125rem !important;
+  margin-bottom: 2rem !important;
+
+  line-height: 2rem;
+  /* width: 100% !important;
+  font-size: 1.2rem !important;
+  padding: 0px 10px; */
+  text-align: center;
 }
 
 .buttonsize {
@@ -150,7 +109,6 @@ ul, p {
   background-color: #9c50e6 !important;
 }
 
-
 @media only screen and (max-width: 1200px) {
   .pclass {
     margin-bottom: 2rem !important;
@@ -162,26 +120,30 @@ ul, p {
     font-size: 45px !important;
   }
 
-  .pclass {
-    font-size: 1.4rem !important;
+  .pclass,
+  .pclasscenter {
+    font-size: 1.2rem !important;
   }
 
   .heading {
     padding-top: 25px !important;
   }
 
+  .h3class {
+    font-size: 2rem !important;
+  }
+
+
+}
+
+@media only screen and (max-width: 790px) {
+
+
   .mobileflex {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
-}
-
-@media only screen and (max-width: 790px) {
-  .mobileflex {
-    flex-direction: column;
-    align-items: center;
   }
 
   .heading {
@@ -206,11 +168,11 @@ ul, p {
     font-size: 1rem !important;
     padding: 0px 10px;
   }
-
 }
 
 @media only screen and (max-width: 480px) {
-  .pclass {
+  .pclass,
+  .pclasscenter {
     width: 100% !important;
     font-size: 1.2rem !important;
     padding: 0px !important;
@@ -234,16 +196,15 @@ ul, p {
   .sectionContainer {
     padding: 20px 0px 0px 0px;
   }
-
 }
-
 
 @media only screen and (max-width: 320px) {
   .h1class {
     font-size: 1.5rem !important;
   }
-  .pclass {
-    font-size: 1rem !important
+  .pclass,
+  .pclasscenter {
+    font-size: 1rem !important;
   }
 
   .buttonsize {
