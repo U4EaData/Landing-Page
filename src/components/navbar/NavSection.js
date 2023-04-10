@@ -8,6 +8,9 @@ import { FaUserCircle } from "react-icons/fa";
 import LoginForm from "../loginform/LoginForm";
 import RegisterForm from "../registerform/RegisterForm";
 import classes from "./NavSection.module.css";
+import $ from "jquery";
+import jquery from "jquery";
+import { click } from "@testing-library/user-event/dist/click";
 
 function NavSection(props) {
   /* Hooks */
@@ -20,6 +23,7 @@ function NavSection(props) {
   const formRef = useRef(null);
   const testRef = useRef(null);
   const testRef2 = useRef(null);
+  const dropdownRef = useRef(null);
   /* Storage */
   const getUser = localStorage.getItem("u4ea-user");
   const user = JSON.parse(getUser) || [];
@@ -52,6 +56,10 @@ function NavSection(props) {
     ) {
       setShowForm(false);
       document.removeEventListener("mousedown", closeUserdropdown);
+    } else if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+      const menuToggle = document.getElementById("navbarSupportedContent");
+      console.log(menuToggle);
+      document.removeEventListener("mousedown", closeUserdropdown);
     }
   };
 
@@ -82,18 +90,18 @@ function NavSection(props) {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse className="text-center">
           <Nav className="ms-auto" id={classes.linkspacing}>
-            <Nav.Link href="#home" id={navLink.nlink}>
+            <Nav.Link href="/" id={navLink.nlink}>
               Home
             </Nav.Link>
             <Nav.Link href="/about" id={navLink.nlink}>
               About
             </Nav.Link>
-            <Nav.Link href="#solutions" id={navLink.nlink}>
-              Solutions
+            <Nav.Link href="/resources" id={navLink.nlink}>
+              Resources
             </Nav.Link>
-            <Nav.Link href="#signup" id={navLink.nlink}>
+            {/* <Nav.Link href="#signup" id={navLink.nlink}>
               Contact Us
-            </Nav.Link>
+            </Nav.Link> */}
             {user.name ? (
               <div className={classes.usercontainer}>
                 <div className={classes.dropdowncontainerMobile}>
@@ -126,7 +134,7 @@ function NavSection(props) {
               <div className={classes.navlogincontainer} ref={testRef2}>
                 <FaUserCircle className={classes.usericon} color="#FFFF" />
                 <div
-                  className={classes.navLogin}
+                  className={`${classes.navLogin} login-link`}
                   onClick={() => setShowForm((prev) => !prev)}
                   id="login-link"
                 >
@@ -160,5 +168,21 @@ function NavSection(props) {
     </Container>
   );
 }
+
+$(function () {
+  $(document).on("click", function (event) {
+    var clickover = $(event.target);
+    var _opened = $(".navbar-collapse").hasClass(
+      "navbar-collapse collapse show"
+    );
+    if (
+      _opened === true &&
+      !clickover.hasClass("navbar-toggler") &&
+      !clickover.hasClass("login-link")
+    ) {
+      $("button.navbar-toggler").click();
+    }
+  });
+});
 
 export default NavSection;

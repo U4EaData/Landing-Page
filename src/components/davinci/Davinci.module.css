@@ -4,8 +4,9 @@
 }
 
 /* Main container */
-.davinci {
+.davinciContainer {
   overflow: hidden;
+  padding-top: 90px;
 }
 
 .davinci_img {
@@ -215,7 +216,7 @@ select {
     flex-direction: column;
   }
 
-  .davinci {
+  .davinciContainer {
     max-width: 500px;
   }
 

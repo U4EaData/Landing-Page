@@ -7,18 +7,27 @@ import { Fade } from "react-awesome-reveal";
 import appClasses from "../../App.module.css";
 import "../image.css";
 import iphoneScore from "../../images/iphonescore.png";
+import classes from "./Product2.module.css";
 
 function Product2() {
   return (
     <Fade duration={900} triggerOnce="true">
       <section className={appClasses.sectionContainer}>
         <Container>
-          <Row className={appClasses.mobileflex}>
-            <Col lg={5} className="d-flex justify-content-center">
-              <img className="pic" src={iphoneScore} alt="iphone"></img>
+          <Row
+            className={`${appClasses.mobileflex} ${classes.product2FlexContainer} align-items-center`}
+          >
+            <Col className="align-content-center">
+              <div className="p-md-5 p-5 d-flex justify-content-center ">
+                <img
+                  className="product2Img"
+                  src={iphoneScore}
+                  alt="iphone"
+                ></img>
+              </div>
             </Col>
 
-            <Col className="col-lg-7 py-5 align-items-center">
+            <Col>
               <div className="p-5 p-md-5 ">
                 <h3 className={appClasses.h3class}>Sentiment Analysis</h3>
                 <p className={appClasses.pclass}>

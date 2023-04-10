@@ -1,7 +1,7 @@
 .getStartedContainer {
     display: flex;
     flex-direction: column;
-    gap: 20px
+    gap: 20px;
 }
 
 .webExperience, .mobileExperience {
@@ -33,18 +33,24 @@
     .webExperience, .mobileExperience {
        padding-left: 50px;
        padding-right: 50px;
+
     }
     .mobilePadding {
         padding: 3rem 0px 0px 0px !important;
     }
-/* 
-    .mobileContainer {
 
-        margin-top: 200px;
-    } */
+
 }
 
 @media only screen and (max-width: 768px) {
+    .webExperience, .mobileExperience {
+        padding-left: 50px;
+        padding-right: 50px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+     }
+
     .mobileContainer {
         margin-top: 150px;
     }
@@ -62,6 +68,10 @@
 }
 
 @media only screen and (max-width: 480px) {
+    .mobileBoxTitle {
+        font-size: 1.5em;
+    }
+
     .mobileContainer {
         margin-top: 10vh;
     }
@@ -95,7 +105,7 @@
     }
     
     .mobileBoxTitle {
-        font-size: 2em;
+        font-size: 1.2em;
     }
     
 }

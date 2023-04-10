@@ -27,8 +27,8 @@ const DaVinci = () => {
   };
 
   return (
-    <div className={davinci_css.davinci}>
-      <Container className={classes.mynavcontainer}>
+    <div className={davinci_css.davinciContainer}>
+      {/* <Container className={classes.mynavcontainer}>
         <Navbar collapseOnSelect expand="lg" className={classes.mainbackground}>
           <Navbar.Brand className={classes.navbarbrand} href="/">
             U4Ea
@@ -50,7 +50,7 @@ const DaVinci = () => {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-      </Container>
+      </Container> */}
 
       <Container fluid className={davinci_css.container}>
         <div className={davinci_css.background}>

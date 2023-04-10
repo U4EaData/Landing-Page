@@ -47,7 +47,7 @@ const Footer = () => {
           <Col>
             <Row>
               <div className={classes.columnContainer}>
-                <h4 className={classes.footerColumnTitle}>Connect</h4>
+                <h4 className={classes.footerColumnTitle}>Contact</h4>
                 <div className={classes.emailContainer}>
                   <IoIosMail className={`${classes.emailIcon}`} />
                   <a
