@@ -1,10 +1,41 @@
 import React from "react";
 import classes from "./About.module.css";
+import appClasses from "../../App.module.css";
+import { Container, Col, Row } from "react-bootstrap";
+import "../image.css";
+import aboutImg from "../../images/about.svg";
 
 const About = () => {
   return (
-    <section>
-      <h1>About</h1>
+    <section className={appClasses.sectionContainer}>
+      <Container className={classes.aboutSection}>
+        <Row
+          className={`${appClasses.mobileflex} ${classes.product2FlexContainer} align-items-center`}
+        >
+          <Col className="align-content-center">
+            <div className="p-md-5 p-5 d-flex justify-content-center ">
+              <img
+                className="product2Img"
+                src={aboutImg}
+                alt="iphone"
+              ></img>
+            </div>
+          </Col>
+
+          <Col>
+            <div className="p-5 p-md-5 ">
+              <h3 className={appClasses.h3class}>Sentiment Analysis</h3>
+              <p className={appClasses.pclass}>
+                Founded in 2017 by Brandon Howard, U4Ea has helped more than
+                36,000 people across the world address physical, emotional,
+                and mental challenges by offering combinations of tones known
+                as <span className={classes.heavier}>binaural beats</span>,
+                enabling listeners to shift into healing states of mind.
+              </p>
+            </div>
+          </Col>
+        </Row>
+      </Container>
     </section>
   );
 };
