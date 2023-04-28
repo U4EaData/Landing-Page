@@ -6,15 +6,12 @@
   background: #8e2de2;
 }
 
-
-
 .test {
   height: 100vh !important;
 }
 
 .sectionContainer {
   padding: 20px 0px;
- 
 }
 
 .mainSectionContainer {
@@ -132,13 +129,9 @@ p {
   .h3class {
     font-size: 2rem !important;
   }
-
-
 }
 
 @media only screen and (max-width: 790px) {
-
-
   .mobileflex {
     display: flex;
     flex-direction: column;
@@ -211,5 +204,3 @@ p {
     width: 100% !important;
   }
 }
-
-

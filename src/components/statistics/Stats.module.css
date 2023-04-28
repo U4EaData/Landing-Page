@@ -7,27 +7,54 @@
   justify-content: space-around;
   align-items: center;
   list-style: none;
-
 }
 
 .statsFlexItem {
-text-align: center;
-padding: 20px;
+  text-align: center;
+  padding: 20px;
 }
 
 .statsNumber {
   font-size: 4rem;
   font-weight: 800;
-  color: #9035CA;
-
+  color: #9035ca;
 }
 
 .statsDescription {
   font-weight: 600;
 }
 
-@media only screen and (max-width: 995px) {
+figure {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mapContainer {
+  border-radius: 5px;
+  /* padding: 50px; */
+}
+
+.mapSize {
+  overflow: scroll;
+}
+
+@media only screen and (max-width: 960px) {
+  /*your CSS Rules*/
   .statsFlexContainer {
     flex-direction: column;
   }
+}
+@media only screen and (max-width: 768px) {
+  /*your CSS Rules*/
+}
+@media only screen and (max-width: 640px) {
+  /*your CSS Rules*/
+}
+@media only screen and (max-width: 480px) {
+  /*your CSS Rules*/
+}
+@media only screen and (max-width: 320px) {
+  /*your CSS Rules*/
 }

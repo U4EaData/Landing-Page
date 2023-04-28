@@ -1,30 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import classes from "./Stats.module.css";
 import appClasses from "../../App.module.css";
 import { Container } from "react-bootstrap";
+import WorldMap from "react-svg-worldmap";
+import mapData from "./mapData";
 
 const Stats = () => {
+  const [windowWidth, setWindowWidth] = useState(968);
+  useEffect(() => {
+    function handleResize() {
+      console.log(window.innerWidth);
+      setWindowWidth(window.innerWidth * 0.75);
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
     <Fade duration={900} triggerOnce="true">
       <section className={appClasses.sectionContainer}>
         <Container>
           <div className={classes.statsSection}>
-            <h3 className={appClasses.h3class}>Improve with U4Ea</h3>
+            <h3 className={appClasses.h3class}>Market Penetration</h3>
             <p className={appClasses.pclasscenter}>
               Real people. Real results.
             </p>
             <ul className={classes.statsFlexContainer}>
-              <li className={classes.statsFlexItem}>
+              {/* <li className={classes.statsFlexItem}>
                 <p className={classes.statsNumber}>81%</p>
                 <p
                   className={`${appClasses.pclasscenter} ${classes.statsDescription}`}
                 >
                   say U4Ea helped them reach their targeted state of mind
                 </p>
-              </li>
+              </li> */}
               <li className={classes.statsFlexItem}>
-                <p className={classes.statsNumber}>40K+</p>
+                <p className={classes.statsNumber}>37K+</p>
                 <p
                   className={`${appClasses.pclasscenter} ${classes.statsDescription}`}
                 >
@@ -36,10 +48,26 @@ const Stats = () => {
                 <p
                   className={`${appClasses.pclasscenter} ${classes.statsDescription}`}
                 >
-                  {"rentention rate (% of customers keeping the app)"}
+                  efficacy
+                </p>
+              </li>
+              <li className={classes.statsFlexItem}>
+                <p className={classes.statsNumber}>96</p>
+                <p
+                  className={`${appClasses.pclasscenter} ${classes.statsDescription}`}
+                >
+                  countries
                 </p>
               </li>
             </ul>
+            <div className={classes.mapContainer}>
+              <WorldMap
+                color="#9035ca"
+                size={windowWidth}
+                data={mapData}
+                backgroundColor="rgba(255, 255, 255, 0)"
+              />
+            </div>
           </div>
         </Container>
       </section>
