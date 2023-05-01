@@ -7,11 +7,14 @@ import WorldMap from "react-svg-worldmap";
 import mapData from "./mapData";
 
 const Stats = () => {
-  const [windowWidth, setWindowWidth] = useState(968);
+  const [windowWidth, setWindowWidth] = useState(
+    Math.min(window.innerHeight, window.innerWidth) * 0.9
+  );
   useEffect(() => {
     function handleResize() {
       console.log(window.innerWidth);
-      setWindowWidth(window.innerWidth * 0.75);
+      // setWindowWidth(window.innerWidth * 0.5);
+      setWindowWidth(Math.min(window.innerHeight, window.innerWidth) * 0.9);
     }
 
     window.addEventListener("resize", handleResize);
