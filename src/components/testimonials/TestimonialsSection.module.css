@@ -197,4 +197,10 @@
 }
 
 @media only screen and (max-width: 320px) {
+  .testimonialFlexItem1:after,
+  .testimonialFlexItem2:after,
+  .testimonialFlexItem3:after {
+    font-size: 0.65rem !important;
+    padding: 48px 10px 5px 10px;
+  }
 }
