@@ -164,6 +164,11 @@ p {
 }
 
 @media only screen and (max-width: 480px) {
+  .backgroundimage {
+    background: none;
+    background-color: #f8f9fa;
+  }
+
   .pclass,
   .pclasscenter {
     width: 100% !important;
