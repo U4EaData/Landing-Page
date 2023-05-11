@@ -1,0 +1,48 @@
+.toneSection h3 {
+  text-align: center;
+}
+
+.toneDropdownContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.toneFlex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.toneDropdown {
+  display: flex;
+}
+
+.dropdownContent {
+  background: none;
+  text-align: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  font-size: 1.5rem;
+  color: purple;
+  font-weight: 800;
+  border-bottom: 3px solid purple;
+  border-radius: 0px;
+}
+
+.border {
+  border-bottom: 5px solid purple;
+}
+
+.tonePClass {
+  font-size: 2rem;
+  white-space: nowrap;
+}
+
+.toneBtn {
+  width: 10vw;
+}

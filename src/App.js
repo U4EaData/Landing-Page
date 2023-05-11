@@ -18,6 +18,7 @@ import axios from "axios";
 
 import classes from "./App.module.css";
 import DaVinci from "./components/davinci/DaVinci";
+import ToneGenerator from "./components/tonegenerator/ToneGenerator";
 
 function App() {
   const [route, setRoute] = "";
@@ -141,6 +142,7 @@ function App() {
                     closeForm={closeForm}
                     showForm={showForm}
                   />
+                  {/* <ToneGenerator /> */}
                   <Footer />
                 </Fragment>
               }

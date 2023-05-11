@@ -12,7 +12,7 @@ const Stats = () => {
   );
   useEffect(() => {
     function handleResize() {
-      console.log(window.innerWidth);
+      // console.log(window.innerWidth);
       // setWindowWidth(window.innerWidth * 0.5);
       setWindowWidth(Math.min(window.innerHeight, window.innerWidth) * 0.9);
     }

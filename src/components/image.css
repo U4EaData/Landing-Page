@@ -1,6 +1,4 @@
 .product2Img {
-  /* height: 600px;
-  width: 400px; */
   height: 100%;
   width: 55%;
 }
@@ -24,6 +22,11 @@
   object-position: 50% 50%;
 }
 
+.frequenciesIcon {
+  height: 100%;
+  width: 10%;
+}
+
 @media only screen and (max-width: 1200px) {
   .imageSize {
     height: 65%;
@@ -34,11 +37,6 @@
     height: 75%;
     width: 80%;
   }
-
-  /* .davinciImg {
-    width: 80%;
-    height: 80%;
-  } */
 }
 
 @media only screen and (max-width: 995px) {
