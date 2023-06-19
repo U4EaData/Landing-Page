@@ -1,4 +1,119 @@
-.scienceLinkContainer {
+:root{
+  --primary: #FFCE00;
+  --secondary: #fe4880;
+  --dark: #212121;
+  --light: #f3f3f3
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.card{
+  margin: 100px auto 0;
+  width: 400px;
+  height: 600px;
+}
+
+.card__inner{
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+}
+
+.card__inner.is-flipped{
+  transform: rotateY(180deg);
+}
+
+.card__face{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0px 3 px 18px 3 px rgba(0, 0, 0, 0.2);
+}
+
+.card__face--front{
+  background-image: linear-gradient(to bottom right, var(--primary), var(--secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__face--front h2{
+  color: #FFF;
+  font-size: 32px;
+}
+
+.card__face--back{
+  background-color: var(--light);
+  transform: rotateY(180deg);
+}
+
+.card__content{
+  width: 100%;
+  height: 100%;
+}
+
+.card__header:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  border-radius: 0 0 50% 0;
+  background-image: linear-gradient(to bottom left, var(--primary) 10%, var(--secondary) 115%);
+}
+
+
+
+
+/* REACT LIBRARY ATTEMPT
+.cardLayout {
+  background-color: rgb(57, 14, 79);
+  height: 100;
+  display: "flex";
+  justify-content: "center";
+  align-items: "center";
+}
+
+.cardLayout .frontText {
+  color: aqua;
+  font-size: 16px;
+  
+}
+
+.cardLayout .backText {
+  color: aqua;
+  font-size: 16px;
+  
+}
+
+
+
+
+
+
+
+
+
+/* .scienceLinkContainer {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -8,28 +123,65 @@
 
 .scienceSection {
   padding-top: 90px;
-  /* height: 100vh; */
-}
+ height: 100vh; */
 
-.scienceLinkContainer a {
-  /* text-decoration: none !important; */
-  border: none;
-  color: black !important;
-}
+/* 
 
 .sciencelink:hover {
-  color: #8034f6 !important;
+    color: #8034f6 !important;
+} */
+/* 
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
+
+
+.container {
+  height: 100vh;
 }
 
-@media only screen and (max-width: 995px) {
-    .scienceFlexContainer {
-        display: flex;
-        flex-direction: column-reverse;
+.flip-card-outer {
+  width: 300px;
+  height: 400px;
+  margin: 25px 0;
 
+  &.focus-trigger:focus {
+    outline: 5px solid greenyellow;
+    outline-offset: 5px;
+  }
+
+  .flip-card-inner {
+    transform-style: preserve-3d;
+    transition: .5s linear .1s;
+    position: relative;
+    width: inherit;
+    height: inherit;
+
+    &.hover-trigger:hover {
+      transform: rotateY(180deg);
     }
-}
 
-
-@media only screen and (max-width: 480px) {
-
-}
+    &.showBack {
+      transform: rotateY(180deg);
+    }
+  
+    .card {
+      backface-visibility: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+  
+      &.front {
+        transform: rotateY(0);
+        background-color: #2d2d2d;
+        color: #fff;
+      }
+  
+      &.back {
+        transform: rotateY(180deg);
+        background-color: #fff;
+        color: #2d2d2d;
+      }
+    }
+  }
+} */
