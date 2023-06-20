@@ -3181,6 +3181,11 @@ cjs-module-lexer@^1.0.0:
   resolved "https://registry.npmjs.org/cjs-module-lexer/-/cjs-module-lexer-1.2.2.tgz"
   integrity sha512-cOU9usZw8/dXIXKtwa8pM0OTJQuJkxMN6w30csNRUerHfeQ5R6U3kkU/FtJeIf3M202OHfY2U8ccInBG7/xogA==
 
+classes@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.npmjs.org/classes/-/classes-0.3.0.tgz"
+  integrity sha512-/6sfwnV5C00Z5gK26LOdxNfzeuYvNlWtVTGREYqAtyLizdoMxO4idl3WYl9qXzlViGALFhzX3UzST4lLCdAjSg==
+
 classnames@^2.3.1, classnames@^2.3.2:
   version "2.3.2"
   resolved "https://registry.npmjs.org/classnames/-/classnames-2.3.2.tgz"
@@ -7511,6 +7516,11 @@ react-bootstrap@^2.5.0:
     react-transition-group "^4.4.2"
     uncontrollable "^7.2.1"
     warning "^4.0.3"
+
+react-card-flip@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/react-card-flip/-/react-card-flip-1.2.0.tgz"
+  integrity sha512-5/tbaSBoTTdxV2glail7fr7W7CqNG/4BOm17pNmI1b6TwtRRUrElPdAO4h235MGU2dDwqyWBzO+H8y2Ax6BTpA==
 
 react-dev-utils@^12.0.1:
   version "12.0.1"
