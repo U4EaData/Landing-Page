@@ -4,7 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Image from "../../images/musicgirl.svg";
-import SuperimposedImage from "../../images/girl-on-phone-new.png";
+import FinalGirlImage from "../../images/music-girl-final.png";
 import girlImg from "../../images/girl-profile.png";
 import { init } from "ityped";
 import { Nav } from "react-bootstrap";
@@ -57,7 +57,7 @@ function MainSection() {
           </Col>
           <Col className={classes.headingImage}>
             <img
-              src={SuperimposedImage}
+              src={FinalGirlImage}
               alt="girl listening to personalized sound scape"
               className={classes.mainsectionimage}
             ></img>
