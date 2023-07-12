@@ -4,7 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Image from "../../images/musicgirl.svg";
-import SuperimposedImage from "../../images/girl-phone-better-qual.png";
+import SuperimposedImage from "../../images/girl-on-phone-new.png";
 import girlImg from "../../images/girl-profile.png";
 import { init } from "ityped";
 import { Nav } from "react-bootstrap";
