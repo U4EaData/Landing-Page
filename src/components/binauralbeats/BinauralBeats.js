@@ -52,8 +52,8 @@ function BinauralBeats() {
   const playFrequencies = () => {
     if (!playing) {
       if (feel != "" && boost != "" && thingDuring != "") { // frequencies should already be set via the useEffect 
-        console.log(`FULL VAR: Playing frequencies from feel: ${feel} boost: ${boost} thingDuring: ${thingDuring}`)
-        console.log(`Frequency 1: ${freq1}, Frequency 2: ${freq2}`)
+        // console.log(`FULL VAR: Playing frequencies from feel: ${feel} boost: ${boost} thingDuring: ${thingDuring}`)
+        // console.log(`Frequency 1: ${freq1}, Frequency 2: ${freq2}`)
         binauralBeat();
         setPlaying(true);
         // figure out how to play frequencies
@@ -61,7 +61,7 @@ function BinauralBeats() {
         alert("Please select from all three fields")
       }
     } else {
-      console.log("Stopping playing, click again to start playing again");
+      // console.log("Stopping playing, click again to start playing again");
       osc.current.stop();
       osc2.current.stop();
       setPlaying(false);
