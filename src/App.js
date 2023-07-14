@@ -12,6 +12,7 @@ import JourneySection from "./components/journey/JourneySection";
 import UserDashboard from "./components/userdashboard/UserDashboard";
 import Mobile from "./components/mobile-experience/Mobile";
 import Footer from "./components/footer/Footer";
+import BinauralBeats from "./components/binauralbeats/BinauralBeats";
 import "./components/testimonials/TestimonialsSection.module.css";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
@@ -148,7 +149,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/resources" element={<Science />} />
             <Route path="/davinci" element={<DaVinci />} />
-
+            <Route path="/binauralbeats" element={<BinauralBeats />} />
             <Route
               path="/userdashboard"
               element={<UserDashboard user={user} />}

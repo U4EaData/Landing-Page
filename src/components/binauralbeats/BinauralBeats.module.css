@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
+
+.sectionContainer {
+    display: flex;
+    padding: 20px 0px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.nogutters [class^="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+.centertext {
+    font-family: "Times New Roman", Times, serif !important;
+    font-weight: bold;
+    font-size:2rem;
+}
+
+.playsound {
+    padding-top: 8vh;
+}
+
+.playfrequencies {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.5rem;
+    color: rgb(138, 43, 226);
+}
+  
+.scienceSection {
+    /* padding-top: 90px; */
+    text-align: center;
+    /* height: 100vh; */  
+}
+  
+.scienceLinkContainer a {
+    /* text-decoration: none !important; */
+    border: none;
+    color: black !important;
+}
+  
+.sciencelink:hover {
+    color: #8034f6 !important;
+}
+
+.dropdown {
+    width: 200px !important;
+    background-color: lightgray !important;
+    font-weight: 700;
+    font-family: "Times New Roman", Times, serif !important;
+    font-weight: bold;
+    font-size:2rem;
+      
+}
+
+@media only screen and (max-width: 995px) {
+    .scienceFlexContainer {
+        display: flex;
+        flex-direction: column-reverse;
+  
+    }
+}
+  
+  
+@media only screen and (max-width: 480px) {
+  
+}
+
+.customdropdown {
+    display: inline-block;
+    border: none;
+    border-bottom: 1px solid purple;
+    color: purple;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    cursor: pointer;
+    font-family: "Times New Roman", Times, serif !important;
+    outline: none;
+  }
+  
+  .customdropdown:focus {
+    outline: none;
+  }
+  
+  .customdropdown option {
+    color: black;
+  }
+  
+  .customdropdown::-ms-expand {
+    display: none;
+  }
+  
+  .customdropdown:after {
+    content: '\25BC';
+    position: absolute;
+    top: calc(50% - 4px);
+    right: 8px;
+    font-size: 10px;
+  }
+  
+  .customdropdown select {
+    position: absolute;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+  }
