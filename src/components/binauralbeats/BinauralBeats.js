@@ -2,9 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { Container, Col, Row } from "react-bootstrap";
 import classes from "./BinauralBeats.module.css"
-import appClasses from "../../App.module.css";
-import { Fade } from "react-awesome-reveal";
-import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWaveSquare } from '@fortawesome/free-solid-svg-icons';
 import { Panner, Oscillator } from 'tone';
@@ -57,8 +54,6 @@ function BinauralBeats() {
   const playFrequencies = () => {
     if (!playing) {
       if (feel != "" && boost != "" && thingDuring != "") { // frequencies should already be set via the useEffect 
-        // console.log(`FULL VAR: Playing frequencies from feel: ${feel} boost: ${boost} thingDuring: ${thingDuring}`)
-        // console.log(`Frequency 1: ${freq1}, Frequency 2: ${freq2}`)
         binauralBeat();
         setPlaying(true);
         // figure out how to play frequencies
