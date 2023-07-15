@@ -1,12 +1,85 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
 
+.dropdownoption {
+    background-color: transparent;
+    border: none;
+    font-weight: lighter;
+}
+
+.link {
+    font-family: "Times New Roman", Times, serif !important;
+    background-color: transparent;
+    border: none;
+    color: #8034f6;
+    font-size: 2rem;
+    text-decoration: underline;
+    font-weight: bold !important;
+  }
+  
+  .link:hover {
+    color: purple;
+  }
+  
+  .newdropdown {
+    position: relative;
+  }
+  
+  .newdropdownmenu {
+    text-align: left;
+    position: absolute;
+    left: 0;
+    top: calc(100%);
+    background-color: white;
+    padding: .75rem;
+    border-radius: .25rem;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+  }
+  
+  .newdropdown:hover .newdropdownmenu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  
+  .newdropdownmenu button {
+    background-color: transparent;
+    border: none;
+    font-weight: lighter;
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.25rem;
+  }
+  
+  .newdropdownmenu button:hover {
+    background-color: #f2f2f2;
+  }
+
 .givepadding {
     padding-top: 30vh;
 }
-
-/* .link {
-
-} */
+.customselect {
+    display: inline-block;
+    position: absolute;
+}
+  
+.selecttext {
+    cursor: pointer;
+    text-decoration: underline;
+    color: purple;
+}
+  
+.selectdropdown {
+    display: none;
+}
+  
+.customselect:hover .selectdropdown {
+    display: block;
+}
 
 .sectionContainer {
     display: flex;
