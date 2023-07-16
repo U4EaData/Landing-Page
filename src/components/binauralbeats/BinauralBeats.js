@@ -73,8 +73,8 @@ function BinauralBeats() {
 
   const setFrequencies = () => {
     let param3MinusMap = new Map();
-    param3MinusMap.set("Self Motivate", 1.0);
-    param3MinusMap.set("Improve my Mood", 0.5);
+    param3MinusMap.set("Self-Motivate", 1.0);
+    param3MinusMap.set("Improve-Mood", 0.5);
     param3MinusMap.set("Meditate", 0.25);
     param3MinusMap.set("Relax", 0.125);
     param3MinusMap.set("Sleep", 0.0625);
@@ -92,7 +92,7 @@ function BinauralBeats() {
     switch (boost) {
       case "Vitality": updateMap(param3MinusMap, 24.75); break;
       case "Creativity": updateMap(param3MinusMap, 26.06); break;
-      case "Will Power": updateMap(param3MinusMap, 16.5); break;
+      case "Will-Power": updateMap(param3MinusMap, 16.5); break;
       case "Love": updateMap(param3MinusMap, 19.97); break;
       case "Self-Expression": updateMap(param3MinusMap, 23.16); break;
       case "Focus": updateMap(param3MinusMap, 26.63); break;
@@ -137,7 +137,7 @@ function BinauralBeats() {
                       <div className={classes.newdropdownmenu} onClick={(e) => e.stopPropagation()} >
                         <button className={classes.dropdownoption} onClick={() => {onBoostChange("Vitality")}}>Vitality</button>
                         <button className={classes.dropdownoption} onClick={() => {onBoostChange("Creativity")}}>Creativity</button>
-                        <button className={classes.dropdownoption} onClick={() => {onBoostChange("Will Power")}}>Will Power</button>
+                        <button className={classes.dropdownoption} onClick={() => {onBoostChange("Will-Power")}}>Will-Power</button>
                         <button className={classes.dropdownoption} onClick={() => {onBoostChange("Love")}}>Love</button>
                         <button className={classes.dropdownoption} onClick={() => {onBoostChange("Self-Expression")}}>Self-Expression</button>
                         <button className={classes.dropdownoption} onClick={() => {onBoostChange("Focus")}}>Focus</button>
@@ -156,8 +156,8 @@ function BinauralBeats() {
                     <div className={classes.newdropdown}>
                       <button className={classes.link}>{thingDuring || 'Select'}</button>
                       <div className={classes.newdropdownmenu} onClick={(e) => e.stopPropagation()} >
-                        <button className={classes.dropdownoption} onClick={() => {onThingDuringChange("Self Motivate")}}>Self Motivate</button>
-                        <button className={classes.dropdownoption} onClick={() => {onThingDuringChange("Improve my Mood")}}>Improve my Mood</button>
+                        <button className={classes.dropdownoption} onClick={() => {onThingDuringChange("Self-Motivate")}}>Self Motivate</button>
+                        <button className={classes.dropdownoption} onClick={() => {onThingDuringChange("Improve-Mood")}}>Improve my Mood</button>
                         <button className={classes.dropdownoption} onClick={() => {onThingDuringChange("Mediate")}}>Mediate</button>
                         <button className={classes.dropdownoption} onClick={() => {onThingDuringChange("Relax")}}>Relax</button>
                         <button className={classes.dropdownoption} onClick={() => {onThingDuringChange("Sleep")}}>Sleep</button>
@@ -179,15 +179,4 @@ function BinauralBeats() {
   )
 }
 
-
 export default BinauralBeats
-
-
-{/* <li onClick={() => onFeelChange('')}>Select</li>
-<li onClick={() => onFeelChange('oneness')}>Oneness</li>
-<li onClick={() => onFeelChange('intuitive')}>Intuitive</li>
-<li onClick={() => onFeelChange('resolved')}>Resolved</li>
-<li onClick={() => onFeelChange('harmonious')}>Harmonious</li>
-<li onClick={() => onFeelChange('miraculous')}>Miraculous</li>
-<li onClick={() => onFeelChange('cleansed')}>Cleansed</li>
-<li onClick={() => onFeelChange('liberation')}>Liberation</li> */}
