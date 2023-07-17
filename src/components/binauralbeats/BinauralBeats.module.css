@@ -4,6 +4,8 @@
 .waveicon {
   width: 30vh;
   height: 30vh;
+  stroke: #8034f6; /* Set the border color */
+  fill: transparent; /* Make the inside transparent */
 }
 
 .dropdownoption {
@@ -20,6 +22,10 @@
     -webkit-text-stroke: 1px #8034f6; /* Outline color and thickness */
     font-size: 2rem;
     text-decoration: underline;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
   
   .link:hover {
@@ -105,6 +111,10 @@
     font-family: 'Abril Fatface', cursive !important;
     /* font-weight: bold; */
     font-size:2rem;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .playsound {
