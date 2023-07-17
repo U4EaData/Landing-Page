@@ -5,6 +5,7 @@ import classes from "./BinauralBeats.module.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWaveSquare } from '@fortawesome/free-solid-svg-icons';
 import { Panner, Oscillator } from 'tone';
+import icon from '../../images/waveform.svg'
 
 function BinauralBeats() {
   const [feel, setFeel] = useState("");
@@ -107,7 +108,7 @@ function BinauralBeats() {
   }
   return (
       <section className={classes.sectionContainer}>
-        <Container className={classes.scienceSection}>
+        <Container className={classes.binbeats}>
             <Col>
                 <Row className={classes.givepadding}/>
                 <Row className={classes.nogutters}>
@@ -168,7 +169,8 @@ function BinauralBeats() {
                 <Row>
                   <div onClick={playFrequencies}>
                     <Col className={classes.playsound}>
-                      <FontAwesomeIcon icon={faWaveSquare} size="10x" style={{ color: 'rgb(138, 43, 226)' }} />
+                      {/* <FontAwesomeIcon icon={faWaveSquare} size="10x" style={{ color: '#8034f6' }} /> */}
+                      <img src={icon} alt="Waveform icon" className={classes.waveicon}></img>
                       <p className={classes.playfrequencies}>Play Frequencies</p>
                     </Col>
                   </div>

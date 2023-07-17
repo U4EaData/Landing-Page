@@ -1,4 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Nunito:wght@200&display=swap');
+
+.waveicon {
+  width: 30vh;
+  height: 30vh;
+}
 
 .dropdownoption {
     background-color: transparent;
@@ -7,17 +13,17 @@
 }
 
 .link {
-    font-family: "Times New Roman", Times, serif !important;
+  font-family: 'Abril Fatface', cursive !important;
     background-color: transparent;
     border: none;
-    color: #8034f6;
+    color: transparent; /* Make the text inside transparent */
+    -webkit-text-stroke: 1px #8034f6; /* Outline color and thickness */
     font-size: 2rem;
     text-decoration: underline;
-    font-weight: bold !important;
   }
   
   .link:hover {
-    color: purple;
+    color: #8034f6;
   }
   
   .newdropdown {
@@ -70,7 +76,7 @@
 .selecttext {
     cursor: pointer;
     text-decoration: underline;
-    color: purple;
+    color: #8034f6;
 }
   
 .selectdropdown {
@@ -96,8 +102,8 @@
   }
 
 .centertext {
-    font-family: "Times New Roman", Times, serif !important;
-    font-weight: bold;
+    font-family: 'Abril Fatface', cursive !important;
+    /* font-weight: bold; */
     font-size:2rem;
 }
 
@@ -108,10 +114,11 @@
 .playfrequencies {
     font-family: 'Nunito', sans-serif;
     font-size: 1.5rem;
-    color: rgb(138, 43, 226);
+    color: #8034f6;
+    font-weight: lighter;
 }
   
-.scienceSection {
+.binbeats {
     /* padding-top: 90px; */
     text-align: center;
     /* height: 100vh; */  
