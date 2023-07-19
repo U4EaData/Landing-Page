@@ -53,18 +53,22 @@ function BinauralBeats() {
       })).toDestination().connect(panner2).start();
   }
   const playFrequencies = () => {
+    if (osc.current && osc2.current) {
+      osc.current.stop(); // doing this as a bug fix for it sometimes not stopping, so we just stop it after every press, regardless of if we were just gonna start it back up agian
+      osc2.current.stop();
+    }
     if (!playing) {
       if (feel != "" && boost != "" && thingDuring != "") { // frequencies should already be set via the useEffect 
-        binauralBeat();
         setPlaying(true);
+        binauralBeat();
         // figure out how to play frequencies
       } else {
         alert("Please select from all three fields")
       }
     } else {
       // console.log("Stopping playing, click again to start playing again");
-      osc.current.stop();
-      osc2.current.stop();
+      // osc.current.stop(); // not needed
+      // osc2.current.stop(); // not needed
       setPlaying(false);
     }
   }
