@@ -34,7 +34,7 @@
 
 @keyframes testimonialFlexItem1Anim {
   0% {
-    content: "If you are looking for something mood changing the most natural way then you definitely are in the right place!";
+    content: "\"If you are looking for something mood changing the most natural way then you definitely are in the right place!\"";
     opacity: 100%;
   }
   25% {
@@ -44,7 +44,7 @@
     opacity: 70%;
   }
   50% {
-    content: "At long last - this app is like partnering with an alter ego to help me sleep, create, and study better.";
+    content: "\"At long last - this app is like partnering with an alter ego to help me sleep, create, and study better.\"";
     opacity: 100%;
   }
   65% {
@@ -54,7 +54,7 @@
     opacity: 20%;
   }
   100% {
-    content: "If you are looking for something mood changing the most natural way then you definitely are in the right place!";
+    content: "\"If you are looking for something mood changing the most natural way then you definitely are in the right place!\"";
     opacity: 100%;
   }
 }
@@ -83,7 +83,7 @@
 
 @keyframes testimonialFlexItem2Anim {
   0% {
-    content: "I pop in my AirPods and whether I’m at work or home I can choose what I want according to my mood.";
+    content: "\"I pop in my AirPods and whether I’m at work or home I can choose what I want according to my mood.\"";
     opacity: 100%;
   }
   25% {
@@ -93,7 +93,7 @@
     opacity: 70%;
   }
   50% {
-    content: "They help me calm my mind while I meditate";
+    content: "\"They help me calm my mind while I meditate\"";
     opacity: 100%;
   }
   65% {
@@ -103,7 +103,7 @@
     opacity: 20%;
   }
   100% {
-    content: "I pop in my AirPods and whether I’m at work or home I can choose what I want according to my mood.";
+    content: "\"I pop in my AirPods and whether I’m at work or home I can choose what I want according to my mood.\"";
     opacity: 100%;
   }
 }
@@ -133,7 +133,7 @@
 
 @keyframes testimonialFlexItem3Anim {
   0% {
-    content: "It is so user friendly and easy that you don't have to understand frequencies and binaural beats to use it and benefit from it.";
+    content: "\"It is so user friendly and easy that you don't have to understand frequencies and binaural beats to use it and benefit from it.\"";
     opacity: 100%;
   }
   25% {
@@ -143,7 +143,7 @@
     opacity: 70%;
   }
   50% {
-    content: "I can use it while my music plays on my phone and adjust my settings whenever I want.";
+    content: "\"I can use it while my music plays on my phone and adjust my settings whenever I want.\"";
     opacity: 100%;
   }
   65% {
@@ -153,7 +153,7 @@
     opacity: 20%;
   }
   100% {
-    content: "It is so user friendly and easy that you don't have to understand frequencies and binaural beats to use it and benefit from it.";
+    content: "\"It is so user friendly and easy that you don't have to understand frequencies and binaural beats to use it and benefit from it.\"";
     opacity: 100%;
   }
 }
