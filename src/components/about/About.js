@@ -1,10 +1,43 @@
 import React from "react";
 import classes from "./About.module.css";
+import greenCircle from "../../images/green-circle-cropped.png";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
 const About = () => {
   return (
-    <section>
-      <h1>About</h1>
+    <section className={classes.sectioncontainer}>
+      <Container className={classes.container}>
+        <Row>
+          <Col>
+            <img
+              src={greenCircle}
+              alt="green journey chakra"
+              className={classes.greencricleimage}
+            />
+          </Col>
+          <Col>
+            <h1 className={classes.bigtext}>The Healing Power of Sound</h1>
+            <div className={classes.textbox}>
+              <p className={classes.desctext}><b>Sound has been used to heal for thousands of years in cultures all around the world. Here at U4EA, we bring that power to you!</b></p>
+              <div className={classes.gap}/>
+              <p className={classes.desctext}>Binaural beats have been proven effective in 10 minutes or less and our 80% efficacy informs us that we are on the path to taming the leading cause of cancer, stress.</p>
+              <div className={classes.gap}/>
+              <p className={classes.desctext}>Enabling everyone to live a more balanced and peaceful life, full of ever-healthier choices.</p>
+            </div>
+            <Button
+              href="/binauralbeats"
+              variant="primary"
+              size="lg"
+              className={classes.buttonsize}
+            >
+              Experience
+            </Button>
+          </Col>
+        </Row>
+      </Container>
     </section>
   );
 };
