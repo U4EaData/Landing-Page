@@ -4,7 +4,7 @@ import greenCircle from "../../images/green-circle-cropped.png";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-
+import Button from "react-bootstrap/Button";
 
 const About = () => {
   return (
@@ -27,6 +27,14 @@ const About = () => {
               <div className={classes.gap}/>
               <p className={classes.desctext}>Enabling everyone to live a more balanced and peaceful life, full of ever-healthier choices.</p>
             </div>
+            <Button
+              href="/binauralbeats"
+              variant="primary"
+              size="lg"
+              className={classes.buttonsize}
+            >
+              Experience
+            </Button>
           </Col>
         </Row>
       </Container>

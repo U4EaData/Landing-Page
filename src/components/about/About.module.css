@@ -30,6 +30,8 @@
 }
 
 .greencricleimage {
+    position: relative;
+    bottom: 20px;
     width: 500px;
   }
 
@@ -40,3 +42,16 @@
     font-family: 'Abril Fatface', cursive !important;
     padding-bottom: 2.5vh;
 }
+
+.buttonsize {
+    width: 170px !important;
+    text-transform: uppercase;
+    /* background-color: #8e2de2 !important; */
+    background-color: #8e2de2 !important;
+    transition: all 250ms linear;
+    font-size: 1rem !important;
+    border: none !important;
+    color: #FFFF !important;
+    font-weight: 700 !important;
+    margin-top: 10px;
+  }
