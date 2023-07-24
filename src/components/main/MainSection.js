@@ -27,7 +27,7 @@ function MainSection() {
         "Sleep",
         "Motivation",
         "Better Moods",
-        "Relation",
+        "Relaxation",
       ],
     });
   }, []);

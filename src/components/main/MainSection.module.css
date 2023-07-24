@@ -58,10 +58,10 @@
 
 .movingtext {
   font-family: "Roboto", sans-serif !important;
-  color: #e9cdfa;
+  color: #fffcfc;
   font-size: 1.3rem;
   font-weight: 900;
-  border-bottom: 3px solid;
+  border-bottom: 4px solid;
   padding-bottom: 0px !important;
 }
 
