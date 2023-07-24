@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Nunito:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
+
+.sectioncontainer {
+    display: flex;
+    padding: 20px 0px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    margin-top:5vh;
+}
+
+.textbox {
+    background-color: rgba(241, 241, 241, 0.3);
+    padding: 20px;
+}
+
+.gap {
+    height: 2.5vh;
+}
+
+.desctext {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.2rem;
+    margin: 20px;
+}
+
+.greencricleimage {
+    width: 500px;
+  }
+
+
+.bigtext {
+    font-size: 3rem;
+    color: black !important;
+    font-family: 'Abril Fatface', cursive !important;
+    padding-bottom: 2.5vh;
+}
