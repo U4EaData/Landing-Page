@@ -25,14 +25,14 @@
 
 .desctext {
     font-family: 'Nunito', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     margin: 20px;
 }
 
-.greencricleimage {
+.image {
     position: relative;
     bottom: 20px;
-    width: 500px;
+    max-width: 500px;
   }
 
 
@@ -56,3 +56,10 @@
     margin-top: 2.5vh;
     margin-bottom: 2.5vh;
   }
+
+  @media only screen and (max-width: 995px) {
+    .aboutFlexContainer {
+        display: flex;
+        flex-direction: column;
+    }
+}
