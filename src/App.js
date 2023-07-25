@@ -13,6 +13,7 @@ import UserDashboard from "./components/userdashboard/UserDashboard";
 import Mobile from "./components/mobile-experience/Mobile";
 import Footer from "./components/footer/Footer";
 import BinauralBeats from "./components/binauralbeats/BinauralBeats";
+import HealingPower from "./components/healing-power/HealingPower";
 import "./components/testimonials/TestimonialsSection.module.css";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
@@ -126,6 +127,7 @@ function App() {
               element={
                 <Fragment>
                   <MainSection />
+                  <HealingPower />
                   <Product1 />
                   <Product2 />
                   <Stats />

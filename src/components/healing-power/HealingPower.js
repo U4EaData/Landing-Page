@@ -1,9 +1,51 @@
-import React from 'react'
+import React from "react";
+import classes from "./HealingPower.module.css";
+import greenCircle from "../../images/green-circle-cropped.png";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import { Fade } from "react-awesome-reveal";
+import appClasses from "../../App.module.css";
 
-function HealingPower() {
+const HealingPower = () => {
   return (
-    <div>HealingPower</div>
-  )
-}
+    <Fade duration={900} triggerOnce="true">
+        <section className={appClasses.sectionContainer}>
+        <Container className={classes.container}>
+            <Row className={`${appClasses.mobileflex} ${classes.product0FlexContainer} align-items-center`}>
+            <Col>
+                <div className="p-md-5 p-5 d-flex justify-content-center ">
+                    <img
+                    src={greenCircle}
+                    alt="green journey chakra"
+                    className={classes.greencricleimage}
+                    />
+                </div>
+            </Col>
+            <Col>
+                <h1 className={appClasses.h3class}>The Healing Power of Sound</h1>
+                <div className={classes.textbox}>
+                <p className={classes.desctext}><b>Sound has been used to heal for thousands of years in cultures all around the world. Here at U4EA, we bring that power to you!</b></p>
+                <div className={classes.gap}/>
+                <p className={classes.desctext}>Binaural beats have been proven effective in 10 minutes or less and our 80% efficacy informs us that we are on the path to taming the leading cause of cancer, stress.</p>
+                <div className={classes.gap}/>
+                <p className={classes.desctext}>Enabling everyone to live a more balanced and peaceful life, full of ever-healthier choices.</p>
+                </div>
+                <Button
+                href="/binauralbeats"
+                variant="primary"
+                size="lg"
+                className={appClasses.buttonsize}
+                >
+                Experience
+                </Button>
+            </Col>
+            </Row>
+        </Container>
+        </section>
+    </Fade>
+  );
+};
 
-export default HealingPower
+export default HealingPower;
