@@ -49,6 +49,7 @@
     pointer-events: none;
     transform: translateY(-10px);
     transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+    z-index: 2;
   }
   
   .newdropdown:hover .newdropdownmenu {
@@ -102,10 +103,10 @@
     height: 100vh;
 }
 
-.nogutters [class^="col-"] {
+/* .nogutters [class^="col-"] {
     padding-right: 0;
     padding-left: 0;
-  }
+  } */
 
 .centertext {
     font-family: 'Abril Fatface', cursive !important;
@@ -208,3 +209,10 @@
     width: 100%;
     cursor: pointer;
   }
+
+  @media only screen and (max-width: 995px) {
+    .bbgFlexContainer {
+        display: flex;
+        flex-direction: column;
+    }
+}

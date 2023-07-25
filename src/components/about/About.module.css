@@ -32,7 +32,7 @@
 .image {
     position: relative;
     bottom: 20px;
-    width: 550px;
+    max-width: 550px;
     padding: 0px;
 }
 
@@ -58,7 +58,7 @@
     margin-bottom: 2.5vh;
   }
 
-  @media only screen and (max-width: 995px) {
+@media only screen and (max-width: 995px) {
     .aboutFlexContainer {
         display: flex;
         flex-direction: column;

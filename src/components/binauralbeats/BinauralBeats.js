@@ -6,6 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWaveSquare } from '@fortawesome/free-solid-svg-icons';
 import { Panner, Oscillator } from 'tone';
 import icon from '../../images/waveform.svg'
+import { Fade } from "react-awesome-reveal";
+import appClasses from "../../App.module.css";
+import { useNavigate } from "react-router-dom";
 
 function BinauralBeats() {
   const [feel, setFeel] = useState("");
@@ -113,7 +116,7 @@ function BinauralBeats() {
   return (
       <section className={classes.sectionContainer}>
         <Container className={classes.binbeats}>
-            <Col>
+            <Row className={`${appClasses.mobileflex} ${classes.bbgFlexContainer} align-items-center`}>
                 <Row className={classes.givepadding}/>
                 <Row className={classes.nogutters}>
                   <Col>
@@ -179,7 +182,7 @@ function BinauralBeats() {
                     </Col>
                   </div>
                 </Row>
-            </Col>
+            </Row>
         </Container>
       </section>
   )
