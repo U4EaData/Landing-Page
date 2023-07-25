@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./About.module.css";
-import image from "../../images/cross-legged-image.png";
+import image from "../../images/chakras-image.png";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -9,18 +9,20 @@ import { Fade } from "react-awesome-reveal";
 import appClasses from "../../App.module.css";
 import { useNavigate } from "react-router-dom";
 
+// import "bootstrap/dist/css/bootstrap.css";
+
 const About = () => {
   return (
     <Fade duration={900} triggerOnce="true">
       <section className={classes.sectioncontainer}>
         <Container className={classes.container}>
           <Row className={`${appClasses.mobileflex} ${classes.aboutFlexContainer} align-items-center`}>
-          <Col className="align-content-center">
+            <Col className="align-content-center">
               <div className="d-flex justify-content-center ">
                 <img
-                  className={classes.image}
+                  className="chakrasImg"
                   src={image}
-                  alt="greenCircle"
+                  alt="chakra image"
                 ></img>
               </div>
             </Col>
