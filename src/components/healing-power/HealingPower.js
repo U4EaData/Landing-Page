@@ -7,8 +7,11 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Fade } from "react-awesome-reveal";
 import appClasses from "../../App.module.css";
+import { useNavigate } from "react-router-dom";
 
 const HealingPower = () => {
+  const navigate = useNavigate();
+  
   return (
     <Fade duration={900} triggerOnce="true">
         <section className={appClasses.sectionContainer}>
@@ -33,10 +36,10 @@ const HealingPower = () => {
                 <p className={classes.desctext}>Enabling everyone to live a more balanced and peaceful life, full of ever-healthier choices.</p>
                 </div>
                 <Button
-                href="/binauralbeats"
                 variant="primary"
                 size="lg"
                 className={appClasses.buttonsize}
+                onClick={() => {navigate('/binauralbeats')}}
                 >
                 Experience
                 </Button>
