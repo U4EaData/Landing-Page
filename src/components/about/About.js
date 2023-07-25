@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./About.module.css";
-import greenCircle from "../../images/green-circle-cropped.png";
+import image from "../../images/cross-legged-image.png";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -19,7 +19,7 @@ const About = () => {
               <div className="d-flex justify-content-center ">
                 <img
                   className={classes.image}
-                  src={greenCircle}
+                  src={image}
                   alt="greenCircle"
                 ></img>
               </div>
