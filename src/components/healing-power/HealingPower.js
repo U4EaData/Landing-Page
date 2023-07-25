@@ -14,36 +14,36 @@ const HealingPower = () => {
   
   return (
     <Fade duration={900} triggerOnce="true">
-        <section className={appClasses.sectionContainer}>
+        <section className={appClasses.sectionContainer} id="solutions">
         <Container className={classes.container}>
             <Row className={`${appClasses.mobileflex} ${classes.product0FlexContainer} align-items-center`}>
-            <Col>
-                <div className="p-md-5 p-5 d-flex justify-content-center ">
-                    <img
-                    src={greenCircle}
-                    alt="green journey chakra"
-                    className={classes.greencricleimage}
-                    />
-                </div>
-            </Col>
-            <Col>
-                <h1 className={appClasses.h3class}>The Healing Power of Sound</h1>
-                <div className={classes.textbox}>
-                <p className={classes.desctext}><b>Sound has been used to heal for thousands of years in cultures all around the world. Here at U4EA, we bring that power to you!</b></p>
-                <div className={classes.gap}/>
-                <p className={classes.desctext}>Binaural beats have been proven effective in 10 minutes or less and our 80% efficacy informs us that we are on the path to taming the leading cause of cancer, stress.</p>
-                <div className={classes.gap}/>
-                <p className={classes.desctext}>Enabling everyone to live a more balanced and peaceful life, full of ever-healthier choices.</p>
-                </div>
-                <Button
-                variant="primary"
-                size="lg"
-                className={appClasses.buttonsize}
-                onClick={() => {navigate('/binauralbeats')}}
-                >
-                Experience
-                </Button>
-            </Col>
+                <Col>
+                    <div className="p-md-5 p-5 d-flex justify-content-center ">
+                        <img
+                            src={greenCircle}
+                            alt="green journey chakra"
+                            className={classes.greencricleimage}
+                        />
+                    </div>
+                </Col>
+                <Col>
+                    <h1 className={appClasses.h3class}>The Healing Power of Sound</h1>
+                    <div className={classes.textbox}>
+                        <p className={classes.desctext}><b>Sound has been used to heal for thousands of years in cultures all around the world. Here at U4EA, we bring that power to you!</b></p>
+                    <div className={classes.gap}/>
+                        <p className={classes.desctext}>Binaural beats have been proven effective in 10 minutes or less and our 80% efficacy informs us that we are on the path to taming the leading cause of cancer, stress.</p>
+                    <div className={classes.gap}/>
+                        <p className={classes.desctext}>Enabling everyone to live a more balanced and peaceful life, full of ever-healthier choices.</p>
+                    </div>
+                    <Button
+                        variant="primary"
+                        size="lg"
+                        className={appClasses.buttonsize}
+                        onClick={() => {navigate('/binauralbeats')}}
+                    >
+                    Experience
+                    </Button>
+                </Col>
             </Row>
         </Container>
         </section>
