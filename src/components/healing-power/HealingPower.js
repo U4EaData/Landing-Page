@@ -15,7 +15,7 @@ const HealingPower = () => {
   return (
     <Fade duration={900} triggerOnce="true">
         <section className={appClasses.sectionContainer} id="solutions">
-        <Container id="davinci">
+        <Container className={classes.container}>
             <Row className={`${appClasses.mobileflex} ${classes.flexContainer} align-items-center`}>
                 <Col>
                     <div className="p-md-5 p-5 d-flex justify-content-center ">
