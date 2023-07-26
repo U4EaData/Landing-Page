@@ -3,9 +3,11 @@ import "bootstrap/dist/css/bootstrap.css";
 import { Container, Col, Row } from "react-bootstrap";
 import classes from "./BinauralBeats.module.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWaveSquare } from '@fortawesome/free-solid-svg-icons';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faPause } from '@fortawesome/free-solid-svg-icons';
 import { Panner, Oscillator } from 'tone';
 import icon from '../../images/waveform.svg'
+import Button from "react-bootstrap/Button";
 import { Fade } from "react-awesome-reveal";
 import appClasses from "../../App.module.css";
 import { useNavigate } from "react-router-dom";
@@ -17,6 +19,8 @@ function BinauralBeats() {
   const [playing, setPlaying] = useState(false);
   const [freq1, setFreq1] = useState(0);
   const [freq2, setFreq2] = useState(0);
+  const [playPauseText, setPlayPauseText] = useState("Play");
+  const [icon, setIcon] = useState(faPlay)
 
   const osc = useRef(null);
   const osc2 = useRef(null);
@@ -76,8 +80,24 @@ function BinauralBeats() {
     }
   }
   useEffect(() => {
+    if (osc.current && osc2.current) {
+      osc.current.stop(); // doing this as a bug fix for it sometimes not stopping, so we just stop it after every press, regardless of if we were just gonna start it back up agian
+      osc2.current.stop();
+    }
+    setPlaying(false);
     setFrequencies()
+
   }, [feel, boost, thingDuring])
+  
+  useEffect(() => {
+    if(playing) {
+      setPlayPauseText("Pause");
+      setIcon(faPause);
+    } else{
+      setPlayPauseText("Play");
+      setIcon(faPlay);
+    }
+  }, [playing])
 
   const setFrequencies = () => {
     let param3MinusMap = new Map();
@@ -174,12 +194,18 @@ function BinauralBeats() {
                   </Col>
                 </Row>
                 <Row>
-                  <div onClick={playFrequencies}>
+                  <div className={classes.buttonandtext}>
                     <Col className={classes.playsound}>
                       {/* <FontAwesomeIcon icon={faWaveSquare} size="10x" style={{ color: '#8034f6' }} /> */}
-                      <img src={icon} alt="Waveform icon" className={classes.waveicon}></img>
-                      <p className={classes.playfrequencies}>Play Frequencies</p>
+                      <Button className={`${classes.circularbutton} ${classes.circularbutton}`} onClick={playFrequencies}>
+                        <FontAwesomeIcon icon={icon} className={classes.icon} size="1x" style={{ color: "#8034f6"}} />
+                      </Button>
                     </Col>
+                  </div>
+                </Row>
+                <Row className={classes.paddingfortext}>
+                  <div className={classes.buttonandtext}>
+                      <p className={classes.playfrequencies}>{playPauseText} Frequencies</p>
                   </div>
                 </Row>
             </Row>

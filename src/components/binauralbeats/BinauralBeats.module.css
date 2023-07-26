@@ -8,6 +8,40 @@
   fill: transparent; /* Make the inside transparent */
 }
 
+.paddingfortext {
+  padding-top: 2.5vh;
+}
+
+.icon {
+  flex: 1.5;
+  max-width: 100%;
+  font-size: 10vh;
+}
+.circularbutton {
+  width: 20vh;
+  height: 20vh;
+  border-radius: 50%;
+  border: 2px solid black;
+  background-color: transparent !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.circularbutton:hover {
+  background-color: #f2f2f2;
+  border: 2px solid black;
+}
+
+.circularbutton:click {
+  background-color: #f2f2f2;
+  border: 2px solid black;
+}
+
+
 .dropdownoption {
     background-color: transparent;
     border: none;
@@ -73,7 +107,7 @@
   }
 
 .givepadding {
-    padding-top: 30vh;
+    padding-top: 25vh;
 }
 .customselect {
     display: inline-block;
@@ -120,6 +154,9 @@
 
 .playsound {
     padding-top: 8vh;
+    justify-content: center;
+    align-items: center;
+    
 }
 
 .playfrequencies {
@@ -215,4 +252,10 @@
         display: flex;
         flex-direction: column;
     }
+}
+
+.buttonandtext {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
