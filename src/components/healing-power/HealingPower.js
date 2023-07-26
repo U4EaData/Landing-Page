@@ -15,8 +15,8 @@ const HealingPower = () => {
   return (
     <Fade duration={900} triggerOnce="true">
         <section className={appClasses.sectionContainer} id="solutions">
-        <Container className={classes.container}>
-            <Row className={`${appClasses.mobileflex} ${classes.product0FlexContainer} align-items-center`}>
+        <Container id="davinci">
+            <Row className={`${appClasses.mobileflex} ${classes.flexContainer} align-items-center`}>
                 <Col>
                     <div className="p-md-5 p-5 d-flex justify-content-center ">
                         <img
@@ -27,14 +27,10 @@ const HealingPower = () => {
                     </div>
                 </Col>
                 <Col>
-                    <h1 className={appClasses.h3class}>The Healing Power of Sound</h1>
-                    <div className={classes.textbox}>
-                        <p className={classes.desctext}><b>Sound has been used to heal for thousands of years in cultures all around the world. Here at U4EA, we bring that power to you!</b></p>
-                    <div className={classes.gap}/>
-                        <p className={classes.desctext}>Binaural beats have been proven effective in 10 minutes or less and our 80% efficacy informs us that we are on the path to taming the leading cause of cancer, stress.</p>
-                    <div className={classes.gap}/>
-                        <p className={classes.desctext}>Enabling everyone to live a more balanced and peaceful life, full of ever-healthier choices.</p>
-                    </div>
+                    <h3 className={appClasses.h3class}>The Healing Power of Sound</h3>
+                        <p className={appClasses.pclass}><b>Sound has been used to heal for thousands of years in cultures all around the world. Here at U4EA, we bring that power to you!</b></p>
+                        <p className={appClasses.pclass}>Binaural beats have been proven effective in 10 minutes or less and our 80% efficacy informs us that we are on the path to taming the leading cause of cancer, stress.</p>
+                        <p className={appClasses.pclass}>Enabling everyone to live a more balanced and peaceful life, full of ever-healthier choices.</p>
                     <Button
                         variant="primary"
                         size="lg"
