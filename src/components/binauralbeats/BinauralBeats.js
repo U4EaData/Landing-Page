@@ -21,9 +21,14 @@ function BinauralBeats() {
   const [freq2, setFreq2] = useState(0);
   const [playPauseText, setPlayPauseText] = useState("Play");
   const [icon, setIcon] = useState(faPlay)
+  const [pageVisible, setPageVisible] = useState(true);
 
-  const osc = useRef(null);
-  const osc2 = useRef(null);
+  const audioContext = useRef(null);
+  const oscillator1 = useRef(null);
+  const oscillator2 = useRef(null);
+
+  // const osc = useRef(null);
+  // const osc2 = useRef(null);
 
   const onFeelChange = (newFeel) => {
     console.log(`Feel changed to ${newFeel}`);
@@ -42,47 +47,63 @@ function BinauralBeats() {
       map[key] = val * sf;
     }
   }
-  const binauralBeat = () =>{
-      setFrequencies()
-      // set up panning and volume
-      const panner1 = new Panner(1).toDestination();
-      const panner2 = new Panner(-1).toDestination();
-      // make and start a binaural beat
-      osc.current = (new Oscillator({
-        type: "sine",
-        frequency: freq1,
-        volume: -12
-      })).toDestination().connect(panner1).start();
-      osc2.current = (new Oscillator({
-        type: "sine",
-        frequency: freq2,
-        volume: -12
-      })).toDestination().connect(panner2).start();
-  }
+  const binauralBeat = () => {
+    setFrequencies();
+  
+    // Create the AudioContext if it's not already available
+    audioContext.current = new (window.AudioContext || window.webkitAudioContext)();
+  
+    // Create the oscillators and set their type and frequency
+    oscillator1.current = audioContext.current.createOscillator();
+    oscillator1.current.type = "sine";
+    oscillator1.current.frequency.setValueAtTime(freq1, audioContext.current.currentTime);
+  
+    oscillator2.current = audioContext.current.createOscillator();
+    oscillator2.current.type = "sine";
+    oscillator2.current.frequency.setValueAtTime(freq2, audioContext.current.currentTime);
+  
+    // Create the panners and set their positions
+    const panner1 = audioContext.current.createStereoPanner();
+    panner1.pan.setValueAtTime(1, audioContext.current.currentTime); // Left ear (pan value from -1 to 1)
+  
+    const panner2 = audioContext.current.createStereoPanner();
+    panner2.pan.setValueAtTime(-1, audioContext.current.currentTime); // Right ear (pan value from -1 to 1)
+  
+    // Connect the nodes
+    oscillator1.current.connect(panner1);
+    panner1.connect(audioContext.current.destination);
+  
+    oscillator2.current.connect(panner2);
+    panner2.connect(audioContext.current.destination);
+  
+    // Start the oscillators
+    oscillator1.current.start();
+    oscillator2.current.start();
+  };
+  
   const playFrequencies = () => {
-    if (osc.current && osc2.current) {
-      osc.current.stop(); // doing this as a bug fix for it sometimes not stopping, so we just stop it after every press, regardless of if we were just gonna start it back up agian
-      osc2.current.stop();
-    }
     if (!playing) {
-      if (feel != "" && boost != "" && thingDuring != "") { // frequencies should already be set via the useEffect 
+      if (feel !== "" && boost !== "" && thingDuring !== "") {
         setPlaying(true);
         binauralBeat();
-        // figure out how to play frequencies
       } else {
-        alert("Please select from all three fields")
+        alert("Please select from all three fields");
       }
     } else {
-      // console.log("Stopping playing, click again to start playing again");
-      // osc.current.stop(); // not needed
-      // osc2.current.stop(); // not needed
       setPlaying(false);
+
+      // Pause the oscillators when stopping the audio
+      oscillator1.current.stop();
+      oscillator2.current.stop();
+
+      // Close the audio context to release resources
+      audioContext.current.close().catch((error) => console.error("Error closing AudioContext:", error));
     }
-  }
+  };
   useEffect(() => {
-    if (osc.current && osc2.current) {
-      osc.current.stop(); // doing this as a bug fix for it sometimes not stopping, so we just stop it after every press, regardless of if we were just gonna start it back up agian
-      osc2.current.stop();
+    if (oscillator1.current && oscillator2.current && playing) {
+      oscillator1.current.stop(); // doing this as a bug fix for it sometimes not stopping, so we just stop it after every press, regardless of if we were just gonna start it back up agian
+      oscillator2.current.stop();
     }
     setPlaying(false);
     setFrequencies()
@@ -131,7 +152,12 @@ function BinauralBeats() {
       case "Rejuvenation": updateMap(param3MinusMap, 15.66); break;
       default: updateMap(param3MinusMap, 0.0); break;
     }
-    setFreq2(freq1 - param3MinusMap[thingDuring]);
+    const freq2Value = freq1 - param3MinusMap[thingDuring];
+    if (Number.isFinite(freq2Value)) {
+      setFreq2(freq2Value);
+    } else {
+      setFreq2(0.0); // Set a default value in case of an invalid calculation
+    }  
   }
   return (
       <section className={classes.sectionContainer}>
