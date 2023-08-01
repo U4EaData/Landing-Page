@@ -23,7 +23,10 @@ function BinauralBeats() {
   const [playPauseText, setPlayPauseText] = useState("Play");
   const [icon, setIcon] = useState(faPlay)
   const [pageVisible, setPageVisible] = useState(true);
+  const [copied, setCopied] = useState(false);
+  const [copyBtnText, setCopyBtnText] = useState("Copy Settings")
   const location = useLocation();
+
 
 
   const audioContext = useRef(null);
@@ -35,14 +38,17 @@ function BinauralBeats() {
 
   const onFeelChange = (newFeel) => {
     console.log(`Feel changed to ${newFeel}`);
+    setCopied(false);
     setFeel(newFeel);
   }
   const onBoostChange = (newBoost) => {
     console.log(`Boost changed to ${newBoost}`);
+    setCopied(false);
     setBoost(newBoost);
   }
   const onThingDuringChange = (newTD) => {
     console.log(`TD changed to ${newTD}`);
+    setCopied(false);
     setThingDuring(newTD)
   }
   const updateMap = (map, sf) => { // updates the values of the map with the given scale factor (used in the setFrequencies method)
@@ -112,6 +118,14 @@ function BinauralBeats() {
     setFrequencies()
 
   }, [feel, boost, thingDuring])
+
+  useEffect(() => {
+    if (copied) {
+      setCopyBtnText('Settings Copied');
+    } else {
+      setCopyBtnText("Copy Settings");
+    }
+  }, [copied])
   
   useEffect(() => {
     if(playing) {
@@ -183,6 +197,7 @@ function BinauralBeats() {
     const serializedState = JSON.stringify({ feel, boost, thingDuring });
     const encodedState = encodeURIComponent(serializedState);
     const shareableLink = `${window.location.origin}${location.pathname}?settings=${encodedState}`;
+    setCopied(true);
     navigator.clipboard.writeText(shareableLink)
   };
 
@@ -266,7 +281,7 @@ function BinauralBeats() {
             </Row>
             <Row className={classes.buttonandtext} id={classes.slighttoppad}>
               <Button className={appClasses.buttonsize} onClick={shareSettings}>
-                Copy BBG Settings
+                {copyBtnText}
               </Button>
             </Row>
         </Container>
