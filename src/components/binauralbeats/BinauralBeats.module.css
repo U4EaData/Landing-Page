@@ -259,3 +259,7 @@
   flex-direction: column;
   align-items: center;
 }
+
+#slighttoppad {
+  padding-top: 5vh;
+}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useLocation } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.css";
 import { Container, Col, Row } from "react-bootstrap";
 import classes from "./BinauralBeats.module.css"
@@ -22,6 +23,8 @@ function BinauralBeats() {
   const [playPauseText, setPlayPauseText] = useState("Play");
   const [icon, setIcon] = useState(faPlay)
   const [pageVisible, setPageVisible] = useState(true);
+  const location = useLocation();
+
 
   const audioContext = useRef(null);
   const oscillator1 = useRef(null);
@@ -120,6 +123,22 @@ function BinauralBeats() {
     }
   }, [playing])
 
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const encodedState = params.get('settings');
+  
+    if (encodedState) {
+      try {
+        const decodedState = JSON.parse(decodeURIComponent(encodedState));
+        setFeel(decodedState.feel);
+        setBoost(decodedState.boost);
+        setThingDuring(decodedState.thingDuring);
+      } catch (error) {
+        console.error('Error decoding state from URL:', error);
+      }
+    }
+  }, []);
+
   const setFrequencies = () => {
     let param3MinusMap = new Map();
     param3MinusMap.set("Self-Motivate", 1.0);
@@ -159,6 +178,14 @@ function BinauralBeats() {
       setFreq2(0.0); // Set a default value in case of an invalid calculation
     }  
   }
+
+  const shareSettings = () => {
+    const serializedState = JSON.stringify({ feel, boost, thingDuring });
+    const encodedState = encodeURIComponent(serializedState);
+    const shareableLink = `${window.location.origin}${location.pathname}?settings=${encodedState}`;
+    navigator.clipboard.writeText(shareableLink)
+  };
+
   return (
       <section className={classes.sectionContainer}>
         <Container className={classes.binbeats}>
@@ -234,6 +261,11 @@ function BinauralBeats() {
                       <p className={classes.playfrequencies}>{playPauseText} Frequencies</p>
                   </div>
                 </Row>
+            </Row>
+            <Row className={classes.buttonandtext} id={classes.slighttoppad}>
+              <Button className={appClasses.buttonsize} onClick={shareSettings}>
+                Share BBG Settings
+              </Button>
             </Row>
         </Container>
       </section>
