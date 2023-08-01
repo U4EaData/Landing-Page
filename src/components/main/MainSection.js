@@ -36,7 +36,7 @@ function MainSection() {
       <Container>
         <Row className={classes.mobileflex}>
           <Col xs={7} className={classes.heading}>
-            <h1 className={appClasses.h1class}>The Healing Power of Sound</h1>
+            <h1 className={appClasses.h1class}>The Science of Vibration</h1>
 
             <div className={classes.movingtextcontainer}>
               <p className={classes.subtext}>

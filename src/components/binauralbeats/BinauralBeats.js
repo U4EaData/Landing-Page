@@ -246,25 +246,27 @@ function BinauralBeats() {
                     </div>
                   </Col>
                 </Row>
-                <Row>
-                  <div className={classes.buttonandtext}>
-                    <Col className={classes.playsound}>
-                      {/* <FontAwesomeIcon icon={faWaveSquare} size="10x" style={{ color: '#8034f6' }} /> */}
-                      <Button className={`${classes.circularbutton} ${classes.circularbutton}`} onClick={playFrequencies}>
-                        <FontAwesomeIcon icon={icon} className={classes.icon} size="1x" style={{ color: "#8034f6"}} />
-                      </Button>
-                    </Col>
-                  </div>
-                </Row>
-                <Row className={classes.paddingfortext}>
-                  <div className={classes.buttonandtext}>
-                      <p className={classes.playfrequencies}>{playPauseText} Frequencies</p>
-                  </div>
-                </Row>
+                <Col>
+                  <Row>
+                    <div className={classes.buttonandtext}>
+                      <Col className={classes.playsound}>
+                        {/* <FontAwesomeIcon icon={faWaveSquare} size="10x" style={{ color: '#8034f6' }} /> */}
+                        <Button className={`${classes.circularbutton} ${classes.circularbutton}`} onClick={playFrequencies}>
+                          <FontAwesomeIcon icon={icon} className={classes.icon} size="1x" style={{ color: "#8034f6"}} />
+                        </Button>
+                      </Col>
+                    </div>
+                  </Row>
+                  <Row className={classes.paddingfortext}>
+                    <div className={classes.buttonandtext}>
+                        <p className={classes.playfrequencies}>{playPauseText} Frequencies</p>
+                    </div>
+                  </Row>
+                </Col>
             </Row>
             <Row className={classes.buttonandtext} id={classes.slighttoppad}>
               <Button className={appClasses.buttonsize} onClick={shareSettings}>
-                Share BBG Settings
+                Copy BBG Settings
               </Button>
             </Row>
         </Container>
