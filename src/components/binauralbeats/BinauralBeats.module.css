@@ -209,11 +209,7 @@
   
     }
 }
-  
-  
-@media only screen and (max-width: 480px) {
-  
-}
+
 
 .customdropdown {
     display: inline-block;
@@ -276,5 +272,20 @@
 @media (max-width: 1000px) {
   .wave {
     display: none;
+  }
+}
+
+.stack{
+  display:flex;
+  flex-direction: row;
+}
+
+@media (max-width: 1000px) {
+  .stack{
+    display:flex;
+    flex-direction: column;
+  }
+  .givepadding {
+    padding-top: 5vh;
   }
 }

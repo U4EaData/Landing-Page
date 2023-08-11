@@ -229,59 +229,62 @@ function BinauralBeats() {
             <Row className={`${appClasses.mobileflex} ${classes.bbgFlexContainer} align-items-center`}>
                 <Row className={classes.givepadding}/>
                 <Row className={classes.nogutters}>
-                  <Col>
-                    <p className={classes.centertext}>I want to feel</p>
-                  </Col>
-                  <Col>
-                  <div className={classes.newdropdown}>
-                    <button className={classes.link}>{feel || 'Select'}</button>
-                    <div className={classes.newdropdownmenu} onClick={(e) => e.stopPropagation()} >
-                      <button className={classes.dropdownoption} onClick={() => {onFeelChange("Oneness")}}>Oneness</button>
-                      <button className={classes.dropdownoption} onClick={() => {onFeelChange("Intuitive")}}>Intuitive</button>
-                      <button className={classes.dropdownoption} onClick={() => {onFeelChange("Resolved")}}>Resolved</button>
-                      <button className={classes.dropdownoption} onClick={() => {onFeelChange("Harmonious")}}>Harmonious</button>
-                      <button className={classes.dropdownoption} onClick={() => {onFeelChange("Miraculous")}}>Miraculous</button>
-                      <button className={classes.dropdownoption} onClick={() => {onFeelChange("Cleansed")}}>Cleansed</button>
-                      <button className={classes.dropdownoption} onClick={() => {onFeelChange("Liberation")}}>Liberation</button>
+                  <div className={classes.stack}>
+                    <Col>
+                      <p className={classes.centertext}>I want to feel</p>
+                    </Col>
+                    <Col>
+                    <div className={classes.newdropdown}>
+                      <button className={classes.link}>{feel || 'Select'}</button>
+                      <div className={classes.newdropdownmenu} onClick={(e) => e.stopPropagation()} >
+                        <button className={classes.dropdownoption} onClick={() => {onFeelChange("Oneness")}}>Oneness</button>
+                        <button className={classes.dropdownoption} onClick={() => {onFeelChange("Intuitive")}}>Intuitive</button>
+                        <button className={classes.dropdownoption} onClick={() => {onFeelChange("Resolved")}}>Resolved</button>
+                        <button className={classes.dropdownoption} onClick={() => {onFeelChange("Harmonious")}}>Harmonious</button>
+                        <button className={classes.dropdownoption} onClick={() => {onFeelChange("Miraculous")}}>Miraculous</button>
+                        <button className={classes.dropdownoption} onClick={() => {onFeelChange("Cleansed")}}>Cleansed</button>
+                        <button className={classes.dropdownoption} onClick={() => {onFeelChange("Liberation")}}>Liberation</button>
+                      </div>
                     </div>
+                    </Col>
+                    <Col>
+                      <p className={classes.centertext}>and boost</p>
+                    </Col>
+                    <Col>
+                      <div className={classes.newdropdown}>
+                        <button className={classes.link}>{boost || 'Select'}</button>
+                        <div className={classes.newdropdownmenu} onClick={(e) => e.stopPropagation()} >
+                          <button className={classes.dropdownoption} onClick={() => {onBoostChange("Vitality")}}>Vitality</button>
+                          <button className={classes.dropdownoption} onClick={() => {onBoostChange("Creativity")}}>Creativity</button>
+                          <button className={classes.dropdownoption} onClick={() => {onBoostChange("Will-Power")}}>Will-Power</button>
+                          <button className={classes.dropdownoption} onClick={() => {onBoostChange("Love")}}>Love</button>
+                          <button className={classes.dropdownoption} onClick={() => {onBoostChange("Self-Expression")}}>Self-Expression</button>
+                          <button className={classes.dropdownoption} onClick={() => {onBoostChange("Focus")}}>Focus</button>
+                          <button className={classes.dropdownoption} onClick={() => {onBoostChange("Consciousness")}}>Consciousness</button>
+                          <button className={classes.dropdownoption} onClick={() => {onBoostChange("Pain Relief")}}>Pain Relief</button>
+                          <button className={classes.dropdownoption} onClick={() => {onBoostChange("Cure-All")}}>Cure-All</button>
+                          <button className={classes.dropdownoption} onClick={() => {onBoostChange("Vigor")}}>Vigor</button>
+                          <button className={classes.dropdownoption} onClick={() => {onBoostChange("Rejuvenation")}}>Rejuvenation</button>
+                        </div>
+                      </div>
+                    </Col>
+                    <Col>
+                      <p className={classes.centertext}>while I</p>
+                    </Col>
+                    <Col>
+                      <div className={classes.newdropdown}>
+                        <button className={classes.link}>{thingDuring || 'Select'}</button>
+                        <div className={classes.newdropdownmenu} onClick={(e) => e.stopPropagation()} >
+                          <button className={classes.dropdownoption} onClick={() => {onThingDuringChange("Self-Motivate")}}>Self Motivate</button>
+                          <button className={classes.dropdownoption} onClick={() => {onThingDuringChange("Improve-Mood")}}>Improve my Mood</button>
+                          <button className={classes.dropdownoption} onClick={() => {onThingDuringChange("Mediate")}}>Mediate</button>
+                          <button className={classes.dropdownoption} onClick={() => {onThingDuringChange("Relax")}}>Relax</button>
+                          <button className={classes.dropdownoption} onClick={() => {onThingDuringChange("Sleep")}}>Sleep</button>
+                        </div>
+                      </div>
+                    </Col>
                   </div>
-                  </Col>
-                  <Col>
-                    <p className={classes.centertext}>and boost</p>
-                  </Col>
-                  <Col>
-                    <div className={classes.newdropdown}>
-                      <button className={classes.link}>{boost || 'Select'}</button>
-                      <div className={classes.newdropdownmenu} onClick={(e) => e.stopPropagation()} >
-                        <button className={classes.dropdownoption} onClick={() => {onBoostChange("Vitality")}}>Vitality</button>
-                        <button className={classes.dropdownoption} onClick={() => {onBoostChange("Creativity")}}>Creativity</button>
-                        <button className={classes.dropdownoption} onClick={() => {onBoostChange("Will-Power")}}>Will-Power</button>
-                        <button className={classes.dropdownoption} onClick={() => {onBoostChange("Love")}}>Love</button>
-                        <button className={classes.dropdownoption} onClick={() => {onBoostChange("Self-Expression")}}>Self-Expression</button>
-                        <button className={classes.dropdownoption} onClick={() => {onBoostChange("Focus")}}>Focus</button>
-                        <button className={classes.dropdownoption} onClick={() => {onBoostChange("Consciousness")}}>Consciousness</button>
-                        <button className={classes.dropdownoption} onClick={() => {onBoostChange("Pain Relief")}}>Pain Relief</button>
-                        <button className={classes.dropdownoption} onClick={() => {onBoostChange("Cure-All")}}>Cure-All</button>
-                        <button className={classes.dropdownoption} onClick={() => {onBoostChange("Vigor")}}>Vigor</button>
-                        <button className={classes.dropdownoption} onClick={() => {onBoostChange("Rejuvenation")}}>Rejuvenation</button>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col>
-                    <p className={classes.centertext}>while I</p>
-                  </Col>
-                  <Col>
-                    <div className={classes.newdropdown}>
-                      <button className={classes.link}>{thingDuring || 'Select'}</button>
-                      <div className={classes.newdropdownmenu} onClick={(e) => e.stopPropagation()} >
-                        <button className={classes.dropdownoption} onClick={() => {onThingDuringChange("Self-Motivate")}}>Self Motivate</button>
-                        <button className={classes.dropdownoption} onClick={() => {onThingDuringChange("Improve-Mood")}}>Improve my Mood</button>
-                        <button className={classes.dropdownoption} onClick={() => {onThingDuringChange("Mediate")}}>Mediate</button>
-                        <button className={classes.dropdownoption} onClick={() => {onThingDuringChange("Relax")}}>Relax</button>
-                        <button className={classes.dropdownoption} onClick={() => {onThingDuringChange("Sleep")}}>Sleep</button>
-                      </div>
-                    </div>
-                  </Col>
+
                 </Row>
                 <Col>
                   <Row className={classes.vertalign}>
