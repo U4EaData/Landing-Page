@@ -1,6 +1,7 @@
 const router = require('express').Router();
 let User = require('../models/user.model')
 
+
 router.route('/').get((req, res) => { // GET all users
     User.find()
         .then(users => res.json(users))
@@ -17,6 +18,14 @@ router.route('/add').post((req, res) => { // POST request for new user
     const email = req.body.email
     const password = req.body.password
     const fullname = req.body.fullname
+
+    // const duplicate = await User.findOne({ username }).lean().exec()
+
+    if (duplicate) {
+        return res.status(409).json({ message: 'Duplicate username' })
+    }
+
+
     const newUser = new User({fullname:fullname, password:password, email:email})
     newUser.save()
         .then(() => res.json('User added!'))
