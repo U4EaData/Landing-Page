@@ -12,6 +12,7 @@ import Button from "react-bootstrap/Button";
 import { Fade } from "react-awesome-reveal";
 import appClasses from "../../App.module.css";
 import { useNavigate } from "react-router-dom";
+import CanvasWave from '../canvas-wave/CanvasWave'
 
 function BinauralBeats() {
   const [feel, setFeel] = useState("");
@@ -26,6 +27,8 @@ function BinauralBeats() {
   const [copied, setCopied] = useState(false);
   const [copyBtnText, setCopyBtnText] = useState("Copy Settings")
   const location = useLocation();
+  const [visF1, setVisF1] = useState(0);
+  const [visF2, setVisF2] = useState(0);
 
 
 
@@ -40,16 +43,19 @@ function BinauralBeats() {
     console.log(`Feel changed to ${newFeel}`);
     setCopied(false);
     setFeel(newFeel);
+    stopPlaying();
   }
   const onBoostChange = (newBoost) => {
     console.log(`Boost changed to ${newBoost}`);
     setCopied(false);
     setBoost(newBoost);
+    stopPlaying();
   }
   const onThingDuringChange = (newTD) => {
     console.log(`TD changed to ${newTD}`);
     setCopied(false);
     setThingDuring(newTD)
+    stopPlaying();
   }
   const updateMap = (map, sf) => { // updates the values of the map with the given scale factor (used in the setFrequencies method)
     for(let [key, val] of map) {
@@ -89,17 +95,33 @@ function BinauralBeats() {
     oscillator1.current.start();
     oscillator2.current.start();
   };
+
+  const stopPlaying = () => { // gets called in the update methods for the feel boost and thingDuring
+    setPlaying(false);
+    setVisF1(0)
+    setVisF2(0)
+
+    if (oscillator1.current && oscillator2.current) {
+      oscillator1.current.stop();
+      oscillator2.current.stop();
+    }
+  }
   
   const playFrequencies = () => {
     if (!playing) {
       if (feel !== "" && boost !== "" && thingDuring !== "") {
         setPlaying(true);
         binauralBeat();
+        setVisF1(parseInt(freq1) * 4)
+        setVisF2(parseInt(freq2) * 4)
       } else {
         alert("Please select from all three fields");
+        
       }
     } else {
       setPlaying(false);
+      setVisF1(0)
+      setVisF2(0)
 
       // Pause the oscillators when stopping the audio
       oscillator1.current.stop();
@@ -262,20 +284,33 @@ function BinauralBeats() {
                   </Col>
                 </Row>
                 <Col>
-                  <Row>
-                    <div className={classes.buttonandtext}>
-                      <Col className={classes.playsound}>
-                        {/* <FontAwesomeIcon icon={faWaveSquare} size="10x" style={{ color: '#8034f6' }} /> */}
-                        <Button className={`${classes.circularbutton} ${classes.circularbutton}`} onClick={playFrequencies}>
-                          <FontAwesomeIcon icon={icon} className={classes.icon} size="1x" style={{ color: "#8034f6"}} />
-                        </Button>
-                      </Col>
-                    </div>
-                  </Row>
-                  <Row className={classes.paddingfortext}>
-                    <div className={classes.buttonandtext}>
-                        <p className={classes.playfrequencies}>{playPauseText} Frequencies</p>
-                    </div>
+                  <Row className={classes.vertalign}>
+                    <Col className={classes.wave}>
+                      <CanvasWave freq={visF1}/>
+                    </Col>
+
+                    <Col>
+                      <Row>
+                        <div className={classes.buttonandtext}>
+                          <Col className={classes.playsound}>
+                            {/* <FontAwesomeIcon icon={faWaveSquare} size="10x" style={{ color: '#8034f6' }} /> */}
+                            <Button className={`${classes.circularbutton} ${classes.circularbutton}`} onClick={playFrequencies}>
+                              <FontAwesomeIcon icon={icon} className={classes.icon} size="1x" style={{ color: "#8034f6"}} />
+                            </Button>
+                          </Col>
+                        </div>
+                      </Row>
+                      <Row className={classes.paddingfortext}>
+                        <div className={classes.buttonandtext}>
+                            <p className={classes.playfrequencies}>{playPauseText} Frequencies</p>
+                        </div>
+                      </Row>
+                    </Col>
+
+                    <Col className={classes.wave}>
+                      <CanvasWave freq={visF2}/>
+                    </Col>
+
                   </Row>
                 </Col>
             </Row>
@@ -284,6 +319,7 @@ function BinauralBeats() {
                 {copyBtnText}
               </Button>
             </Row>
+
         </Container>
       </section>
   )

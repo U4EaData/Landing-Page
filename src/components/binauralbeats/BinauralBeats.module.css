@@ -1,6 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Nunito:wght@200&display=swap');
 
+.wave {
+  /* border: 2px solid black; */
+  display: flex;
+  justify-content: center;
+}
+
+.vertalign {
+  align-items: center !important;
+}
+
 .waveicon {
   width: 30vh;
   height: 30vh;
@@ -262,4 +272,9 @@
 
 #slighttoppad {
   padding-top: 1vh;
+}
+@media (max-width: 1000px) {
+  .wave {
+    display: none;
+  }
 }
