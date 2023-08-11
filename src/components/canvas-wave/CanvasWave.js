@@ -72,8 +72,13 @@ class Wave {
 
     c.moveTo(0, c.canvas.height / 2);
 
-    for (let i = 0; i < c.canvas.width; i += 1) {
-      c.lineTo(i, this.y + Math.sin(i / this.length + this.increment) * this.amplitude);
+    if (this.frequency === 0) {
+      // Draw a straight line if freq is 0
+      c.lineTo(c.canvas.width, this.y);
+    } else {
+      for (let i = 0; i < c.canvas.width; i += 1) {
+        c.lineTo(i, this.y + Math.sin(i / this.length + this.increment) * this.amplitude);
+      }
     }
 
     c.stroke();
