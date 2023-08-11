@@ -114,6 +114,7 @@ function BinauralBeats() {
         binauralBeat();
         setVisF1(parseInt(freq1) * 4)
         setVisF2(parseInt(freq2) * 4)
+        console.log(`FREQUENCY 1: ${freq1}, FREQUENCY 2: ${freq2}, VISF1: ${visF1}, VISF2: ${visF2}`)
       } else {
         alert("Please select from all three fields");
         
@@ -277,7 +278,7 @@ function BinauralBeats() {
                         <div className={classes.newdropdownmenu} onClick={(e) => e.stopPropagation()} >
                           <button className={classes.dropdownoption} onClick={() => {onThingDuringChange("Self-Motivate")}}>Self Motivate</button>
                           <button className={classes.dropdownoption} onClick={() => {onThingDuringChange("Improve-Mood")}}>Improve my Mood</button>
-                          <button className={classes.dropdownoption} onClick={() => {onThingDuringChange("Mediate")}}>Mediate</button>
+                          <button className={classes.dropdownoption} onClick={() => {onThingDuringChange("Meditate")}}>Mediate</button>
                           <button className={classes.dropdownoption} onClick={() => {onThingDuringChange("Relax")}}>Relax</button>
                           <button className={classes.dropdownoption} onClick={() => {onThingDuringChange("Sleep")}}>Sleep</button>
                         </div>
