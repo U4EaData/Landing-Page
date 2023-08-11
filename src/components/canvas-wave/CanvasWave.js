@@ -5,7 +5,6 @@ const CanvasWave = ({freq}) => {
   const canvasRef = useRef();
 
   useEffect(() => {
-    console.log(`HERE IS FREQ: ${freq}`);
     const canvas = canvasRef.current;
     const gui = new dat.GUI();
 
@@ -23,7 +22,6 @@ const CanvasWave = ({freq}) => {
   }, []);
 
   useEffect(() => {
-    console.log(`HERE IS FREQ: ${freq}`);
     const canvas = canvasRef.current;
     const gui = new dat.GUI();
 
