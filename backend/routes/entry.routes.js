@@ -29,7 +29,7 @@ router.route('/add').post((req, res) => { // POST request for new entry
 // no need for a PUT route for this object
 
 // not even really a need for a DELETE route but we ball
-router.route('/:id').delete((req, res) => { // DELETE by id
+router.route('/:id').delete((req, res) => { // DELETE via id
     Entry.findByIdAndDelete(req.params.id)
         .then(entry => res.json('entry deleted'))
         .catch(err => res.status(400).json('Error: ' + err))
