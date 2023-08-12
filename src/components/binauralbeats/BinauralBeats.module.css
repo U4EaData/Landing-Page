@@ -83,7 +83,7 @@
   .newdropdownmenu {
     text-align: left;
     position: absolute;
-    left: 0;
+    left: calc(33%);
     top: calc(100%);
     background-color: white;
     padding: .75rem;
@@ -287,5 +287,11 @@
   }
   .givepadding {
     padding-top: 5vh;
+  }
+}
+
+@media (max-height: 750px) {
+  .givepadding {
+    padding-top: 15vh;
   }
 }
