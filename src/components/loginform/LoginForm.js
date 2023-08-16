@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./LoginForm.module.css";
 import axios from "axios";
 import { AiOutlineClose } from "react-icons/ai";
@@ -7,32 +7,61 @@ import appClasses from "../../App.module.css";
 
 const LoginForm = (props) => {
   const navigate = useNavigate();
-
+  const email = useState("");
+  const password = useState("");
   const navigateHandler = (login) => {
     console.log("login value: ", login);
     login ? navigate("/userdashboard") : null;
   };
 
-  /* Uncomment when ready to connect database */
-  const onSubmitLogin = (props) => {
-    console.log("submit login");
-    // console.log("on submit login ", props);
-    // axios
-    //   .post("/signin", {
-    //     email: props.user.email,
-    //     password: props.user.password,
-    //   })
-    //   .then((user) => {
-    //     if (user.data.id) {
-    //       props.closeForm();
-    //       props.loadUser(user);
-    //     }
-    //     navigate("/userdashboard");
-    //   })
-    //   .catch((err) => {
-    //     console.log("Error occured!", err);
-    //     LoginError();
-    //   });
+
+  const onSubmitLogin = async () => {
+    const email = props.user.email;
+    const password = props.user.password;
+    console.log(email, password);
+    try {
+      const response = await axios.post("http://localhost:3500/auth", {
+        email: email,
+        password: password,
+      });
+      const accessToken = response.data.accessToken;  
+      // Save access token in local storage
+      localStorage.setItem("access_token", accessToken);
+      try {
+        // Load user's ID using the /users endpoint
+        const idResponse = await axios.get("http://localhost:3500/users", {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+          params: {
+            email: email, // Pass the email to get the user's ID
+          },
+        });
+        const userId = idResponse.data.id; 
+        console.log("id: " + userId);
+        // Load user data using the user's ID
+        const userResponse = await axios.get(`http://localhost:3500/users`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+          params: {
+            id: userId,
+          },
+        });  
+        const newUser = userResponse.data;
+        props.loadUser(newUser)
+        // Navigate to the user dashboard or wherever you want
+        console.log("Valid login");
+        navigate('/userdashboard');
+      } catch (error) {
+        console.log("Error loading user data:", error);
+      }
+    } catch (error) {
+      console.log("Invalid login attempt");
+      console.log(error);
+      setError("Invalid credentials");
+      alert("Invalid credentials")
+    }
   };
 
   const LoginError = () => {

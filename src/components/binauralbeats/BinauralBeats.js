@@ -13,8 +13,9 @@ import { Fade } from "react-awesome-reveal";
 import appClasses from "../../App.module.css";
 import { useNavigate } from "react-router-dom";
 import CanvasWave from '../canvas-wave/CanvasWave'
+import axios from 'axios';
 
-function BinauralBeats() {
+function BinauralBeats(props) {
   const [feel, setFeel] = useState("");
   const [boost, setBoost] = useState("");
   const [thingDuring, setThingDuring] = useState("");
@@ -29,8 +30,7 @@ function BinauralBeats() {
   const location = useLocation();
   const [visF1, setVisF1] = useState(0);
   const [visF2, setVisF2] = useState(0);
-
-
+  const [startTime, setStartTime] = useState(null);
 
   const audioContext = useRef(null);
   const oscillator1 = useRef(null);
@@ -40,22 +40,25 @@ function BinauralBeats() {
   // const osc2 = useRef(null);
 
   const onFeelChange = (newFeel) => {
+    const oldFeel = feel;
     console.log(`Feel changed to ${newFeel}`);
     setCopied(false);
     setFeel(newFeel);
-    stopPlaying();
+    stopPlaying(oldFeel, boost, thingDuring);
   }
   const onBoostChange = (newBoost) => {
+    const oldBoost = boost;
     console.log(`Boost changed to ${newBoost}`);
     setCopied(false);
     setBoost(newBoost);
-    stopPlaying();
+    stopPlaying(feel, oldBoost, thingDuring);
   }
   const onThingDuringChange = (newTD) => {
+    const oldTD = thingDuring;
     console.log(`TD changed to ${newTD}`);
     setCopied(false);
     setThingDuring(newTD)
-    stopPlaying();
+    stopPlaying(feel, boost, oldTD);
   }
   const updateMap = (map, sf) => { // updates the values of the map with the given scale factor (used in the setFrequencies method)
     for(let [key, val] of map) {
@@ -95,8 +98,35 @@ function BinauralBeats() {
     oscillator1.current.start();
     oscillator2.current.start();
   };
+  const postToDB = async (startTime, endTime, feel, boost, thingDuring) => {
+    setStartTime(null)
+    const storedUser = localStorage.getItem("u4ea-user");
+    console.log("inside method")
+    if (storedUser) {
+      const parsedUser = JSON.parse(storedUser);
+      const userID = parsedUser.id;
+      try {
+        console.log('in the try')
+        console.log(userID, startTime, endTime, feel, boost, thingDuring)
+        const response = await axios.post("http://localhost:3500/entries", {
+          userID: userID,
+          startTime: startTime,
+          endTime: endTime, 
+          feel: feel,
+          boost: boost,
+          thingDuring: thingDuring
+        });
+        console.log(response)
+        console.log("successful")
+      } catch (error) {
+        console.log("Error posting to DB");
+        console.error(error)
+      }
+      console.log("made it past")
+    }
+  }
 
-  const stopPlaying = () => { // gets called in the update methods for the feel boost and thingDuring
+  const stopPlaying = (feel, boost, thingDuring) => { // gets called in the update methods for the feel boost and thingDuring
     setPlaying(false);
     setVisF1(0)
     setVisF2(0)
@@ -104,6 +134,9 @@ function BinauralBeats() {
     if (oscillator1.current && oscillator2.current) {
       oscillator1.current.stop();
       oscillator2.current.stop();
+      console.log('INSIDE THE STOP') // gets printed
+      audioContext.current.close().catch((error) => console.error("Error closing AudioContext:", error));
+      postToDB(startTime, new Date(), feel, boost, thingDuring); // never gets called
     }
   }
   
@@ -115,6 +148,7 @@ function BinauralBeats() {
         setVisF1(parseInt(freq1) * 4)
         setVisF2(parseInt(freq2) * 4)
         console.log(`FREQUENCY 1: ${freq1}, FREQUENCY 2: ${freq2}, VISF1: ${visF1}, VISF2: ${visF2}`)
+        setStartTime(new Date())
       } else {
         alert("Please select from all three fields");
         
@@ -130,12 +164,15 @@ function BinauralBeats() {
 
       // Close the audio context to release resources
       audioContext.current.close().catch((error) => console.error("Error closing AudioContext:", error));
+      // POST to backend
+      postToDB(startTime, new Date(), feel, boost, thingDuring);
     }
   };
   useEffect(() => {
     if (oscillator1.current && oscillator2.current && playing) {
       oscillator1.current.stop(); // doing this as a bug fix for it sometimes not stopping, so we just stop it after every press, regardless of if we were just gonna start it back up agian
       oscillator2.current.stop();
+
     }
     setPlaying(false);
     setFrequencies()

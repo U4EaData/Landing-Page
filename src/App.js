@@ -31,6 +31,7 @@ function App() {
   const [user, setUser] = useState({
     name: "",
     email: "",
+    id: "",
     password: "",
   });
 
@@ -42,6 +43,7 @@ function App() {
     //   .catch((err) => {
     //     console.log(err);
     //   });
+    console.log("state:", user)
   }, [user]);
 
   /* Form Input Handlers */
@@ -72,15 +74,20 @@ function App() {
     });
   };
 
-  const loadUser = (updateUser) => {
+  const loadUser = (updateUser) => { // this method will get called when the user successfully signs in
     const userObj = {
-      name: updateUser.data.name,
+      name: updateUser.fullname,
+      email: updateUser.email,
+      id: updateUser._id,
+      password: user.password // notice we don't go to server for this, it's alr in state
     };
     setUser({
-      name: updateUser.data.name,
-      email: updateUser.data.email,
-      password: updateUser.data.password,
+      name: updateUser.fullname,
+      id: updateUser._id,
+      email: updateUser.email,
+      password: user.password // notice we don't go to server for this, it's alr in state
     });
+    setIsSignedin(true); 
     localStorage.setItem("u4ea-user", JSON.stringify(userObj));
   };
 
@@ -89,6 +96,7 @@ function App() {
     setUser({
       name: "",
       email: "",
+      id: "",
       password: "",
     });
     localStorage.clear();
@@ -151,7 +159,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/resources" element={<Science />} />
             <Route path="/davinci" element={<DaVinci />} />
-            <Route path="/binauralbeats" element={<BinauralBeats />} />
+            <Route path="/binauralbeats" element={<BinauralBeats user={user}/>} />
             <Route
               path="/userdashboard"
               element={<UserDashboard user={user} />}

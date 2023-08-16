@@ -7,27 +7,30 @@ const bcrypt = require("bcrypt");
 // @route GET /users
 // @access Private
 const getUsers = asyncHandler(async (req, res) => {
-  const { id } = req.body;
-  if (id) {
-    // Get a singular user and return it
-    // Check if the user with the given ID exists
-    const user = await User.findById(id).select("-password").lean().exec();
-
+  // console.log(req.query)
+  const { id, email } = req.query;
+  if (email) { // find the user by their email and return their id
+    const user = await User.findOne({ email }).select("_id").lean().exec();
     if (!user) {
       return res.status(400).json({ message: "User not found" });
     }
-
+    res.json({ id: user._id });
+  } else if (id) {
+    // Get a singular user and return it
+    // Check if the user with the given ID exists
+    const user = await User.findById(id).select("-password").lean().exec();
+    if (!user) {
+      return res.status(400).json({ message: "User not found" });
+    }
     // Return the user object
     res.json(user);
   } else {
     // Get all users from MongoDB
     const users = await User.find().select("-password").lean();
-
     // If no users
     if (!users?.length) {
       return res.status(400).json({ message: "No users found" });
     }
-
     res.json(users);
   }
 });
