@@ -33,6 +33,10 @@ function App() {
     email: "",
     id: "",
     password: "",
+    title: "",
+    quote: "",
+    gender: "",
+    location: ""
   });
 
   /* uncomment when ready to deploy */
@@ -43,7 +47,6 @@ function App() {
     //   .catch((err) => {
     //     console.log(err);
     //   });
-    console.log("state:", user)
   }, [user]);
 
   /* Form Input Handlers */
@@ -75,17 +78,27 @@ function App() {
   };
 
   const loadUser = (updateUser) => { // this method will get called when the user successfully signs in
+    console.log('UPDATE USER:')
+    console.log(updateUser)
     const userObj = {
       name: updateUser.fullname,
       email: updateUser.email,
       id: updateUser._id,
-      password: user.password // notice we don't go to server for this, it's alr in state
+      password: updateUser.password, // notice we don't go to server for this, it's alr in state
+      title: updateUser.title,
+      quote: updateUser.quote,
+      gender: updateUser.gender,
+      location: updateUser.location
     };
     setUser({
       name: updateUser.fullname,
       id: updateUser._id,
       email: updateUser.email,
-      password: user.password // notice we don't go to server for this, it's alr in state
+      password: updateUser.password, // notice we don't go to server for this, it's alr in state
+      title: updateUser.title,
+      quote: updateUser.quote,
+      gender: updateUser.gender,
+      location: updateUser.location
     });
     setIsSignedin(true); 
     localStorage.setItem("u4ea-user", JSON.stringify(userObj));

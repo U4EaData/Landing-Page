@@ -18,7 +18,6 @@ const LoginForm = (props) => {
   const onSubmitLogin = async () => {
     const email = props.user.email;
     const password = props.user.password;
-    console.log(email, password);
     try {
       const response = await axios.post("http://localhost:3500/auth", {
         email: email,
@@ -38,7 +37,6 @@ const LoginForm = (props) => {
           },
         });
         const userId = idResponse.data.id; 
-        console.log("id: " + userId);
         // Load user data using the user's ID
         const userResponse = await axios.get(`http://localhost:3500/users`, {
           headers: {
@@ -49,9 +47,10 @@ const LoginForm = (props) => {
           },
         });  
         const newUser = userResponse.data;
+        console.log('THIS IS THE NEW USER:')
+        console.log(newUser)
         props.loadUser(newUser)
         // Navigate to the user dashboard or wherever you want
-        console.log("Valid login");
         navigate('/userdashboard');
       } catch (error) {
         console.log("Error loading user data:", error);

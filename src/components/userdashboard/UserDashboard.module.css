@@ -2,7 +2,8 @@
 
 .dashboardContainer {
   height: 100vh;
-  padding: 15vh;
+  padding-top: 15vh;
+  padding-bottom: 5vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -16,11 +17,12 @@
   text-align: center;
   flex-direction: column;
   gap: 5px;
-  width: 90%;
-  height: 90%;
+  width: 95%;
+  height: 95%;
   border-radius: 50px;
   background-color: white;
-  border: 2px solid black;
+  /* border: 2px solid black; */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   padding: 2vh;
 }
 
@@ -45,7 +47,14 @@
   /* border: 2px solid black; */
 }
 
+.infoPanel2 {
+  /* margin: 5vh; */
+  height: 100%;
+  /* border: 2px solid black; */
+}
+
 .internalCol {
+  padding-top: 2vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -53,16 +62,117 @@
   text-align: center;
 }
 
-.iconWrapper {
+.icon {
+  max-width: 50%;
+  font-size: 10vh;
+}
+
+.title {
+  font-weight: bold !important;
+}
+
+.quote {
+  padding-top: 2vh !important;
+  padding-bottom: 2vh !important;
+}
+
+.circle {
+  border-radius: 50%;
+  background-color: black !important;
+  border: 2px solid black !important;
+  width: 20vh; /* Adjust the width as needed */
+  height: 20vh; /* Adjust the height as needed */
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%; /* Set the desired width */
-  height: auto; /* Allow the height to adjust automatically */
+  margin: 0 auto; /* To horizontally center the circle */
+}
+.data {
+  color: white;
 }
 
-.icon {
-  font-size: 5rem; /* Adjust the font size as needed */
+.infoContainer {
+  background-color: black;
+  margin-top: 1vh;
+  padding: 2vh;
+  width: 95%; /* Set width to 100% */
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 0; /* Allow container to shrink */
+  flex-grow: .9; /* Allow container to grow to fill parent space */
+}
+.specific {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-right: 10px; /* Adjust the padding value as needed */
+}
+
+.meta {
+  color: white;
+}
+.inputField {
+  background: transparent;
+  color: white;
+  text-align: center;
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 5px;
+  /* Add any other styling you need */
+}
+
+.bigInputField {
+  background: transparent;
+  color: black;
+  text-align: center;
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 5px;
+  /* Add any other styling you need */
+}
+
+.smallContainer {
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* text-align: center; */
+  flex-direction: column;
+  gap: 5px;
+  width: 95%;
+  height: 30%;
+  border-radius: 50px;
+  background-color: white;
+  /* border: 2px solid black; */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  padding: 2vh;
+  margin-bottom: 2vh;
+}
+
+.smallContainerTop {
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* text-align: center; */
+  flex-direction: column;
+  gap: 5px;
+  width: 95%;
+  height: 30%;
+  border-radius: 50px;
+  background-color: white;
+  /* border: 2px solid black; */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  padding: 2vh;
+  margin-bottom: 2vh;
+}
+
+.innerContainer {
+  display: flex;
+  justify-content: center;
 }
 
 
@@ -88,12 +198,39 @@
     justify-content: center;
     align-items: center;
   }
+  .smallContainerTop {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 95%;
+    height: 30%;
+    border-radius: 50px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 2vh;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+  }
 }
 
-
+@media only screen and (max-width: 1000px) {
+  .infoPanel2 {
+    display: none;
+  }
+  .circle {
+    border-radius: 50%;
+    background-color: black !important;
+    border: 2px solid black !important;
+    width: 10vh; /* Adjust the width as needed */
+    height: 10vh; /* Adjust the height as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto; /* To horizontally center the circle */
+  }
+}
 
 @media only screen and (max-width: 320px) {
-
     .dashy {
           background-color: grey !important;
           display: flex !important;
@@ -101,5 +238,13 @@
           justify-content: center !important;
           align-items: center !important;
         }
-      
+}
+
+@media only screen and (max-height: 500px) {
+  .infoPanel2 {
+    display: none;
+  }
+  .infoContainer {
+    display: none;
+  }
 }

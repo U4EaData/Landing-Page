@@ -39,7 +39,7 @@ const getUsers = asyncHandler(async (req, res) => {
 // @route POST /users
 // @access Private
 const createNewUser = asyncHandler(async (req, res) => {
-  const { email, password, fullname } = req.body;
+  const { email, password, fullname, title, quote, gender, location } = req.body;
 
   // Confirm data
   if (!email || !password || !fullname) {
@@ -56,7 +56,7 @@ const createNewUser = asyncHandler(async (req, res) => {
   // Hash password
   const hashedPwd = await bcrypt.hash(password, 10); // salt rounds
 
-  const userObject = { email, password: hashedPwd, fullname };
+  const userObject = { email, password: hashedPwd, fullname, title, quote, gender, location };
 
   // Create and store new user
   const user = await User.create(userObject);
@@ -73,7 +73,7 @@ const createNewUser = asyncHandler(async (req, res) => {
 // @route PATCH /users
 // @access Private
 const updateUser = asyncHandler(async (req, res) => {
-  const { id, email, password, fullname } = req.body;
+  const { id, email, password, fullname, title, quote, gender, location } = req.body;
 
   // Confirm data
   if (!id || !email || !fullname) {
@@ -99,7 +99,10 @@ const updateUser = asyncHandler(async (req, res) => {
 
   user.email = email;
   user.fullname = fullname;
-
+  user.title = title;
+  user.quote = quote;
+  user.gender = gender;
+  user.location = location;
   if (password) {
     // Hash password
     user.password = await bcrypt.hash(password, 10); // salt rounds
