@@ -11,6 +11,8 @@ import appClasses from "../../App.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faBarChart } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import BbgChart from '../bbg-chart/BbgChart'
 import axios from "axios";
 
@@ -25,7 +27,7 @@ const UserDashboard = (props) => {
   const [editedLocation, setEditedLocation] = useState(user.location);
   const [editedGender, setEditedGender] = useState(user.gender);
   const [editedEmail, setEditedEmail] = useState(user.email);
-
+  const [currGraph, setCurrGraph] = useState("feel");
 
   useEffect(() => {
     const titleTimeout = setTimeout(() => {
@@ -180,14 +182,33 @@ const UserDashboard = (props) => {
         </Col>
         <Col className={userClasses.infoPanel2}>
           <div className={userClasses.smallContainerBig}>
+            <div>
             <span className={userClasses.userName}>Moods</span>
+              <div className={userClasses.arrowDiv}>
+                <FontAwesomeIcon
+                  icon={faArrowLeft}
+                  size="1x"
+                  style={{ color: "#000000" }}
+                  className={userClasses.arrow}
+                />
+              </div>
+              <div className={userClasses.arrowDiv}>
+                <FontAwesomeIcon
+                  icon={faArrowRight}
+                  size="1x"
+                  style={{ color: "#000000" }}
+                  className={userClasses.arrow}
+                />
+              </div>
+            </div>
             <div className={userClasses.innerContainer}>
               {(userEntries.length > 0) ?
-                  <BbgChart flag="Feel" data={userEntries}/> 
+                  <BbgChartWrapper userEntries={userEntries} curr={currGraph}/> 
                 : <div>You have never listened to Binaural Beats!</div>
               }
             </div>
           </div>
+
           <div className={userClasses.smallContainer}>
             <span className={userClasses.userName}>Reccomendations</span>
             <div className={userClasses.innerContainer}>
@@ -239,5 +260,27 @@ const UserDashboard = (props) => {
     </section>
   );
 };
+
+const BbgChartWrapper = (props) => {
+  const { curr, userEntries} = props;
+  let chartToRender;
+  switch (curr) {
+    case "feel":
+      chartToRender = <BbgChart flag="Feel" data={userEntries}/> ;
+      break;
+    case "boost":
+      chartToRender = <BbgChart flag="Boost" data={userEntries}/>;
+      break;
+    case "thingDuring":
+      chartToRender = <BbgChart flag="thingDuring" data={userEntries}/>;
+      break;
+    default:
+      chartToRender = <BbgChart flag="Feel" data={userEntries}/>;
+      break;
+  }
+  return (
+      <div>{chartToRender}</div>
+  )
+}
 
 export default UserDashboard;

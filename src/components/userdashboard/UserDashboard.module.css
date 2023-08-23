@@ -193,6 +193,13 @@
   align-items: center;
 }
 
+.chartwrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 
 @media only screen and (max-width: 480px) {
     .welcomeContainer {
