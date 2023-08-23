@@ -11,6 +11,7 @@ import appClasses from "../../App.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faBarChart } from "@fortawesome/free-solid-svg-icons";
+import BbgChart from '../bbg-chart/BbgChart'
 import axios from "axios";
 
 const UserDashboard = (props) => {
@@ -178,26 +179,13 @@ const UserDashboard = (props) => {
           </div>
         </Col>
         <Col className={userClasses.infoPanel2}>
-          <div className={userClasses.smallContainer}>
+          <div className={userClasses.smallContainerBig}>
             <span className={userClasses.userName}>Moods</span>
             <div className={userClasses.innerContainer}>
-              <FontAwesomeIcon
-                icon={faBarChart}
-                className={userClasses.icon}
-                size="1x"
-                style={{ color: "#000000" }}
-              />
-            </div>
-          </div>
-          <div className={userClasses.smallContainer}>
-            <span className={userClasses.userName}>Activities</span>
-            <div className={userClasses.innerContainer}>
-              <FontAwesomeIcon
-                icon={faBarChart}
-                className={userClasses.icon}
-                size="1x"
-                style={{ color: "#000000" }}
-              />
+              {(userEntries.length > 0) ?
+                  <BbgChart flag="Feel" data={userEntries}/> 
+                : <div>You have never listened to Binaural Beats!</div>
+              }
             </div>
           </div>
           <div className={userClasses.smallContainer}>

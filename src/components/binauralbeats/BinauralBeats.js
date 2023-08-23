@@ -135,7 +135,6 @@ function BinauralBeats(props) {
       oscillator1.current.stop();
       oscillator2.current.stop();
       console.log('INSIDE THE STOP') // gets printed
-      audioContext.current.close().catch((error) => console.error("Error closing AudioContext:", error));
       postToDB(startTime, new Date(), feel, boost, thingDuring); // never gets called
     }
   }
