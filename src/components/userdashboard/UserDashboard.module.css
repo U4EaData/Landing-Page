@@ -258,7 +258,7 @@
         }
 }
 
-@media only screen and (max-height: 500px) {
+@media only screen and (max-height: 740px) {
   .infoPanel2 {
     display: none;
   }
