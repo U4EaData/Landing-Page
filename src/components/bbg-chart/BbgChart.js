@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { PieChart, Pie, Cell, Tooltip } from "recharts";
+import "./BbgChart.module.css"; 
 
 const BbgChart = (props) => {
   const [title, setTitle] = useState("");

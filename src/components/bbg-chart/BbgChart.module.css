@@ -1,0 +1,11 @@
+/* BbgChart.css */
+.chart-container {
+    width: 100%;
+    max-width: 300px; /* Adjust the maximum width as needed */
+    margin: 0 auto;
+  }
+  
+  .chart {
+    display: block;
+    margin: 0 auto;
+  }
