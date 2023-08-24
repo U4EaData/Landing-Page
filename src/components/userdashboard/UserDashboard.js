@@ -33,27 +33,27 @@ const UserDashboard = (props) => {
     const titleTimeout = setTimeout(() => {
       console.log("Edited Title:", editedTitle);
       updateUser();
-    }, 5000);
+    }, 3000);
 
     const quoteTimeout = setTimeout(() => {
       console.log("Edited Quote:", editedQuote);
       updateUser();
-    }, 5000);
+    }, 3000);
 
     const locationTimeout = setTimeout(() => {
       console.log("Edited Location:", editedLocation);
       updateUser();
-    }, 5000);
+    }, 3000);
 
     const genderTimeout = setTimeout(() => {
       console.log("Edited Gender:", editedGender);
       updateUser();
-    }, 5000);
+    }, 3000);
 
     const emailTimeout = setTimeout(() => {
       console.log("Edited Email:", editedEmail);
       updateUser();
-    }, 5000);
+    }, 3000);
 
     return () => {
       clearTimeout(titleTimeout);
@@ -207,7 +207,13 @@ const UserDashboard = (props) => {
         <Col className={userClasses.infoPanel2}>
           <div className={userClasses.smallContainerBig}>
             <div>
-              <span className={userClasses.userName}>Moods</span>
+              <span className={userClasses.userName}>
+                {userEntries.length > 0 ? (
+                  `Moods: ${currGraph}`
+                ): (
+                  "Moods"
+                )}
+              </span>
               <div className={userClasses.arrowButtonContainer}>
                 <div
                   className={userClasses.arrowButton}

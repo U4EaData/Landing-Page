@@ -105,7 +105,6 @@ const BbgChart = (props) => {
 
   return (
     <div style={{ textAlign: "center"}}>
-      <h2 style={{ margin: "0" }}>{title}</h2>
       <PieChart width={300} height={300}>
         <Pie
           dataKey="value"
