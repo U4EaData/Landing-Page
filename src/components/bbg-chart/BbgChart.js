@@ -41,6 +41,41 @@ const BbgChart = (props) => {
     setData(dataForChart);
   }, []);
 
+  useEffect(() => {
+    setTitle(props.flag);
+    var currFlag = "";
+    if (props.flag === "Feel") {
+      currFlag = "feel";
+    } else if (props.flag === "Boost") {
+      currFlag = "boost";
+    } else {
+      currFlag = "thingDuring";
+    }
+
+    var dataMap = new Map();
+
+    for (var i = 0; i < props.data.length; i++) {
+      var startTime = new Date(props.data[i]["startTime"]).getTime();
+      var endTime = new Date(props.data[i]["endTime"]).getTime();
+      var emotion = props.data[i][currFlag];
+      var difference = Math.floor((endTime - startTime) / 1000); // its in ms, we want seconds
+      if (dataMap.has(emotion)) {
+        var currVal = dataMap.get(emotion);
+        var updatedTime = difference + currVal;
+        dataMap.set(emotion, updatedTime);
+      } else {
+        dataMap.set(emotion, difference);
+      }
+    }
+
+    const dataForChart = Array.from(dataMap.entries()).map(([name, value]) => ({
+      name,
+      value,
+    }));
+
+    setData(dataForChart);
+  }, [props.flag]);
+
   const COLORS = ["#0088FE", "#00C49F", "#FFAA00", "#FF8042", "#AF19FF", "#FFC0CB", "#8884D8"];
 
   const CustomTooltip = ({ active, payload }) => {

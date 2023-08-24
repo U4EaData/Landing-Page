@@ -13,7 +13,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faBarChart } from "@fortawesome/free-solid-svg-icons";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import BbgChart from '../bbg-chart/BbgChart'
+import BbgChart from "../bbg-chart/BbgChart";
 import axios from "axios";
 
 const UserDashboard = (props) => {
@@ -27,7 +27,7 @@ const UserDashboard = (props) => {
   const [editedLocation, setEditedLocation] = useState(user.location);
   const [editedGender, setEditedGender] = useState(user.gender);
   const [editedEmail, setEditedEmail] = useState(user.email);
-  const [currGraph, setCurrGraph] = useState("feel");
+  const [currGraph, setCurrGraph] = useState("Feel");
 
   useEffect(() => {
     const titleTimeout = setTimeout(() => {
@@ -72,7 +72,7 @@ const UserDashboard = (props) => {
 
   const updateUser = async () => {
     try {
-      const updatedUser = { 
+      const updatedUser = {
         id: user.id,
         name: user.name,
         email: editedEmail,
@@ -80,23 +80,22 @@ const UserDashboard = (props) => {
         title: editedTitle,
         quote: editedQuote,
         gender: editedGender,
-        location: editedLocation
+        location: editedLocation,
       };
       const response = await axios.patch("http://localhost:3500/users", {
-        id: updatedUser.id, 
-        fullname: updatedUser.name, 
-        email: updatedUser.email, 
-        password: updatedUser.password, 
-        title: updatedUser.title, 
-        quote: updatedUser.quote, 
-        gender: updatedUser.gender, 
-        location: updatedUser.location
-      })
+        id: updatedUser.id,
+        fullname: updatedUser.name,
+        email: updatedUser.email,
+        password: updatedUser.password,
+        title: updatedUser.title,
+        quote: updatedUser.quote,
+        gender: updatedUser.gender,
+        location: updatedUser.location,
+      });
       setUser(updatedUser);
       localStorage.setItem("u4ea-user", JSON.stringify(updatedUser));
-
     } catch (error) {
-      console.log("Error updating user:", error)
+      console.log("Error updating user:", error);
     }
   };
 
@@ -117,6 +116,31 @@ const UserDashboard = (props) => {
         console.error("Error fetching user entries:", error);
       }
     }
+  };
+
+  const handleArrowClick = (direction) => {
+    if (userEntries.length > 0) {
+      if (direction === "left") {
+        console.log("left")
+        if (currGraph === "Feel") {
+          setCurrGraph("thingDuring")
+        } else if (currGraph === "Boost") {
+          setCurrGraph("Feel")
+        } else { // we're on thingDuring
+          setCurrGraph("Boost")
+        }
+      } else if (direction === "right") {
+        console.log('right')
+        if (currGraph === "Feel") {
+          setCurrGraph("Boost")
+        } else if (currGraph === "Boost") {
+          setCurrGraph("thingDuring")
+        } else { // we're on thingDuring
+          setCurrGraph("Feel")
+        }
+      }
+    }
+    console.log("currGraph", currGraph)
   };
 
   return (
@@ -183,29 +207,36 @@ const UserDashboard = (props) => {
         <Col className={userClasses.infoPanel2}>
           <div className={userClasses.smallContainerBig}>
             <div>
-            <span className={userClasses.userName}>Moods</span>
-              <div className={userClasses.arrowDiv}>
-                <FontAwesomeIcon
-                  icon={faArrowLeft}
-                  size="1x"
-                  style={{ color: "#000000" }}
-                  className={userClasses.arrow}
-                />
-              </div>
-              <div className={userClasses.arrowDiv}>
-                <FontAwesomeIcon
-                  icon={faArrowRight}
-                  size="1x"
-                  style={{ color: "#000000" }}
-                  className={userClasses.arrow}
-                />
+              <span className={userClasses.userName}>Moods</span>
+              <div className={userClasses.arrowButtonContainer}>
+                <div
+                  className={userClasses.arrowButton}
+                  onClick={() => handleArrowClick("left")}
+                >
+                  <FontAwesomeIcon
+                    icon={faArrowLeft}
+                    size="1x"
+                    className={userClasses.arrowIcon}
+                  />
+                </div>
+                <div
+                  className={userClasses.arrowButton}
+                  onClick={() => handleArrowClick("right")}
+                >
+                  <FontAwesomeIcon
+                    icon={faArrowRight}
+                    size="1x"
+                    className={userClasses.arrowIcon}
+                  />
+                </div>
               </div>
             </div>
             <div className={userClasses.innerContainer}>
-              {(userEntries.length > 0) ?
-                  <BbgChartWrapper userEntries={userEntries} curr={currGraph}/> 
-                : <div>You have never listened to Binaural Beats!</div>
-              }
+              {userEntries.length > 0 ? (
+                <BbgChart flag={currGraph} data={userEntries} />
+              ) : (
+                <div>You have never listened to Binaural Beats!</div>
+              )}
             </div>
           </div>
 
@@ -260,27 +291,5 @@ const UserDashboard = (props) => {
     </section>
   );
 };
-
-const BbgChartWrapper = (props) => {
-  const { curr, userEntries} = props;
-  let chartToRender;
-  switch (curr) {
-    case "feel":
-      chartToRender = <BbgChart flag="Feel" data={userEntries}/> ;
-      break;
-    case "boost":
-      chartToRender = <BbgChart flag="Boost" data={userEntries}/>;
-      break;
-    case "thingDuring":
-      chartToRender = <BbgChart flag="thingDuring" data={userEntries}/>;
-      break;
-    default:
-      chartToRender = <BbgChart flag="Feel" data={userEntries}/>;
-      break;
-  }
-  return (
-      <div>{chartToRender}</div>
-  )
-}
 
 export default UserDashboard;

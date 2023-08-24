@@ -200,6 +200,34 @@
   align-items: center;
 }
 
+.arrowButtonContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.arrowButton {
+  background-color: black;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.arrowButton:hover {
+  background-color: #444;
+}
+
+.arrowIcon {
+  color: white;
+}
+
+
 
 @media only screen and (max-width: 480px) {
     .welcomeContainer {
