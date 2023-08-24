@@ -127,6 +127,9 @@ function BinauralBeats(props) {
   }
 
   const stopPlaying = (feel, boost, thingDuring) => { // gets called in the update methods for the feel boost and thingDuring
+    if (!playing) {
+      return
+    }
     setPlaying(false);
     setVisF1(0)
     setVisF2(0)
@@ -135,7 +138,7 @@ function BinauralBeats(props) {
       oscillator1.current.stop();
       oscillator2.current.stop();
       console.log('INSIDE THE STOP') // gets printed
-      postToDB(startTime, new Date(), feel, boost, thingDuring); // never gets called
+      postToDB(startTime, new Date(), feel, boost, thingDuring);
     }
   }
   

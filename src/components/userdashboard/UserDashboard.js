@@ -33,27 +33,27 @@ const UserDashboard = (props) => {
     const titleTimeout = setTimeout(() => {
       console.log("Edited Title:", editedTitle);
       updateUser();
-    }, 3000);
+    }, 2000);
 
     const quoteTimeout = setTimeout(() => {
       console.log("Edited Quote:", editedQuote);
       updateUser();
-    }, 3000);
+    }, 2000);
 
     const locationTimeout = setTimeout(() => {
       console.log("Edited Location:", editedLocation);
       updateUser();
-    }, 3000);
+    }, 2000);
 
     const genderTimeout = setTimeout(() => {
       console.log("Edited Gender:", editedGender);
       updateUser();
-    }, 3000);
+    }, 2000);
 
     const emailTimeout = setTimeout(() => {
       console.log("Edited Email:", editedEmail);
       updateUser();
-    }, 3000);
+    }, 2000);
 
     return () => {
       clearTimeout(titleTimeout);
