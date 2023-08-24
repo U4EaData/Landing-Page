@@ -10,7 +10,7 @@ const RegisterForm = (props) => {
   /* Uncomment when ready to connect database */
   const onSubmitRegister = async ()  => {
     if (props.user.email === "" || props.user.name === "" || props.user.password === "") {
-      console.alert("All fields required");
+      alert("All fields required");
       return
     }
     console.log("Submit register");
@@ -26,15 +26,10 @@ const RegisterForm = (props) => {
         location: ""
       });
       console.log(response)
-      if (response.message != null && response.message === "Duplicate email") {
-        console.alert("Duplicate email")
-      } else {
-        props.closeForm()
-        props.toggleForm("signInLink")
-      }
+      props.closeForm()
+      props.toggleForm("signInLink")
     } catch (err) {
-      console.log("issue with sign up");
-      console.log(err);
+      alert("Duplicate email address")
     }
   };
 

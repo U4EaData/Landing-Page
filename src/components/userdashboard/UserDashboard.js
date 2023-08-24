@@ -174,12 +174,12 @@ const UserDashboard = (props) => {
               />
               <div className={userClasses.infoContainer}>
                 <div className={userClasses.specific}>
-                  <p className={userClasses.meta}>Email: </p>
+                  <p className={userClasses.meta}>Email: </p> {/* Made this un-editable, easy change if you wanna change it since its all hooked up to the backend, just gotta check that you change to a non-duplicate email*/}
                   <input
                     type="text"
                     className={userClasses.inputField}
-                    defaultValue={user.email}
-                    onChange={(e) => setEditedEmail(e.target.value)}
+                    value={user.email}
+                    readOnly
                   />
                 </div>
                 <div className={userClasses.specific}>
@@ -240,7 +240,6 @@ const UserDashboard = (props) => {
                 </div>
                 ))
               }
-
             </div>
             <div className={userClasses.innerContainer}>
               {userEntries.length > 0 ? (
@@ -250,7 +249,6 @@ const UserDashboard = (props) => {
               )}
             </div>
           </div>
-
           <div className={userClasses.smallContainer}>
             <span className={userClasses.userName}>Reccomendations</span>
             <div className={userClasses.innerContainer}>
