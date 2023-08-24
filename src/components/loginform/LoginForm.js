@@ -16,14 +16,14 @@ const LoginForm = (props) => {
 
 
   const onSubmitLogin = async () => {
-    const email = props.user.email;
+    const email = props.user.email.toLowerCase();
     const password = props.user.password;
     try {
       const response = await axios.post("http://localhost:3500/auth", {
         email: email,
         password: password,
       });
-      const accessToken = response.data.accessToken;  
+      const accessToken = response.data.accessToken;
       // Save access token in local storage
       localStorage.setItem("access_token", accessToken);
       try {

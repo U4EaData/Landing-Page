@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import classes from "../loginform/LoginForm.module.css";
 import axios from "axios";
 import { AiOutlineClose } from "react-icons/ai";
@@ -6,19 +6,40 @@ import { useNavigate } from "react-router-dom";
 
 const RegisterForm = (props) => {
   const navigate = useNavigate();
+  const [confirmPassword, setConfirmPassword] = useState("")
 
-  /* Uncomment when ready to connect database */
+  const onConfirmPasswordChange = (e) => {
+    setConfirmPassword(e.target.value)
+  }
+
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+
   const onSubmitRegister = async ()  => {
     if (props.user.email === "" || props.user.name === "" || props.user.password === "") {
       alert("All fields required");
       return
     }
+    if (confirmPassword != props.user.password) {
+      alert("Passwords do not match")
+      return
+    }
+    if(!validateEmail(props.user.email)) {
+      alert("Invalid email")
+      return
+    }
+
     console.log("Submit register");
     console.log("props from register form", props.user);
     try {
       const response = await axios.post("http://localhost:3500/users", {
         fullname: props.user.name,
-        email: props.user.email,
+        email: props.user.email.toLowerCase(),
         password: props.user.password,
         title: "",
         quote: "",
@@ -66,6 +87,15 @@ const RegisterForm = (props) => {
           name="password"
           id="register-form-password"
           onChange={props.onPasswordChange}
+          required
+        />
+        <input
+          className={classes.password_input_box}
+          type="password"
+          placeholder="Confirm Password"
+          name="confirm-password"
+          id="register-form-password"
+          onChange={onConfirmPasswordChange}
           required
         />
 
