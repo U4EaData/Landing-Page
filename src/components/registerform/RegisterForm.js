@@ -8,26 +8,34 @@ const RegisterForm = (props) => {
   const navigate = useNavigate();
 
   /* Uncomment when ready to connect database */
-  const onSubmitRegister = () => {
+  const onSubmitRegister = async ()  => {
+    if (props.user.email === "" || props.user.name === "" || props.user.password === "") {
+      console.alert("All fields required");
+      return
+    }
     console.log("Submit register");
     console.log("props from register form", props.user);
-    // axios
-    //   .post("/register", {
-    //     name: props.user.name,
-    //     email: props.user.email,
-    //     password: props.user.password,
-    //   })
-    //   .then((user) => {
-    //     console.log("Successfully registered", user.data);
-    //     if (user) {
-    //       props.closeForm();
-    //       props.loadUser(user);
-    //       navigate("/userdashboard");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.log("Error occured!", err);
-    //   });
+    try {
+      const response = await axios.post("http://localhost:3500/users", {
+        fullname: props.user.name,
+        email: props.user.email,
+        password: props.user.password,
+        title: "",
+        quote: "",
+        gender: "",
+        location: ""
+      });
+      console.log(response)
+      if (response.message != null && response.message === "Duplicate email") {
+        console.alert("Duplicate email")
+      } else {
+        props.closeForm()
+        props.toggleForm("signInLink")
+      }
+    } catch (err) {
+      console.log("issue with sign up");
+      console.log(err);
+    }
   };
 
   return (
