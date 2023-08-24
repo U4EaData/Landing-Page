@@ -214,28 +214,33 @@ const UserDashboard = (props) => {
                   "Moods"
                 )}
               </span>
-              <div className={userClasses.arrowButtonContainer}>
-                <div
-                  className={userClasses.arrowButton}
-                  onClick={() => handleArrowClick("left")}
-                >
-                  <FontAwesomeIcon
-                    icon={faArrowLeft}
-                    size="1x"
-                    className={userClasses.arrowIcon}
-                  />
+              {
+                (userEntries.length > 0 && (
+                  <div className={userClasses.arrowButtonContainer}> 
+                  <div
+                    className={userClasses.arrowButton}
+                    onClick={() => handleArrowClick("left")}
+                  >
+                    <FontAwesomeIcon
+                      icon={faArrowLeft}
+                      size="1x"
+                      className={userClasses.arrowIcon}
+                    />
+                  </div>
+                  <div
+                    className={userClasses.arrowButton}
+                    onClick={() => handleArrowClick("right")}
+                  >
+                    <FontAwesomeIcon
+                      icon={faArrowRight}
+                      size="1x"
+                      className={userClasses.arrowIcon}
+                    />
+                  </div>
                 </div>
-                <div
-                  className={userClasses.arrowButton}
-                  onClick={() => handleArrowClick("right")}
-                >
-                  <FontAwesomeIcon
-                    icon={faArrowRight}
-                    size="1x"
-                    className={userClasses.arrowIcon}
-                  />
-                </div>
-              </div>
+                ))
+              }
+
             </div>
             <div className={userClasses.innerContainer}>
               {userEntries.length > 0 ? (

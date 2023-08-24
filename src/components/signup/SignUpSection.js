@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import styles from "./SignUpSection.module.css";
 import img from "../../images/U4Ea Landing Page.png";
 
 function SignUpSection() {
+
   return (
     <div className={styles.App} id="signup">
       <div className="container-fluid col-xxl-8 px-4 py-5">

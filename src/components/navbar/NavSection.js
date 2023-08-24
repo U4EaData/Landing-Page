@@ -70,7 +70,7 @@ function NavSection(props) {
   };
 
   const toggleForm = (e) => {
-    if (e.target.id === "signInLink") {
+    if (e === "signInLink" || e.target.id === "signInLink") {
       setForm((prev) => "login");
     } else if (e.target.id === "registerLink") {
       setForm((prev) => "register");

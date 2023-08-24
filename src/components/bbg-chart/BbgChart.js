@@ -111,7 +111,7 @@ const BbgChart = (props) => {
           data={data}
           cx={150}
           cy={150}
-          outerRadius={100}
+          outerRadius={90}
           fill="#8884d8"
           label={({ value }) => formatTime(value)}
         >

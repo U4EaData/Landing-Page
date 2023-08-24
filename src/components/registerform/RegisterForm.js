@@ -10,7 +10,7 @@ const RegisterForm = (props) => {
   /* Uncomment when ready to connect database */
   const onSubmitRegister = () => {
     console.log("Submit register");
-    // console.log("props from register form", props.user);
+    console.log("props from register form", props.user);
     // axios
     //   .post("/register", {
     //     name: props.user.name,
@@ -41,7 +41,7 @@ const RegisterForm = (props) => {
         <input
           className={classes.form_input_box}
           type="text"
-          placeholder="First"
+          placeholder="Full Name"
           name="firstname"
           id="register-form-name"
           onChange={props.onNameChange}

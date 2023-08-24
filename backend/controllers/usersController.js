@@ -39,7 +39,7 @@ const getUsers = asyncHandler(async (req, res) => {
 // @route POST /users
 // @access Private
 const createNewUser = asyncHandler(async (req, res) => {
-  const { email, password, fullname, title, quote, gender, location } = req.body;
+  let { email, password, fullname, title, quote, gender, location } = req.body;
 
   // Confirm data
   if (!email || !password || !fullname) {
@@ -50,11 +50,16 @@ const createNewUser = asyncHandler(async (req, res) => {
   const duplicate = await User.findOne({ email }).lean().exec();
 
   if (duplicate) {
-    return res.status(409).json({ message: "Duplicate eemail" });
+    return res.status(409).json({ message: "Duplicate email" });
   }
 
   // Hash password
   const hashedPwd = await bcrypt.hash(password, 10); // salt rounds
+
+  if (title === "") { title = "Add your title" }
+  if (quote === "") { quote = "Add your quote" }
+  if (gender === "") { gender = "Add your gender" }
+  if (location === "") { location = "Add your location" }
 
   const userObject = { email, password: hashedPwd, fullname, title, quote, gender, location };
 
