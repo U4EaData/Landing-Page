@@ -47,7 +47,7 @@ const RegisterForm = (props) => {
         location: ""
       });
       console.log(response)
-      props.closeForm()
+      // props.closeForm()
       props.toggleForm("signInLink")
     } catch (err) {
       alert("Duplicate email address")
