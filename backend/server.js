@@ -6,7 +6,7 @@ const { logger, logEvents } = require('./middleware/logger')
 const errorHandler = require('./middleware/errorHandler')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
-const corsOptions = require('./config/corsOptions')
+// const corsOptions = require('./config/corsOptions')
 const connectDB = require('./config/dbConn')
 const mongoose = require('mongoose')
 const PORT = process.env.PORT || 3500
@@ -30,7 +30,7 @@ app.use(express.json())
 
 app.use(cookieParser())
 
-app.use(cors(corsOptions)); // added in
+
 
 app.use('/', express.static(path.join(__dirname, 'public')))
 
