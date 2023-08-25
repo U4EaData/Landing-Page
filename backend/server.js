@@ -11,6 +11,13 @@ const connectDB = require('./config/dbConn')
 const mongoose = require('mongoose')
 const PORT = process.env.PORT || 3500
 
+const corsOptions = {
+    origin: 'https://u4ea.onrender.com', // Allow requests from this origin
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allow specific HTTP methods
+    credentials: true, // Allow sending cookies
+    optionsSuccessStatus: 204, // Set the response status for preflight requests
+};
+
 console.log(process.env.NODE_ENV)
 
 connectDB()
@@ -23,12 +30,15 @@ app.use(express.json())
 
 app.use(cookieParser())
 
+app.use(cors(corsOptions)); // added in
+
 app.use('/', express.static(path.join(__dirname, 'public')))
 
 app.use('/', require('./routes/root'))
 app.use('/auth', require('./routes/authRoutes'))
 app.use('/users', require('./routes/userRoutes'))
 app.use('/entries', require('./routes/entryRoutes'))
+
 
 app.all('*', (req, res) => {
     res.status(404)
