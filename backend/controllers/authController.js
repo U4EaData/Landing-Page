@@ -9,7 +9,6 @@ const asyncHandler = require('express-async-handler')
 const login = asyncHandler(async (req, res) => {
     // up to sum
     const {email, password} = req.body
-    
 
     if(!email || !password) {
         return res.status(400).json({message: 'All fields are required'})
@@ -44,8 +43,8 @@ const login = asyncHandler(async (req, res) => {
 
     res.cookie('jwt', refreshToken, {
         httpOnly: true, // important: only accessible by web server, so its secure
-        secure: true,
-        sameSite: 'None',
+        // secure: true,
+        // sameSite: 'None',
         maxAge: 7 * 24 * 60 * 60 * 1000 // cookie expires weekly
     })
 

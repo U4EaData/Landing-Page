@@ -15,6 +15,7 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import BbgChart from "../bbg-chart/BbgChart";
 import axios from "axios";
+import jwt_decode from "jwt-decode"; // Import the jwt_decode library
 
 const UserDashboard = (props) => {
   // user object is also in props, gonna just use the one in local storage for now
@@ -71,6 +72,34 @@ const UserDashboard = (props) => {
   }, []);
 
   const updateUser = async () => {
+    // Parse and print specific cookie values
+    console.log("COOKIES")
+    console.log(document.cookie);
+
+    let token = localStorage.getItem("access_token");
+    // console.log("token", token);
+    if (token) {
+      const decodedToken = jwt_decode(token);
+      // console.log("token", decodedToken);
+      const currentTime = Date.now() / 1000; // Convert to seconds
+      if (decodedToken.exp < currentTime) {
+        try {
+          console.log("about to update access token");
+          const response = await axios.get(
+            "http://localhost:3500/auth/refresh",
+            {
+              withCredentials: true, // Include cookies if needed
+            }
+          );
+          console.log("successfully udpated access token");
+          const newAccessToken = response.data.accessToken;
+          localStorage.setItem("access_token", newAccessToken);
+          token = newAccessToken;
+        } catch (error) {
+          console.log("failed the refresh token stuff", error);
+        }
+      }
+    }
     try {
       const updatedUser = {
         id: user.id,
@@ -82,16 +111,24 @@ const UserDashboard = (props) => {
         gender: editedGender,
         location: editedLocation,
       };
-      const response = await axios.patch("http://localhost:3500/users", {
-        id: updatedUser.id,
-        fullname: updatedUser.name,
-        email: updatedUser.email,
-        password: updatedUser.password,
-        title: updatedUser.title,
-        quote: updatedUser.quote,
-        gender: updatedUser.gender,
-        location: updatedUser.location,
-      });
+      const response = await axios.patch(
+        "http://localhost:3500/users",
+        {
+          id: updatedUser.id,
+          fullname: updatedUser.name,
+          email: updatedUser.email,
+          password: updatedUser.password,
+          title: updatedUser.title,
+          quote: updatedUser.quote,
+          gender: updatedUser.gender,
+          location: updatedUser.location,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       setUser(updatedUser);
       localStorage.setItem("u4ea-user", JSON.stringify(updatedUser));
     } catch (error) {
@@ -121,26 +158,28 @@ const UserDashboard = (props) => {
   const handleArrowClick = (direction) => {
     if (userEntries.length > 0) {
       if (direction === "left") {
-        console.log("left")
+        console.log("left");
         if (currGraph === "Feel") {
-          setCurrGraph("thingDuring")
+          setCurrGraph("thingDuring");
         } else if (currGraph === "Boost") {
-          setCurrGraph("Feel")
-        } else { // we're on thingDuring
-          setCurrGraph("Boost")
+          setCurrGraph("Feel");
+        } else {
+          // we're on thingDuring
+          setCurrGraph("Boost");
         }
       } else if (direction === "right") {
-        console.log('right')
+        console.log("right");
         if (currGraph === "Feel") {
-          setCurrGraph("Boost")
+          setCurrGraph("Boost");
         } else if (currGraph === "Boost") {
-          setCurrGraph("thingDuring")
-        } else { // we're on thingDuring
-          setCurrGraph("Feel")
+          setCurrGraph("thingDuring");
+        } else {
+          // we're on thingDuring
+          setCurrGraph("Feel");
         }
       }
     }
-    console.log("currGraph", currGraph)
+    console.log("currGraph", currGraph);
   };
 
   return (
@@ -174,7 +213,8 @@ const UserDashboard = (props) => {
               />
               <div className={userClasses.infoContainer}>
                 <div className={userClasses.specific}>
-                  <p className={userClasses.meta}>Email: </p> {/* Made this un-editable, easy change if you wanna change it since its all hooked up to the backend, just gotta check that you change to a non-duplicate email*/}
+                  <p className={userClasses.meta}>Email: </p>{" "}
+                  {/* Made this un-editable, easy change if you wanna change it since its all hooked up to the backend, just gotta check that you change to a non-duplicate email*/}
                   <input
                     type="text"
                     className={userClasses.inputField}
@@ -208,15 +248,10 @@ const UserDashboard = (props) => {
           <div className={userClasses.smallContainerBig}>
             <div>
               <span className={userClasses.userName}>
-                {userEntries.length > 0 ? (
-                  `Moods: ${currGraph}`
-                ): (
-                  "Moods"
-                )}
+                {userEntries.length > 0 ? `Moods: ${currGraph}` : "Moods"}
               </span>
-              {
-                (userEntries.length > 0 && (
-                  <div className={userClasses.arrowButtonContainer}> 
+              {userEntries.length > 0 && (
+                <div className={userClasses.arrowButtonContainer}>
                   <div
                     className={userClasses.arrowButton}
                     onClick={() => handleArrowClick("left")}
@@ -238,8 +273,7 @@ const UserDashboard = (props) => {
                     />
                   </div>
                 </div>
-                ))
-              }
+              )}
             </div>
             <div className={userClasses.innerContainer}>
               {userEntries.length > 0 ? (

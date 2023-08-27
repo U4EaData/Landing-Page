@@ -1,7 +1,6 @@
 const allowedOrigins = [
     'http://localhost:3000',
-    'https://www.dandrepairshop.com',
-    'https://dandrepairshop.com'
+    'https://u4ea.onrender.com/'
 ]
 
 module.exports = allowedOrigins

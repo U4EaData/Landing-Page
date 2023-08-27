@@ -6,17 +6,10 @@ const { logger, logEvents } = require('./middleware/logger')
 const errorHandler = require('./middleware/errorHandler')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
-// const corsOptions = require('./config/corsOptions')
+const corsOptions = require('./config/corsOptions')
 const connectDB = require('./config/dbConn')
 const mongoose = require('mongoose')
 const PORT = process.env.PORT || 3500
-
-const corsOptions = {
-    origin: 'https://u4ea.onrender.com', // Allow requests from this origin
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allow specific HTTP methods
-    credentials: true, // Allow sending cookies
-    optionsSuccessStatus: 204, // Set the response status for preflight requests
-};
 
 console.log(process.env.NODE_ENV)
 
@@ -29,7 +22,6 @@ app.use(cors(corsOptions))
 app.use(express.json())
 
 app.use(cookieParser())
-
 
 
 app.use('/', express.static(path.join(__dirname, 'public')))
