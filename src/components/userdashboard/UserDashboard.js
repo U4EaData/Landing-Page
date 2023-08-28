@@ -66,10 +66,7 @@ const UserDashboard = (props) => {
   }, [editedTitle, editedQuote, editedLocation, editedGender, editedEmail]);
 
   useEffect(() => {
-    // Make the GET request
-    // console.log("here's the cookie");
-    // console.log(document.cookie)
-    fetchUserEntries(); // Call the function to fetch user entries
+    fetchUserEntries();
     console.log(user);
   }, []);
 
@@ -95,22 +92,15 @@ const UserDashboard = (props) => {
             token = newAccessToken;
             console.log("successfully updated access token");
           } else {
+            navigate('/')
+            props.signout()
             console.log("failed the refresh token stuff", response.statusText);
+            return
           }
         } catch (error) {
-          try {
-            const response = await fetch("http://localhost:3500/auth/logout", {
-              method: "POST",
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-              credentials: "include",
-            });
-            console.log("failed logout", error);
-          } catch (err) {
-            console.log("Signout error", err)
-          }
-          navigate("/")
+          navigate('/')
+          props.signout()
+          return
         }
       }
     }

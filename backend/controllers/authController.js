@@ -32,20 +32,21 @@ const login = asyncHandler(async (req, res) => {
             }
         },
         process.env.ACCESS_TOKEN_SECRET,
-        { expiresIn: '1m'}
+        { expiresIn: '30s'}
     )
 
     const refreshToken = jwt.sign(
         {"email": foundUser.email},
         process.env.REFRESH_TOKEN_SECRET,
-        { expiresIn: '1d'}
+        { expiresIn: '1m'}
     )
 
     res.cookie('jwt', refreshToken, {
         httpOnly: true, // important: only accessible by web server, so its secure
         // secure: true,
         // sameSite: 'None',
-        maxAge: 7 * 24 * 60 * 60 * 1000 // cookie expires weekly
+        maxAge: 60 * 1000 // one minute
+        // maxAge: 7 * 24 * 60 * 60 * 1000 // cookie expires weekly
     })
 
     res.json({accessToken}) // we give react the access token in the front end

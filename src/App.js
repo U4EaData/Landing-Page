@@ -121,7 +121,7 @@ function App() {
       gender: "",
       location: ""
     });
-    localStorage.setItem("access_token", "");
+    // localStorage.setItem("access_token", "");
     localStorage.clear()
     const response = await fetch("http://localhost:3500/auth/logout", {
       method: "POST",
@@ -131,14 +131,13 @@ function App() {
       credentials: "include",
     });
     if (response.ok) {
-      await response.json();
+      const res = await response.json();
       clearAllCookies()
       console.log("COOKIE: ")
       console.log(document.cookie)
     } else {
       console.log("failed the logout serverside", response.statusText);
     }
-    navigate("/")
   };
 
   const loginBtnClicked = (e) => {
@@ -148,7 +147,7 @@ function App() {
   const closeForm = () => {
     setShowForm(false);
   };
-  
+
   return (
     <div id="home" className={classes.App}>
       <div className={classes.backgroundimage}>
@@ -196,12 +195,12 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/resources" element={<Science />} />
             <Route path="/davinci" element={<DaVinci />} />
-            <Route path="/binauralbeats" element={<BinauralBeats user={user}/>} />
+            <Route path="/binauralbeats" element={<BinauralBeats user={user} signout={signout}/>} />
             {
               (localStorage.getItem('u4ea-user') != null) && (
                 <Route
                 path="/userdashboard"
-                element={<UserDashboard user={user} />}
+                element={<UserDashboard user={user} signout={signout}/>}
                 />
               )
             }
