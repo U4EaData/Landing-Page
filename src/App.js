@@ -199,10 +199,14 @@ function App() {
             <Route path="/resources" element={<Science />} />
             <Route path="/davinci" element={<DaVinci />} />
             <Route path="/binauralbeats" element={<BinauralBeats user={user}/>} />
-            <Route
-              path="/userdashboard"
-              element={<UserDashboard user={user} />}
-            />
+            {
+              (localStorage.getItem('u4ea-user') != null) && (
+                <Route
+                path="/userdashboard"
+                element={<UserDashboard user={user} />}
+                />
+              )
+            }
           </Routes>
         </Router>
       </div>
