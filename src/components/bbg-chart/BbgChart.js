@@ -91,15 +91,15 @@ const BbgChart = (props) => {
 
   const formatTime = (value) => {
     if (value < 60) {
-      return `${value} sec`;
+      return `${value} s`;
     } else if (value < 3600) {
-      return `${Math.floor(value / 60)} mins`;
+      return `${Math.floor(value / 60)} m`;
     } else if (value < 86400) {
-      return `${Math.floor(value / 3600)} hours`;
+      return `${Math.floor(value / 3600)} hr`;
     } else if (value < 604800) {
-      return `${Math.floor(value / 86400)} days`;
+      return `${Math.floor(value / 86400)} d`;
     } else {
-      return `${Math.floor(value / 604800)} weeks`;
+      return `${Math.floor(value / 604800)} w`;
     }
   };
 

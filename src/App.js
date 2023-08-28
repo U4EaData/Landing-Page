@@ -148,9 +148,7 @@ function App() {
   const closeForm = () => {
     setShowForm(false);
   };
-
-  // Test
-
+  
   return (
     <div id="home" className={classes.App}>
       <div className={classes.backgroundimage}>

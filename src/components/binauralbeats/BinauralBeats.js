@@ -68,34 +68,26 @@ function BinauralBeats(props) {
   }
   const binauralBeat = () => {
     setFrequencies();
-  
-    // Create the AudioContext if it's not already available
+    // Making the AudioContext if it's not already available
     audioContext.current = new (window.AudioContext || window.webkitAudioContext)();
-  
-    // Create the oscillators and set their type and frequency
+    // Making the oscillators and set their type and frequency
     oscillator1.current = audioContext.current.createOscillator();
     oscillator1.current.type = "sine";
     oscillator1.current.frequency.setValueAtTime(freq1, audioContext.current.currentTime);
-  
     oscillator2.current = audioContext.current.createOscillator();
     oscillator2.current.type = "sine";
     oscillator2.current.frequency.setValueAtTime(freq2, audioContext.current.currentTime);
-  
-    // Create the panners and set their positions
+    // Making the panners and set their positions
     const panner1 = audioContext.current.createStereoPanner();
     panner1.pan.setValueAtTime(1, audioContext.current.currentTime); // Left ear (pan value from -1 to 1)
-  
     const panner2 = audioContext.current.createStereoPanner();
     panner2.pan.setValueAtTime(-1, audioContext.current.currentTime); // Right ear (pan value from -1 to 1)
-  
-    // Connect the nodes
+    // Connecting the nodes
     oscillator1.current.connect(panner1);
     panner1.connect(audioContext.current.destination);
-  
     oscillator2.current.connect(panner2);
     panner2.connect(audioContext.current.destination);
-  
-    // Start the oscillators
+    // Starting the oscillators
     oscillator1.current.start();
     oscillator2.current.start();
   };
@@ -179,11 +171,10 @@ function BinauralBeats(props) {
     setPlaying(false);
     setVisF1(0)
     setVisF2(0)
-
     if (oscillator1.current && oscillator2.current) {
       oscillator1.current.stop();
       oscillator2.current.stop();
-      console.log('INSIDE THE STOP') // gets printed
+      console.log('INSIDE THE STOP')
       postToDB(startTime, new Date(), feel, boost, thingDuring);
     }
   }
@@ -199,32 +190,25 @@ function BinauralBeats(props) {
         setStartTime(new Date())
       } else {
         alert("Please select from all three fields");
-        
       }
     } else {
       setPlaying(false);
       setVisF1(0)
       setVisF2(0)
-
-      // Pause the oscillators when stopping the audio
       oscillator1.current.stop();
       oscillator2.current.stop();
-
-      // Close the audio context to release resources
       audioContext.current.close().catch((error) => console.error("Error closing AudioContext:", error));
-      // POST to backend
       postToDB(startTime, new Date(), feel, boost, thingDuring);
     }
   };
+
   useEffect(() => {
     if (oscillator1.current && oscillator2.current && playing) {
       oscillator1.current.stop(); // doing this as a bug fix for it sometimes not stopping, so we just stop it after every press, regardless of if we were just gonna start it back up agian
       oscillator2.current.stop();
-
     }
     setPlaying(false);
     setFrequencies()
-
   }, [feel, boost, thingDuring])
 
   useEffect(() => {
@@ -248,7 +232,6 @@ function BinauralBeats(props) {
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const encodedState = params.get('settings');
-  
     if (encodedState) {
       try {
         const decodedState = JSON.parse(decodeURIComponent(encodedState));
@@ -370,14 +353,12 @@ function BinauralBeats(props) {
                       </div>
                     </Col>
                   </div>
-
                 </Row>
                 <Col>
                   <Row className={classes.vertalign}>
                     <Col className={classes.wave}>
                       <CanvasWave freq={visF1}/>
                     </Col>
-
                     <Col>
                       <Row>
                         <div className={classes.buttonandtext}>
@@ -395,11 +376,9 @@ function BinauralBeats(props) {
                         </div>
                       </Row>
                     </Col>
-
                     <Col className={classes.wave}>
                       <CanvasWave freq={visF2}/>
                     </Col>
-
                   </Row>
                 </Col>
             </Row>
@@ -408,7 +387,6 @@ function BinauralBeats(props) {
                 {copyBtnText}
               </Button>
             </Row>
-
         </Container>
       </section>
   )
