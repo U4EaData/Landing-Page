@@ -39,15 +39,11 @@ function App() {
     location: ""
   });
 
-  /* uncomment when ready to deploy */
   useEffect(() => {
-    // axios
-    //   .get("/")
-    //   .then((res) => console.log("route / Success"))
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
-  }, [user]);
+    // Make the GET request
+    console.log("UE COOKIE: ")
+    console.log(document.cookie)
+  }, []);
 
   /* Form Input Handlers */
   const onEmailChange = (e) => {
@@ -104,15 +100,45 @@ function App() {
     localStorage.setItem("u4ea-user", JSON.stringify(userObj));
   };
 
-  const signout = () => {
+  function clearAllCookies() {
+    const cookies = document.cookie.split(';');
+    cookies.forEach(cookie => {
+      const cookieName = cookie.split('=')[0].trim();
+      clearCookie(cookieName);
+    });
+  }
+
+  const signout = async () => {
     console.log("Signed out!");
+    const token = localStorage.getItem("access_token");
     setUser({
       name: "",
       email: "",
       id: "",
       password: "",
+      title: "",
+      quote: "",
+      gender: "",
+      location: ""
     });
-    localStorage.clear();
+    localStorage.setItem("access_token", "");
+    localStorage.clear()
+    const response = await fetch("http://localhost:3500/auth/logout", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      credentials: "include",
+    });
+    if (response.ok) {
+      await response.json();
+      clearAllCookies()
+      console.log("COOKIE: ")
+      console.log(document.cookie)
+    } else {
+      console.log("failed the logout serverside", response.statusText);
+    }
+    navigate("/")
   };
 
   const loginBtnClicked = (e) => {

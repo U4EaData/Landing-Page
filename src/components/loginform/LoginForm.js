@@ -22,15 +22,13 @@ const LoginForm = (props) => {
       const response = await axios.post("http://localhost:3500/auth", {
         email: email,
         password: password,
+      }, {
+        withCredentials: true
       });
-      const headers = response.headers;
-      console.log("document.cookie")
-      console.log(document.cookie) // prints nothing
       const accessToken = response.data.accessToken;
       // Save access token in local storage
       localStorage.setItem("access_token", accessToken);
-
-      console.log(response)
+      console.log(document.cookie) // prints nothing
       try {
         // Load user's ID using the /users endpoint
         const idResponse = await axios.get("http://localhost:3500/users", {

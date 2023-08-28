@@ -67,39 +67,54 @@ const UserDashboard = (props) => {
 
   useEffect(() => {
     // Make the GET request
+    // console.log("here's the cookie");
+    // console.log(document.cookie)
     fetchUserEntries(); // Call the function to fetch user entries
     console.log(user);
   }, []);
 
   const updateUser = async () => {
-    // Parse and print specific cookie values
-    console.log("COOKIES")
-    console.log(document.cookie);
-
     let token = localStorage.getItem("access_token");
-    // console.log("token", token);
     if (token) {
       const decodedToken = jwt_decode(token);
-      // console.log("token", decodedToken);
-      const currentTime = Date.now() / 1000; // Convert to seconds
+      const currentTime = Date.now() / 1000;
       if (decodedToken.exp < currentTime) {
         try {
           console.log("about to update access token");
-          const response = await axios.get(
-            "http://localhost:3500/auth/refresh",
-            {
-              withCredentials: true, // Include cookies if needed
-            }
-          );
-          console.log("successfully udpated access token");
-          const newAccessToken = response.data.accessToken;
-          localStorage.setItem("access_token", newAccessToken);
-          token = newAccessToken;
+          const response = await fetch("http://localhost:3500/auth/refresh", {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            credentials: "include",
+          });
+          if (response.ok) {
+            const data = await response.json();
+            const newAccessToken = data.accessToken;
+            localStorage.setItem("access_token", newAccessToken);
+            token = newAccessToken;
+            console.log("successfully updated access token");
+          } else {
+            console.log("failed the refresh token stuff", response.statusText);
+          }
         } catch (error) {
-          console.log("failed the refresh token stuff", error);
+          try {
+            const response = await fetch("http://localhost:3500/auth/logout", {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+              credentials: "include",
+            });
+            console.log("failed logout", error);
+          } catch (err) {
+            console.log("Signout error", err)
+          }
+          navigate("/")
         }
       }
     }
+    
     try {
       const updatedUser = {
         id: user.id,
@@ -137,10 +152,69 @@ const UserDashboard = (props) => {
   };
 
   const fetchUserEntries = async () => {
+    let token = localStorage.getItem("access_token");
+    if (token) {
+      const decodedToken = jwt_decode(token);
+      const currentTime = Date.now() / 1000;
+      if (decodedToken.exp < currentTime) {
+        try {
+          console.log("about to update access token");
+          const response = await fetch("http://localhost:3500/auth/refresh", {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            credentials: "include",
+          });
+          if (response.ok) {
+            const data = await response.json();
+            token = data.accessToken;
+            localStorage.setItem("access_token", token);
+            console.log("successfully updated access token");
+          } else {
+            console.log("failed the refresh token stuff", response.statusText);
+          }
+        } catch (error) {
+          try {
+            const response = await fetch("http://localhost:3500/auth/logout", {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+              credentials: "include",
+            });
+            console.log("failed logout", error);
+          } catch (err) {
+            console.log("Signout error", err)
+          }
+          navigate("/")
+        }
+      }
+    } else {
+      console.log("about to update access token");
+      const response = await fetch("http://localhost:3500/auth/refresh", {
+        method: "GET",
+        credentials: "include",
+      });
+      if (response.ok) {
+        const data = await response.json();
+        token = data.accessToken;
+        localStorage.setItem("access_token", token);
+        console.log("successfully updated access token");
+      } else {
+        console.log("failed the refresh token stuff", response.statusText);
+      }
+    }
+
     try {
       const response = await axios.get(
-        `http://localhost:3500/entries?userID=${user.id}`
-      );
+        `http://localhost:3500/entries?userID=${user.id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          withCredentials: true
+      });
       if (response.status === 200) {
         setUserEntries(response.data);
       } else {

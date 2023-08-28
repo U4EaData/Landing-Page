@@ -56,34 +56,39 @@ const login = asyncHandler(async (req, res) => {
 // @route GET /auth/refresh
 // @access Public - because access token has expired
 const refresh = (req, res) => {
-    const cookies = req.cookies
-    if(!cookies?.jwt) return res.status(401).json({message: 'Unauthorized'})
+    const cookies = req.cookies;
+    if (!cookies?.jwt) return res.status(401).json({ message: 'Unauthorized' }); // error fires right here
 
-    const refreshToken = cookies.jwt
+    const refreshToken = cookies.jwt;
     jwt.verify(
         refreshToken,
         process.env.REFRESH_TOKEN_SECRET,
-        asyncHandler(async (err, decoded) => {
-            if (err) return res.status(403).json({message:'Forbidden'})
+        (err, decoded) => {
+            if (err) return res.status(403).json({ message: 'Forbidden' });
 
-            const foundUser = await User.findOne({ email: decoded.email})
+            User.findOne({ email: decoded.email })
+                .then(foundUser => {
+                    if (!foundUser) return res.status(401).json({ message: 'Unauthorized' });
 
-            if (!foundUser) return res.status(401).json({message: "Unauthorized"})
+                    const accessToken = jwt.sign(
+                        {
+                            UserInfo: {
+                                email: foundUser.email,
+                                fullname: foundUser.fullname
+                            },
+                        },
+                        process.env.ACCESS_TOKEN_SECRET,
+                        { expiresIn: '1m' }
+                    );
+                    res.json({ accessToken });
+                })
+                .catch(error => {
+                    res.status(500).json({ message: 'Internal Server Error' });
+                });
+        }
+    );
+};
 
-            const accessToken = jwt.sign(
-                {
-                    "UserInfo": {
-                        "email": foundUser.email,
-                        "fullname":foundUser.fullname
-                    },
-                },
-                process.env.ACCESS_TOKEN_SECRET,
-                { expiresIn: '1m'}
-            )
-            res.json({accessToken})
-        })
-    )
-}
 
 // @desc Logout
 // @route POST /auth/logout
@@ -91,7 +96,11 @@ const refresh = (req, res) => {
 const logout = (req, res) => {
     const cookies = req.cookies
     if (!cookies?.jwt) return res.sendStatus(204) //No content
-    res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure:true})
+    res.clearCookie('jwt', { 
+        httpOnly: true, 
+        // sameSite: 'None', 
+        secure:false
+    })
     res.json({message: 'Cookie cleared'}) // by default a 200 status msg
 }
 

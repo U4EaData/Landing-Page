@@ -14,6 +14,7 @@ import appClasses from "../../App.module.css";
 import { useNavigate } from "react-router-dom";
 import CanvasWave from '../canvas-wave/CanvasWave'
 import axios from 'axios';
+import jwt_decode from "jwt-decode";
 
 function BinauralBeats(props) {
   const [feel, setFeel] = useState("");
@@ -103,6 +104,47 @@ function BinauralBeats(props) {
     const storedUser = localStorage.getItem("u4ea-user");
     console.log("inside method")
     if (storedUser) {
+      let token = localStorage.getItem("access_token");
+      if (token) {
+        const decodedToken = jwt_decode(token);
+        const currentTime = Date.now() / 1000;
+        if (decodedToken.exp < currentTime) {
+          try {
+            console.log("about to update access token");
+            const response = await fetch("http://localhost:3500/auth/refresh", {
+              method: "GET",
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+              credentials: "include",
+            });
+            if (response.ok) {
+              const data = await response.json();
+              const newAccessToken = data.accessToken;
+              localStorage.setItem("access_token", newAccessToken);
+              token = newAccessToken;
+              console.log("successfully updated access token");
+            } else {
+              console.log("failed the refresh token stuff", response.statusText);
+            }
+          } catch (error) {
+            try {
+              const response = await fetch("http://localhost:3500/auth/logout", {
+                method: "POST",
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+                credentials: "include",
+              });
+              console.log("failed logout", error);
+            } catch (err) {
+              console.log("Signout error", err)
+            }
+            localStorage.clear();
+            navigate("/")
+          }
+        }
+      }
       const parsedUser = JSON.parse(storedUser);
       const userID = parsedUser.id;
       try {
@@ -115,6 +157,10 @@ function BinauralBeats(props) {
           feel: feel,
           boost: boost,
           thingDuring: thingDuring
+        }, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         });
         console.log(response)
         console.log("successful")
