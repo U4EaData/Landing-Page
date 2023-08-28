@@ -92,6 +92,9 @@ function BinauralBeats(props) {
     oscillator2.current.start();
   };
   const postToDB = async (startTime, endTime, feel, boost, thingDuring) => {
+    if(endTime.getTime() - startTime.getTime() < 1000) { // needs to be at least a second to get posted to DB
+      return;
+    }
     setStartTime(null)
     const storedUser = localStorage.getItem("u4ea-user");
     console.log("inside method")

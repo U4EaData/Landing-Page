@@ -322,7 +322,7 @@ const UserDashboard = (props) => {
           <div className={userClasses.smallContainerBig}>
             <div>
               <span className={userClasses.userName}>
-                {userEntries.length > 0 ? `Moods: ${currGraph}` : "Moods"}
+                {userEntries.length > 0 ? ((currGraph === "thingDuring") ? "Moods: Action":`Moods: ${currGraph}`) : "Moods"}
               </span>
               {userEntries.length > 0 && (
                 <div className={userClasses.arrowButtonContainer}>
