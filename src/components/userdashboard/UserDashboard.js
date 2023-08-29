@@ -18,7 +18,7 @@ import axios from "axios";
 import jwt_decode from "jwt-decode"; // Import the jwt_decode library
 
 const UserDashboard = (props) => {
-  // user object is also in props, gonna just use the one in local storage for now
+  // user object is also in props, gonna just use the one in local storage
   const navigate = useNavigate();
   const getUser = localStorage.getItem("u4ea-user");
   const [user, setUser] = useState(JSON.parse(getUser) || []);
@@ -32,27 +32,22 @@ const UserDashboard = (props) => {
 
   useEffect(() => {
     const titleTimeout = setTimeout(() => {
-      console.log("Edited Title:", editedTitle);
       updateUser();
     }, 2000);
 
     const quoteTimeout = setTimeout(() => {
-      console.log("Edited Quote:", editedQuote);
       updateUser();
     }, 2000);
 
     const locationTimeout = setTimeout(() => {
-      console.log("Edited Location:", editedLocation);
       updateUser();
     }, 2000);
 
     const genderTimeout = setTimeout(() => {
-      console.log("Edited Gender:", editedGender);
       updateUser();
     }, 2000);
 
     const emailTimeout = setTimeout(() => {
-      console.log("Edited Email:", editedEmail);
       updateUser();
     }, 2000);
 
@@ -67,7 +62,6 @@ const UserDashboard = (props) => {
 
   useEffect(() => {
     fetchUserEntries();
-    console.log(user);
   }, []);
 
   const updateUser = async () => {
@@ -77,7 +71,6 @@ const UserDashboard = (props) => {
       const currentTime = Date.now() / 1000;
       if (decodedToken.exp < currentTime) {
         try {
-          console.log("about to update access token");
           const response = await fetch("http://localhost:3500/auth/refresh", {
             method: "GET",
             headers: {
@@ -90,7 +83,6 @@ const UserDashboard = (props) => {
             const newAccessToken = data.accessToken;
             localStorage.setItem("access_token", newAccessToken);
             token = newAccessToken;
-            console.log("successfully updated access token");
           } else {
             navigate('/')
             props.signout()
@@ -134,6 +126,7 @@ const UserDashboard = (props) => {
           },
         }
       );
+      console.log("updated user")
       setUser(updatedUser);
       localStorage.setItem("u4ea-user", JSON.stringify(updatedUser));
     } catch (error) {
@@ -148,7 +141,6 @@ const UserDashboard = (props) => {
       const currentTime = Date.now() / 1000;
       if (decodedToken.exp < currentTime) {
         try {
-          console.log("about to update access token");
           const response = await fetch("http://localhost:3500/auth/refresh", {
             method: "GET",
             headers: {
@@ -160,7 +152,6 @@ const UserDashboard = (props) => {
             const data = await response.json();
             token = data.accessToken;
             localStorage.setItem("access_token", token);
-            console.log("successfully updated access token");
           } else {
             console.log("failed the refresh token stuff", response.statusText);
           }
@@ -181,7 +172,6 @@ const UserDashboard = (props) => {
         }
       }
     } else {
-      console.log("about to update access token");
       const response = await fetch("http://localhost:3500/auth/refresh", {
         method: "GET",
         credentials: "include",
@@ -190,7 +180,6 @@ const UserDashboard = (props) => {
         const data = await response.json();
         token = data.accessToken;
         localStorage.setItem("access_token", token);
-        console.log("successfully updated access token");
       } else {
         console.log("failed the refresh token stuff", response.statusText);
       }
@@ -207,12 +196,10 @@ const UserDashboard = (props) => {
       });
       if (response.status === 200) {
         setUserEntries(response.data);
-      } else {
-        console.log("Received a response, but not a success");
       }
     } catch (error) {
       if (error.response && error.response.status === 400) {
-        console.log("No entries found for the user");
+        console.log("No entries found for the user"); // userEntries will just remain empty, and that case is handled in the rendering code
       } else {
         console.error("Error fetching user entries:", error);
       }
@@ -228,7 +215,6 @@ const UserDashboard = (props) => {
         } else if (currGraph === "Boost") {
           setCurrGraph("Feel");
         } else {
-          // we're on thingDuring
           setCurrGraph("Boost");
         }
       } else if (direction === "right") {
@@ -238,7 +224,6 @@ const UserDashboard = (props) => {
         } else if (currGraph === "Boost") {
           setCurrGraph("thingDuring");
         } else {
-          // we're on thingDuring
           setCurrGraph("Feel");
         }
       }

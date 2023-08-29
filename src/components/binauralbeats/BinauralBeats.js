@@ -27,7 +27,6 @@ function BinauralBeats(props) {
   const [freq2, setFreq2] = useState(0);
   const [playPauseText, setPlayPauseText] = useState("Play");
   const [icon, setIcon] = useState(faPlay);
-  const [pageVisible, setPageVisible] = useState(true);
   const [copied, setCopied] = useState(false);
   const [copyBtnText, setCopyBtnText] = useState("Copy Settings");
   const location = useLocation();
@@ -52,7 +51,6 @@ function BinauralBeats(props) {
     const oldFeel = feel;
     const oldBoost = boost;
     const oldThingDuring = thingDuring;
-    console.log("new potential frequency1 value:", e.target.value);
     setPotF1(e.target.value);
     setCopied(false);
     setFeel("Other");
@@ -67,7 +65,6 @@ function BinauralBeats(props) {
     const oldFeel = feel;
     const oldBoost = boost;
     const oldThingDuring = thingDuring;
-    console.log("new potential frequency2 value:", e.target.value);
     setPotF2(e.target.value);
     setCopied(false);
     setFeel("Other");
@@ -80,21 +77,18 @@ function BinauralBeats(props) {
 
   const onFeelChange = (newFeel) => {
     const oldFeel = feel;
-    console.log(`Feel changed to ${newFeel}`);
     setCopied(false);
     setFeel(newFeel);
     stopPlaying(oldFeel, boost, thingDuring);
   };
   const onBoostChange = (newBoost) => {
     const oldBoost = boost;
-    console.log(`Boost changed to ${newBoost}`);
     setCopied(false);
     setBoost(newBoost);
     stopPlaying(feel, oldBoost, thingDuring);
   };
   const onThingDuringChange = (newTD) => {
     const oldTD = thingDuring;
-    console.log(`TD changed to ${newTD}`);
     setCopied(false);
     setThingDuring(newTD);
     stopPlaying(feel, boost, oldTD);
@@ -107,7 +101,6 @@ function BinauralBeats(props) {
   };
   const binauralBeat = () => {
     setFrequencies();
-    
     // Making the AudioContext if it's not already available
     audioContext.current = new (window.AudioContext ||
       window.webkitAudioContext)();
@@ -138,11 +131,9 @@ function BinauralBeats(props) {
     oscillator1.current.start();
     oscillator2.current.start();
   };
-  const binauralBeatCustomFreqs = (freq1, freq2) => {
-    // Making the AudioContext if it's not already available
+  const binauralBeatCustomFreqs = (freq1, freq2) => { // could refactor this with the prev method pretty easily
     audioContext.current = new (window.AudioContext ||
       window.webkitAudioContext)();
-    // Making the oscillators and set their type and frequency
     oscillator1.current = audioContext.current.createOscillator();
     oscillator1.current.type = "sine";
     oscillator1.current.frequency.setValueAtTime(
@@ -155,53 +146,18 @@ function BinauralBeats(props) {
       freq2,
       audioContext.current.currentTime
     );
-    // Making the panners and set their positions
     const panner1 = audioContext.current.createStereoPanner();
     panner1.pan.setValueAtTime(1, audioContext.current.currentTime); // Left ear (pan value from -1 to 1)
     const panner2 = audioContext.current.createStereoPanner();
     panner2.pan.setValueAtTime(-1, audioContext.current.currentTime); // Right ear (pan value from -1 to 1)
-    // Connecting the nodes
     oscillator1.current.connect(panner1);
     panner1.connect(audioContext.current.destination);
     oscillator2.current.connect(panner2);
     panner2.connect(audioContext.current.destination);
-    // Starting the oscillators
     oscillator1.current.start();
     oscillator2.current.start();
   };
-
-  const updateAccessToken = async () => {
-    try {
-      console.log("about to update access token");
-      const response = await fetch("http://localhost:3500/auth/refresh", {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        credentials: "include",
-      });
-      if (response.ok) {
-        const data = await response.json();
-        const newAccessToken = data.accessToken;
-        localStorage.setItem("access_token", newAccessToken);
-        console.log("successfully updated access token");
-      } else {
-        navigate("/");
-        props.signout();
-        console.log("failed the refresh token stuff", response.statusText);
-        return;
-      }
-    } catch (error) {
-      navigate("/");
-      props.signout();
-      return;
-    }
-  }
   const postToDB = async (startTime, endTime, feel, boost, thingDuring) => {
-    console.log("local storage stuff")
-    console.log(localStorage.getItem("u4ea-user"))
-    console.log(localStorage.getItem("access_token"))
-    console.log("--------------------------------")
     setStartTime(null);
     if (endTime.getTime() - startTime.getTime() < 1000) {
       // needs to be at least a second to get posted to DB
@@ -212,14 +168,12 @@ function BinauralBeats(props) {
       console.log("No user so not posting")
       return;
     }
-    console.log("inside method");
     let token = localStorage.getItem("access_token");
     if (token) {
       const decodedToken = jwt_decode(token);
       const currentTime = Date.now() / 1000;
       if (decodedToken.exp < currentTime) {
         try {
-          console.log("about to update access token");
           const response = await fetch("http://localhost:3500/auth/refresh", {
             method: "GET",
             headers: {
@@ -232,7 +186,6 @@ function BinauralBeats(props) {
             const newAccessToken = data.accessToken;
             localStorage.setItem("access_token", newAccessToken);
             token = newAccessToken;
-            console.log("successfully updated access token");
           } else {
             navigate("/");
             props.signout();
@@ -246,12 +199,9 @@ function BinauralBeats(props) {
         }
       }
     }
-    console.log("access token", token)
     const parsedUser = JSON.parse(storedUser);
     const userID = parsedUser.id;
     try {
-      console.log("in the try");
-      console.log(userID, startTime, endTime, feel, boost, thingDuring);
       const response = await axios.post(
         "http://localhost:3500/entries",
         {
@@ -268,13 +218,10 @@ function BinauralBeats(props) {
           },
         }
       );
-      console.log(response);
-      console.log("successful");
+      console.log("Posted to database")
     } catch (error) {
-      console.log("Error posting to DB");
       console.error(error);
     }
-    console.log("made it past");
   };
 
   const stopPlaying = (feel, boost, thingDuring) => {
@@ -288,19 +235,14 @@ function BinauralBeats(props) {
     if (oscillator1.current && oscillator2.current) {
       oscillator1.current.stop();
       oscillator2.current.stop();
-      console.log("INSIDE THE STOP");
       postToDB(startTime, new Date(), feel, boost, thingDuring);
     }
   };
   const playFrequencies = () => {
-    console.log("Cats: ", cats)
-    console.log("Playing", playing)
     if (!cats) {
-      console.log("no cats")
       if (!playing) {
         let intF1 = parseInt(potF1)
         let intF2 = parseInt(potF2)
-        console.log("ints", intF1, intF2)
         if (
           potF1 !== "0" &&
           potF2 !== "0" &&
@@ -311,7 +253,6 @@ function BinauralBeats(props) {
           intF2 <= 100 &&
           intF2 >= -100
         ) {
-          console.log("should be playing right now")
           setPlaying(true);
           setFreq1(intF1);
           setFreq2(intF2);
@@ -320,11 +261,9 @@ function BinauralBeats(props) {
           setStartTime(new Date());
           binauralBeatCustomFreqs(intF1, intF2)
         } else {
-          console.log("in the else")
           alert("Invalid input")
         }
       } else {
-        console.log("Posting to DB")
         setPlaying(false);
         setVisF1(0);
         setVisF2(0);
@@ -353,7 +292,7 @@ function BinauralBeats(props) {
         setVisF1(parseInt(freq1) * 4);
         setVisF2(parseInt(freq2) * 4);
         console.log(
-          `FREQUENCY 1: ${freq1}, FREQUENCY 2: ${freq2}, VISF1: ${visF1}, VISF2: ${visF2}`
+          `FREQUENCY 1: ${freq1}, FREQUENCY 2: ${freq2}, VISF1: ${parseInt(freq1) * 4}, VISF2: ${parseInt(freq2) * 4}`
         );
         setStartTime(new Date());
       } else {
@@ -402,7 +341,6 @@ function BinauralBeats(props) {
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const encodedState = params.get("settings");
-    // updateAccessToken()
     if (encodedState) {
       try {
         const decodedState = JSON.parse(decodeURIComponent(encodedState));
