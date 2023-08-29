@@ -1,6 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Nunito:wght@200&display=swap');
 
+.purpleSwitch {
+  transform: scale(3); /* Increase the size of the switch */
+  margin-right: 0.5rem; /* Add some spacing after the switch */
+}
+
+.switchContainer {
+  padding-top: 10vh;
+  padding-bottom: 5vh;
+}
+
+/* Style for the input container */
+.stack {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0vh 0; /* Adjust as needed */
+  background-color: transparent; /* Transparent background */
+}
+
+.stack input[type="text"] {
+  width: 360px; /* Set the desired width */
+  padding: 5px;
+  margin: 5vh;
+  border: none;
+  border-bottom: 2px solid #8034f6; /* Underline in purple */
+  background-color: transparent; /* Transparent background */
+  color: #8034f6; /* Purple text color */
+  font-size: 24px; /* Adjust font size as needed */
+  font-family: 'Abril Fatface', cursive !important;
+  text-align: center;
+}
 .wave {
   /* border: 2px solid black; */
   display: flex;

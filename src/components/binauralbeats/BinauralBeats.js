@@ -15,12 +15,13 @@ import { useNavigate } from "react-router-dom";
 import CanvasWave from "../canvas-wave/CanvasWave";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import Form from "react-bootstrap/Form";
 
 function BinauralBeats(props) {
   const navigate = useNavigate();
-  const [feel, setFeel] = useState("");
-  const [boost, setBoost] = useState("");
-  const [thingDuring, setThingDuring] = useState("");
+  const [feel, setFeel] = useState("Other");
+  const [boost, setBoost] = useState("Other");
+  const [thingDuring, setThingDuring] = useState("Other");
   const [playing, setPlaying] = useState(false);
   const [freq1, setFreq1] = useState(0);
   const [freq2, setFreq2] = useState(0);
@@ -33,6 +34,9 @@ function BinauralBeats(props) {
   const [visF1, setVisF1] = useState(0);
   const [visF2, setVisF2] = useState(0);
   const [startTime, setStartTime] = useState(null);
+  const [cats, setCats] = useState(true);
+  const [potF1, setPotF1] = useState("0");
+  const [potF2, setPotF2] = useState("0");
 
   const audioContext = useRef(null);
   const oscillator1 = useRef(null);
@@ -40,6 +44,39 @@ function BinauralBeats(props) {
 
   // const osc = useRef(null);
   // const osc2 = useRef(null);
+  const toggleSwitch = () => {
+    setCats((cats) => !cats);
+  };
+
+  const onPotF1Change = (e) => {
+    const oldFeel = feel;
+    const oldBoost = boost;
+    const oldThingDuring = thingDuring;
+    console.log("new potential frequency1 value:", e.target.value);
+    setPotF1(e.target.value);
+    setCopied(false);
+    setFeel("Other");
+    setBoost("Other");
+    setThingDuring("Other");
+    if (playing) {
+      stopPlaying(oldFeel, oldBoost, oldThingDuring);
+    }
+  };
+
+  const onPotF2Change = (e) => {
+    const oldFeel = feel;
+    const oldBoost = boost;
+    const oldThingDuring = thingDuring;
+    console.log("new potential frequency2 value:", e.target.value);
+    setPotF2(e.target.value);
+    setCopied(false);
+    setFeel("Other");
+    setBoost("Other");
+    setThingDuring("Other");
+    if (playing) {
+      stopPlaying(oldFeel, oldBoost, oldThingDuring);
+    }
+  };
 
   const onFeelChange = (newFeel) => {
     const oldFeel = feel;
@@ -70,6 +107,7 @@ function BinauralBeats(props) {
   };
   const binauralBeat = () => {
     setFrequencies();
+    
     // Making the AudioContext if it's not already available
     audioContext.current = new (window.AudioContext ||
       window.webkitAudioContext)();
@@ -100,13 +138,78 @@ function BinauralBeats(props) {
     oscillator1.current.start();
     oscillator2.current.start();
   };
+  const binauralBeatCustomFreqs = (freq1, freq2) => {
+    // Making the AudioContext if it's not already available
+    audioContext.current = new (window.AudioContext ||
+      window.webkitAudioContext)();
+    // Making the oscillators and set their type and frequency
+    oscillator1.current = audioContext.current.createOscillator();
+    oscillator1.current.type = "sine";
+    oscillator1.current.frequency.setValueAtTime(
+      freq1,
+      audioContext.current.currentTime
+    );
+    oscillator2.current = audioContext.current.createOscillator();
+    oscillator2.current.type = "sine";
+    oscillator2.current.frequency.setValueAtTime(
+      freq2,
+      audioContext.current.currentTime
+    );
+    // Making the panners and set their positions
+    const panner1 = audioContext.current.createStereoPanner();
+    panner1.pan.setValueAtTime(1, audioContext.current.currentTime); // Left ear (pan value from -1 to 1)
+    const panner2 = audioContext.current.createStereoPanner();
+    panner2.pan.setValueAtTime(-1, audioContext.current.currentTime); // Right ear (pan value from -1 to 1)
+    // Connecting the nodes
+    oscillator1.current.connect(panner1);
+    panner1.connect(audioContext.current.destination);
+    oscillator2.current.connect(panner2);
+    panner2.connect(audioContext.current.destination);
+    // Starting the oscillators
+    oscillator1.current.start();
+    oscillator2.current.start();
+  };
+
+  const updateAccessToken = async () => {
+    try {
+      console.log("about to update access token");
+      const response = await fetch("http://localhost:3500/auth/refresh", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        credentials: "include",
+      });
+      if (response.ok) {
+        const data = await response.json();
+        const newAccessToken = data.accessToken;
+        localStorage.setItem("access_token", newAccessToken);
+        console.log("successfully updated access token");
+      } else {
+        navigate("/");
+        props.signout();
+        console.log("failed the refresh token stuff", response.statusText);
+        return;
+      }
+    } catch (error) {
+      navigate("/");
+      props.signout();
+      return;
+    }
+  }
   const postToDB = async (startTime, endTime, feel, boost, thingDuring) => {
+    console.log("local storage stuff")
+    console.log(localStorage.getItem("u4ea-user"))
+    console.log(localStorage.getItem("access_token"))
+    console.log("--------------------------------")
     setStartTime(null);
-    if (endTime.getTime() - startTime.getTime() < 1000) { // needs to be at least a second to get posted to DB
+    if (endTime.getTime() - startTime.getTime() < 1000) {
+      // needs to be at least a second to get posted to DB
       return;
     }
     const storedUser = localStorage.getItem("u4ea-user");
     if (!storedUser) {
+      console.log("No user so not posting")
       return;
     }
     console.log("inside method");
@@ -143,6 +246,7 @@ function BinauralBeats(props) {
         }
       }
     }
+    console.log("access token", token)
     const parsedUser = JSON.parse(storedUser);
     const userID = parsedUser.id;
     try {
@@ -188,10 +292,62 @@ function BinauralBeats(props) {
       postToDB(startTime, new Date(), feel, boost, thingDuring);
     }
   };
-
   const playFrequencies = () => {
+    console.log("Cats: ", cats)
+    console.log("Playing", playing)
+    if (!cats) {
+      console.log("no cats")
+      if (!playing) {
+        let intF1 = parseInt(potF1)
+        let intF2 = parseInt(potF2)
+        console.log("ints", intF1, intF2)
+        if (
+          potF1 !== "0" &&
+          potF2 !== "0" &&
+          !isNaN(intF1) &&
+          !isNaN(intF2) &&
+          intF1 >= -100 && 
+          intF1 <= 100 &&
+          intF2 <= 100 &&
+          intF2 >= -100
+        ) {
+          console.log("should be playing right now")
+          setPlaying(true);
+          setFreq1(intF1);
+          setFreq2(intF2);
+          setVisF1(intF1 * 4);
+          setVisF2(intF2 * 4);
+          setStartTime(new Date());
+          binauralBeatCustomFreqs(intF1, intF2)
+        } else {
+          console.log("in the else")
+          alert("Invalid input")
+        }
+      } else {
+        console.log("Posting to DB")
+        setPlaying(false);
+        setVisF1(0);
+        setVisF2(0);
+        oscillator1.current.stop();
+        oscillator2.current.stop();
+        postToDB(startTime, new Date(), feel, boost, thingDuring);
+        audioContext.current
+          .close()
+          .catch((error) =>
+            console.error("Error closing AudioContext:", error)
+          );
+      }
+      return;
+    }
     if (!playing) {
-      if (feel !== "" && boost !== "" && thingDuring !== "") {
+      if (
+        feel !== "" &&
+        boost !== "" &&
+        thingDuring !== "" &&
+        feel !== "Other" &&
+        boost !== "Other" &&
+        thingDuring !== "Other"
+      ) {
         setPlaying(true);
         binauralBeat();
         setVisF1(parseInt(freq1) * 4);
@@ -209,10 +365,10 @@ function BinauralBeats(props) {
       setVisF2(0);
       oscillator1.current.stop();
       oscillator2.current.stop();
+      postToDB(startTime, new Date(), feel, boost, thingDuring);
       audioContext.current
         .close()
         .catch((error) => console.error("Error closing AudioContext:", error));
-      postToDB(startTime, new Date(), feel, boost, thingDuring);
     }
   };
 
@@ -246,12 +402,25 @@ function BinauralBeats(props) {
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const encodedState = params.get("settings");
+    // updateAccessToken()
     if (encodedState) {
       try {
         const decodedState = JSON.parse(decodeURIComponent(encodedState));
         setFeel(decodedState.feel);
         setBoost(decodedState.boost);
         setThingDuring(decodedState.thingDuring);
+      } catch (error) {
+        console.error("Error decoding state from URL:", error);
+      }
+      return
+    }
+    const encodedStateII = params.get("freqsettings");
+    if (encodedStateII) {
+      try {
+        const decodedState = JSON.parse(decodeURIComponent(encodedStateII));
+        setPotF1(decodedState.potF1);
+        setPotF2(decodedState.potF2);
+        toggleSwitch()
       } catch (error) {
         console.error("Error decoding state from URL:", error);
       }
@@ -339,11 +508,19 @@ function BinauralBeats(props) {
   };
 
   const shareSettings = () => {
-    const serializedState = JSON.stringify({ feel, boost, thingDuring });
-    const encodedState = encodeURIComponent(serializedState);
-    const shareableLink = `${window.location.origin}${location.pathname}?settings=${encodedState}`;
-    setCopied(true);
-    navigator.clipboard.writeText(shareableLink);
+    if (cats) {
+      const serializedState = JSON.stringify({ feel, boost, thingDuring });
+      const encodedState = encodeURIComponent(serializedState);
+      const shareableLink = `${window.location.origin}${location.pathname}?settings=${encodedState}`;
+      setCopied(true);
+      navigator.clipboard.writeText(shareableLink);
+    } else {
+      const serializedState = JSON.stringify({ potF1, potF2 });
+      const encodedState = encodeURIComponent(serializedState);
+      const shareableLink = `${window.location.origin}${location.pathname}?freqsettings=${encodedState}`;
+      setCopied(true);
+      navigator.clipboard.writeText(shareableLink);
+    }
   };
 
   return (
@@ -352,235 +529,266 @@ function BinauralBeats(props) {
         <Row
           className={`${appClasses.mobileflex} ${classes.bbgFlexContainer} align-items-center`}
         >
-          <Row className={classes.givepadding} />
+          <div onClick={toggleSwitch} className={classes.switchContainer}>
+            <Form.Check
+              type="switch"
+              id="custom-switch"
+              checked={cats}
+              onChange={() => {}}
+              className={`${classes.switch} ${cats ? classes.active : ""}`}
+            />
+          </div>
           <Row className={classes.nogutters}>
-            <div className={classes.stack}>
-              <Col>
-                <p className={classes.centertext}>I want to feel</p>
-              </Col>
-              <Col>
-                <div className={classes.newdropdown}>
-                  <button className={classes.link}>{feel || "Select"}</button>
-                  <div
-                    className={classes.newdropdownmenu}
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <button
-                      className={classes.dropdownoption}
-                      onClick={() => {
-                        onFeelChange("Oneness");
-                      }}
-                    >
-                      Oneness
+            {cats ? (
+              <div className={classes.stack}>
+                <Col>
+                  <p className={classes.centertext}>I want to feel</p>
+                </Col>
+                <Col>
+                  <div className={classes.newdropdown}>
+                    <button className={classes.link}>
+                      {feel !== "Other" && feel !== "" ? feel : "Select"}
                     </button>
-                    <button
-                      className={classes.dropdownoption}
-                      onClick={() => {
-                        onFeelChange("Intuitive");
-                      }}
+                    <div
+                      className={classes.newdropdownmenu}
+                      onClick={(e) => e.stopPropagation()}
                     >
-                      Intuitive
-                    </button>
-                    <button
-                      className={classes.dropdownoption}
-                      onClick={() => {
-                        onFeelChange("Resolved");
-                      }}
-                    >
-                      Resolved
-                    </button>
-                    <button
-                      className={classes.dropdownoption}
-                      onClick={() => {
-                        onFeelChange("Harmonious");
-                      }}
-                    >
-                      Harmonious
-                    </button>
-                    <button
-                      className={classes.dropdownoption}
-                      onClick={() => {
-                        onFeelChange("Miraculous");
-                      }}
-                    >
-                      Miraculous
-                    </button>
-                    <button
-                      className={classes.dropdownoption}
-                      onClick={() => {
-                        onFeelChange("Cleansed");
-                      }}
-                    >
-                      Cleansed
-                    </button>
-                    <button
-                      className={classes.dropdownoption}
-                      onClick={() => {
-                        onFeelChange("Liberation");
-                      }}
-                    >
-                      Liberation
-                    </button>
+                      <button
+                        className={classes.dropdownoption}
+                        onClick={() => {
+                          onFeelChange("Oneness");
+                        }}
+                      >
+                        Oneness
+                      </button>
+                      <button
+                        className={classes.dropdownoption}
+                        onClick={() => {
+                          onFeelChange("Intuitive");
+                        }}
+                      >
+                        Intuitive
+                      </button>
+                      <button
+                        className={classes.dropdownoption}
+                        onClick={() => {
+                          onFeelChange("Resolved");
+                        }}
+                      >
+                        Resolved
+                      </button>
+                      <button
+                        className={classes.dropdownoption}
+                        onClick={() => {
+                          onFeelChange("Harmonious");
+                        }}
+                      >
+                        Harmonious
+                      </button>
+                      <button
+                        className={classes.dropdownoption}
+                        onClick={() => {
+                          onFeelChange("Miraculous");
+                        }}
+                      >
+                        Miraculous
+                      </button>
+                      <button
+                        className={classes.dropdownoption}
+                        onClick={() => {
+                          onFeelChange("Cleansed");
+                        }}
+                      >
+                        Cleansed
+                      </button>
+                      <button
+                        className={classes.dropdownoption}
+                        onClick={() => {
+                          onFeelChange("Liberation");
+                        }}
+                      >
+                        Liberation
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </Col>
-              <Col>
-                <p className={classes.centertext}>and boost</p>
-              </Col>
-              <Col>
-                <div className={classes.newdropdown}>
-                  <button className={classes.link}>{boost || "Select"}</button>
-                  <div
-                    className={classes.newdropdownmenu}
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <button
-                      className={classes.dropdownoption}
-                      onClick={() => {
-                        onBoostChange("Vitality");
-                      }}
-                    >
-                      Vitality
+                </Col>
+                <Col>
+                  <p className={classes.centertext}>and boost</p>
+                </Col>
+                <Col>
+                  <div className={classes.newdropdown}>
+                    <button className={classes.link}>
+                      {boost !== "Other" && boost !== "" ? boost : "Select"}
                     </button>
-                    <button
-                      className={classes.dropdownoption}
-                      onClick={() => {
-                        onBoostChange("Creativity");
-                      }}
+                    <div
+                      className={classes.newdropdownmenu}
+                      onClick={(e) => e.stopPropagation()}
                     >
-                      Creativity
-                    </button>
-                    <button
-                      className={classes.dropdownoption}
-                      onClick={() => {
-                        onBoostChange("Will-Power");
-                      }}
-                    >
-                      Will-Power
-                    </button>
-                    <button
-                      className={classes.dropdownoption}
-                      onClick={() => {
-                        onBoostChange("Love");
-                      }}
-                    >
-                      Love
-                    </button>
-                    <button
-                      className={classes.dropdownoption}
-                      onClick={() => {
-                        onBoostChange("Self-Expression");
-                      }}
-                    >
-                      Self-Expression
-                    </button>
-                    <button
-                      className={classes.dropdownoption}
-                      onClick={() => {
-                        onBoostChange("Focus");
-                      }}
-                    >
-                      Focus
-                    </button>
-                    <button
-                      className={classes.dropdownoption}
-                      onClick={() => {
-                        onBoostChange("Consciousness");
-                      }}
-                    >
-                      Consciousness
-                    </button>
-                    <button
-                      className={classes.dropdownoption}
-                      onClick={() => {
-                        onBoostChange("Pain Relief");
-                      }}
-                    >
-                      Pain Relief
-                    </button>
-                    <button
-                      className={classes.dropdownoption}
-                      onClick={() => {
-                        onBoostChange("Cure-All");
-                      }}
-                    >
-                      Cure-All
-                    </button>
-                    <button
-                      className={classes.dropdownoption}
-                      onClick={() => {
-                        onBoostChange("Vigor");
-                      }}
-                    >
-                      Vigor
-                    </button>
-                    <button
-                      className={classes.dropdownoption}
-                      onClick={() => {
-                        onBoostChange("Rejuvenation");
-                      }}
-                    >
-                      Rejuvenation
-                    </button>
+                      <button
+                        className={classes.dropdownoption}
+                        onClick={() => {
+                          onBoostChange("Vitality");
+                        }}
+                      >
+                        Vitality
+                      </button>
+                      <button
+                        className={classes.dropdownoption}
+                        onClick={() => {
+                          onBoostChange("Creativity");
+                        }}
+                      >
+                        Creativity
+                      </button>
+                      <button
+                        className={classes.dropdownoption}
+                        onClick={() => {
+                          onBoostChange("Will-Power");
+                        }}
+                      >
+                        Will-Power
+                      </button>
+                      <button
+                        className={classes.dropdownoption}
+                        onClick={() => {
+                          onBoostChange("Love");
+                        }}
+                      >
+                        Love
+                      </button>
+                      <button
+                        className={classes.dropdownoption}
+                        onClick={() => {
+                          onBoostChange("Self-Expression");
+                        }}
+                      >
+                        Self-Expression
+                      </button>
+                      <button
+                        className={classes.dropdownoption}
+                        onClick={() => {
+                          onBoostChange("Focus");
+                        }}
+                      >
+                        Focus
+                      </button>
+                      <button
+                        className={classes.dropdownoption}
+                        onClick={() => {
+                          onBoostChange("Consciousness");
+                        }}
+                      >
+                        Consciousness
+                      </button>
+                      <button
+                        className={classes.dropdownoption}
+                        onClick={() => {
+                          onBoostChange("Pain Relief");
+                        }}
+                      >
+                        Pain Relief
+                      </button>
+                      <button
+                        className={classes.dropdownoption}
+                        onClick={() => {
+                          onBoostChange("Cure-All");
+                        }}
+                      >
+                        Cure-All
+                      </button>
+                      <button
+                        className={classes.dropdownoption}
+                        onClick={() => {
+                          onBoostChange("Vigor");
+                        }}
+                      >
+                        Vigor
+                      </button>
+                      <button
+                        className={classes.dropdownoption}
+                        onClick={() => {
+                          onBoostChange("Rejuvenation");
+                        }}
+                      >
+                        Rejuvenation
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </Col>
-              <Col>
-                <p className={classes.centertext}>while I</p>
-              </Col>
-              <Col>
-                <div className={classes.newdropdown}>
-                  <button className={classes.link}>
-                    {thingDuring || "Select"}
-                  </button>
-                  <div
-                    className={classes.newdropdownmenu}
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <button
-                      className={classes.dropdownoption}
-                      onClick={() => {
-                        onThingDuringChange("Self-Motivate");
-                      }}
-                    >
-                      Self Motivate
+                </Col>
+                <Col>
+                  <p className={classes.centertext}>while I</p>
+                </Col>
+                <Col>
+                  <div className={classes.newdropdown}>
+                    <button className={classes.link}>
+                      {thingDuring !== "Other" && thingDuring !== ""
+                        ? thingDuring
+                        : "Select"}
                     </button>
-                    <button
-                      className={classes.dropdownoption}
-                      onClick={() => {
-                        onThingDuringChange("Improve-Mood");
-                      }}
+                    <div
+                      className={classes.newdropdownmenu}
+                      onClick={(e) => e.stopPropagation()}
                     >
-                      Improve my Mood
-                    </button>
-                    <button
-                      className={classes.dropdownoption}
-                      onClick={() => {
-                        onThingDuringChange("Meditate");
-                      }}
-                    >
-                      Mediate
-                    </button>
-                    <button
-                      className={classes.dropdownoption}
-                      onClick={() => {
-                        onThingDuringChange("Relax");
-                      }}
-                    >
-                      Relax
-                    </button>
-                    <button
-                      className={classes.dropdownoption}
-                      onClick={() => {
-                        onThingDuringChange("Sleep");
-                      }}
-                    >
-                      Sleep
-                    </button>
+                      <button
+                        className={classes.dropdownoption}
+                        onClick={() => {
+                          onThingDuringChange("Self-Motivate");
+                        }}
+                      >
+                        Self Motivate
+                      </button>
+                      <button
+                        className={classes.dropdownoption}
+                        onClick={() => {
+                          onThingDuringChange("Improve-Mood");
+                        }}
+                      >
+                        Improve my Mood
+                      </button>
+                      <button
+                        className={classes.dropdownoption}
+                        onClick={() => {
+                          onThingDuringChange("Meditate");
+                        }}
+                      >
+                        Mediate
+                      </button>
+                      <button
+                        className={classes.dropdownoption}
+                        onClick={() => {
+                          onThingDuringChange("Relax");
+                        }}
+                      >
+                        Relax
+                      </button>
+                      <button
+                        className={classes.dropdownoption}
+                        onClick={() => {
+                          onThingDuringChange("Sleep");
+                        }}
+                      >
+                        Sleep
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </Col>
-            </div>
+                </Col>
+              </div>
+            ) : (
+              <div className={classes.stack}>
+                <input
+                  type="text"
+                  placeholder="Left frequency (-100 - 100)"
+                  value={potF1 == "0" ? "" : potF1}
+                  onChange={(e) => onPotF1Change(e)}
+                />
+                <input
+                  type="text"
+                  placeholder="Right frequency (-100 - 100)"
+                  value={potF2 == "0" ? "" : potF2}
+                  onChange={(e) => onPotF2Change(e)}
+                />
+              </div>
+            )}
           </Row>
           <Col>
             <Row className={classes.vertalign}>

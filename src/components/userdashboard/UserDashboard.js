@@ -246,6 +246,10 @@ const UserDashboard = (props) => {
     console.log("currGraph", currGraph);
   };
 
+  const goBBG = () => {
+    navigate("/binauralbeats")
+  }
+
   return (
     <section className={appClasses.sectionContainer}>
       <Container className={userClasses.dashboardContainer}>
@@ -312,7 +316,9 @@ const UserDashboard = (props) => {
           <div className={userClasses.smallContainerBig}>
             <div>
               <span className={userClasses.userName}>
-                {userEntries.length > 0 ? ((currGraph === "thingDuring") ? "Moods: Action":`Moods: ${currGraph}`) : "Moods"}
+                <a className={userClasses.userName} onClick={goBBG}>
+                  {userEntries.length > 0 ? ((currGraph === "thingDuring") ? "Moods: Action":`Moods: ${currGraph}`) : "Moods"}
+                </a>
               </span>
               {userEntries.length > 0 && (
                 <div className={userClasses.arrowButtonContainer}>
