@@ -71,7 +71,7 @@ const UserDashboard = (props) => {
       const currentTime = Date.now() / 1000;
       if (decodedToken.exp < currentTime) {
         try {
-          const response = await fetch("http://localhost:3500/auth/refresh", {
+          const response = await fetch("/auth/refresh", {
             method: "GET",
             headers: {
               Authorization: `Bearer ${token}`,
@@ -109,7 +109,7 @@ const UserDashboard = (props) => {
         location: editedLocation,
       };
       const response = await axios.patch(
-        "http://localhost:3500/users",
+        "/users",
         {
           id: updatedUser.id,
           fullname: updatedUser.name,
@@ -141,7 +141,7 @@ const UserDashboard = (props) => {
       const currentTime = Date.now() / 1000;
       if (decodedToken.exp < currentTime) {
         try {
-          const response = await fetch("http://localhost:3500/auth/refresh", {
+          const response = await fetch("/auth/refresh", {
             method: "GET",
             headers: {
               Authorization: `Bearer ${token}`,
@@ -157,7 +157,7 @@ const UserDashboard = (props) => {
           }
         } catch (error) {
           try {
-            const response = await fetch("http://localhost:3500/auth/logout", {
+            const response = await fetch("/auth/logout", {
               method: "POST",
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -172,7 +172,7 @@ const UserDashboard = (props) => {
         }
       }
     } else {
-      const response = await fetch("http://localhost:3500/auth/refresh", {
+      const response = await fetch("/auth/refresh", {
         method: "GET",
         credentials: "include",
       });
@@ -187,7 +187,7 @@ const UserDashboard = (props) => {
 
     try {
       const response = await axios.get(
-        `http://localhost:3500/entries?userID=${user.id}`,
+        `/entries?userID=${user.id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

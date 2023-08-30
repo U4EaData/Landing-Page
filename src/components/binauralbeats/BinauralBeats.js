@@ -174,7 +174,7 @@ function BinauralBeats(props) {
       const currentTime = Date.now() / 1000;
       if (decodedToken.exp < currentTime) {
         try {
-          const response = await fetch("http://localhost:3500/auth/refresh", {
+          const response = await fetch("/auth/refresh", {
             method: "GET",
             headers: {
               Authorization: `Bearer ${token}`,
@@ -203,7 +203,7 @@ function BinauralBeats(props) {
     const userID = parsedUser.id;
     try {
       const response = await axios.post(
-        "http://localhost:3500/entries",
+        "/entries",
         {
           userID: userID,
           startTime: startTime,

@@ -117,7 +117,7 @@ function App() {
     });
     // localStorage.setItem("access_token", "");
     localStorage.clear()
-    const response = await fetch("http://localhost:3500/auth/logout", {
+    const response = await fetch("/auth/logout", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
