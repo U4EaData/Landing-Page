@@ -1,7 +1,7 @@
 {
-  "name": "lesson_04",
+  "name": "u4ea-backend",
   "version": "1.0.0",
-  "description": "techNotes MERN Project",
+  "description": "u4ea-backend",
   "main": "server.js",
   "scripts": {
     "start": "node server",
