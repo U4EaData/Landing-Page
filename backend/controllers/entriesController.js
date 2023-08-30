@@ -22,10 +22,10 @@ const getEntries = asyncHandler(async (req, res) => { // gets either all entries
         // Find all entries with userID matching the request's userID
         const userEntries = await Entry.find({ userID }).lean();
 
-        // If no entries for the specified userID
-        if (!userEntries?.length) {
-            return res.status(400).json({ message: 'No entries found for the specified user' });
-        }
+        // If no entries for the specified userID: there was really no point in having the following code so I commented it
+        // if (!userEntries?.length) {
+        //     return res.status(400).json({ message: 'No entries found for the specified user' });
+        // }
 
         res.json(userEntries);
     }
