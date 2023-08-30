@@ -39,12 +39,6 @@ function App() {
     location: ""
   });
 
-  useEffect(() => {
-    // Make the GET request
-    console.log("UE COOKIE: ")
-    console.log(document.cookie)
-  }, []);
-
   /* Form Input Handlers */
   const onEmailChange = (e) => {
     setUser((prevData) => {

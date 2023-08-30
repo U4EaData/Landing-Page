@@ -53,16 +53,16 @@ const LoginForm = (props) => {
         console.log('THIS IS THE NEW USER:')
         console.log(newUser)
         props.loadUser(newUser)
-        // Navigate to the user dashboard or wherever you want
         navigate('/userdashboard');
       } catch (error) {
+        alert("Invalid credentials")
         console.log("Error loading user data:", error);
       }
     } catch (error) {
+      alert("Invalid credentials")
       console.log("Invalid login attempt");
       console.log(error);
       setError("Invalid credentials");
-      alert("Invalid credentials")
     }
   };
 

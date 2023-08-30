@@ -248,10 +248,10 @@ function BinauralBeats(props) {
           potF2 !== "0" &&
           !isNaN(intF1) &&
           !isNaN(intF2) &&
-          intF1 >= -100 && 
+          intF1 > 0 && 
           intF1 <= 100 &&
           intF2 <= 100 &&
-          intF2 >= -100
+          intF2 > 0
         ) {
           setPlaying(true);
           setFreq1(intF1);
@@ -441,7 +441,7 @@ function BinauralBeats(props) {
     if (Number.isFinite(freq2Value)) {
       setFreq2(freq2Value);
     } else {
-      setFreq2(0.0); // Set a default value in case of an invalid calculation
+      setFreq2(0.0); // Setting a default value in case of an invalid calculation
     }
   };
 
@@ -715,13 +715,13 @@ function BinauralBeats(props) {
               <div className={classes.stack}>
                 <input
                   type="text"
-                  placeholder="Left frequency (-100 - 100)"
+                  placeholder="Left frequency (1 - 100)"
                   value={potF1 == "0" ? "" : potF1}
                   onChange={(e) => onPotF1Change(e)}
                 />
                 <input
                   type="text"
-                  placeholder="Right frequency (-100 - 100)"
+                  placeholder="Right frequency (1 - 100)"
                   value={potF2 == "0" ? "" : potF2}
                   onChange={(e) => onPotF2Change(e)}
                 />

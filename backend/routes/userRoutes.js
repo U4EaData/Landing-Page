@@ -3,13 +3,10 @@ const router = express.Router()
 const usersController = require('../controllers/usersController')
 const verifyJWT = require('../middleware/verifyJWT')
 
-// This route is public
-router.route('/').post(usersController.createNewUser)
+router.route('/').post(usersController.createNewUser) // the only public route
 
-// Use verifyJWT middleware for the rest of the routes
 router.use(verifyJWT)
 
-// These routes are private and will require a valid JWT token
 router.route('/')
     .get(usersController.getUsers)
     .patch(usersController.updateUser)
