@@ -17,7 +17,6 @@ import HealingPower from "./components/healing-power/HealingPower";
 import "./components/testimonials/TestimonialsSection.module.css";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
-
 import classes from "./App.module.css";
 import DaVinci from "./components/davinci/DaVinci";
 
@@ -38,6 +37,10 @@ function App() {
     gender: "",
     location: ""
   });
+
+  useEffect(() => {
+    console.log(`${process.env.REACT_APP_BACKEND_URL}`)
+  }, [])
 
   /* Form Input Handlers */
   const onEmailChange = (e) => {
@@ -117,7 +120,7 @@ function App() {
     });
     // localStorage.setItem("access_token", "");
     localStorage.clear()
-    const response = await fetch("/auth/logout", {
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/auth/logout`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,

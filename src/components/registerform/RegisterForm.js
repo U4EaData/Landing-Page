@@ -37,7 +37,7 @@ const RegisterForm = (props) => {
     console.log("Submit register");
     console.log("props from register form", props.user);
     try {
-      const response = await axios.post("/users", {
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/users`, {
         fullname: props.user.name,
         email: props.user.email.toLowerCase(),
         password: props.user.password,

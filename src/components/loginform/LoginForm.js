@@ -19,7 +19,7 @@ const LoginForm = (props) => {
     const email = props.user.email.toLowerCase();
     const password = props.user.password;
     try {
-      const response = await axios.post("/auth", {
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth`, {
         email: email,
         password: password,
       }, {
@@ -31,7 +31,7 @@ const LoginForm = (props) => {
       console.log(document.cookie) // prints nothing
       try {
         // Load user's ID using the /users endpoint
-        const idResponse = await axios.get("/users", {
+        const idResponse = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/users`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
@@ -41,7 +41,7 @@ const LoginForm = (props) => {
         });
         const userId = idResponse.data.id; 
         // Load user data using the user's ID
-        const userResponse = await axios.get(`/users`, {
+        const userResponse = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/users`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
