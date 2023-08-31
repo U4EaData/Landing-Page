@@ -30,14 +30,17 @@ const RegisterForm = (props) => {
       props.user.password === ""
     ) {
       alert("All fields required");
+      setLoading(false);
       return;
     }
     if (confirmPassword != props.user.password) {
       alert("Passwords do not match");
+      setLoading(false);
       return;
     }
     // if (!validateEmail(props.user.email)) { // commenting this because this got triggered when brandon tried to make an acct, maybe the regex is bad
     //   alert("Invalid email");
+    //   setLoading(false);
     //   return;
     // }
 
