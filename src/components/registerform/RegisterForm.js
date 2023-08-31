@@ -58,6 +58,7 @@ const RegisterForm = (props) => {
       );
       console.log(response);
       props.toggleForm("signInLink");
+      setLoading(false);
     } catch (err) {
       setLoading(false);
       alert("Duplicate email address");

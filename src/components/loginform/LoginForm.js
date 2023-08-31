@@ -66,17 +66,17 @@ const LoginForm = (props) => {
         console.log(newUser);
         props.loadUser(newUser);
         navigate("/userdashboard");
+        setLoading(false);
       } catch (error) {
         alert("Invalid credentials");
         console.log("Error loading user data:", error);
+        setLoading(false);
       }
     } catch (error) {
       alert("Invalid credentials");
-      console.log("Invalid login attempt");
+      setLoading(false);
       console.log(error);
-      setError("Invalid credentials");
     }
-    setLoading(false)
   };
 
   const LoginError = () => {
