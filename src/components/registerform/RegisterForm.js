@@ -36,10 +36,10 @@ const RegisterForm = (props) => {
       alert("Passwords do not match");
       return;
     }
-    if (!validateEmail(props.user.email)) {
-      alert("Invalid email");
-      return;
-    }
+    // if (!validateEmail(props.user.email)) { // commenting this because this got triggered when brandon tried to make an acct, maybe the regex is bad
+    //   alert("Invalid email");
+    //   return;
+    // }
 
     console.log("Submit register");
     console.log("props from register form", props.user);
