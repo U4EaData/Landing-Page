@@ -32,9 +32,7 @@ const LoginForm = (props) => {
         }
       );
       const accessToken = response.data.accessToken;
-      // Save access token in local storage
       localStorage.setItem("access_token", accessToken);
-      console.log(document.cookie); // prints nothing
       try {
         // Load user's ID using the /users endpoint
         const idResponse = await axios.get(
@@ -62,8 +60,8 @@ const LoginForm = (props) => {
           }
         );
         const newUser = userResponse.data;
-        console.log("THIS IS THE NEW USER:");
-        console.log(newUser);
+        // console.log("THIS IS THE NEW USER:");
+        // console.log(newUser);
         props.loadUser(newUser);
         navigate("/userdashboard");
         setLoading(false);

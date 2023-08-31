@@ -97,7 +97,7 @@ function App() {
     localStorage.setItem("u4ea-user", JSON.stringify(userObj));
   };
 
-  function clearAllCookies() {
+  function clearAllCookies() { // this doesn't actually do anything in production since the cookie is http only, but it was good to have during dev so I kept it in
     const cookies = document.cookie.split(';');
     cookies.forEach(cookie => {
       const cookieName = cookie.split('=')[0].trim();
@@ -130,8 +130,6 @@ function App() {
     if (response.ok) {
       const res = await response.json();
       clearAllCookies()
-      console.log("COOKIE: ")
-      console.log(document.cookie)
     } else {
       console.log("failed the logout serverside", response.statusText);
     }

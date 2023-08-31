@@ -140,26 +140,30 @@ function NavSection(props) {
                 >
                   Login
                 </div>
-                {showForm && form === "login" ? (
-                  <LoginForm
-                    toggleForm={toggleForm}
-                    onEmailChange={props.onEmailChange}
-                    onPasswordChange={props.onPasswordChange}
-                    user={props.user}
-                    loadUser={props.loadUser}
-                    closeForm={closeForm}
-                  />
-                ) : showForm && form === "register" ? (
-                  <RegisterForm
-                    toggleForm={toggleForm}
-                    onEmailChange={props.onEmailChange}
-                    onPasswordChange={props.onPasswordChange}
-                    onNameChange={props.onNameChange}
-                    user={props.user}
-                    loadUser={props.loadUser}
-                    closeForm={closeForm}
-                  />
-                ) : null}
+                <div className="forms">
+                  {showForm && form === "login" ? (
+                    <LoginForm
+                      toggleForm={toggleForm}
+                      onEmailChange={props.onEmailChange}
+                      onPasswordChange={props.onPasswordChange}
+                      user={props.user}
+                      loadUser={props.loadUser}
+                      closeForm={closeForm}
+                    />
+                  ) : showForm && form === "register" ? (
+                    <RegisterForm
+                      toggleForm={toggleForm}
+                      onEmailChange={props.onEmailChange}
+                      onPasswordChange={props.onPasswordChange}
+                      onNameChange={props.onNameChange}
+                      user={props.user}
+                      loadUser={props.loadUser}
+                      closeForm={closeForm}
+                    />
+                  ) : (
+                    null
+                  )}
+                </div>
               </div>
             )}
           </Nav>
@@ -171,17 +175,19 @@ function NavSection(props) {
 
 $(function () {
   $(document).on("click", function (event) {
-    var clickover = $(event.target);
-    var _opened = $(".navbar-collapse").hasClass(
-      "navbar-collapse collapse show"
-    );
-    if (
-      _opened === true &&
-      !clickover.hasClass("navbar-toggler") &&
-      !clickover.hasClass("login-link")
-    ) {
-      $("button.navbar-toggler").click();
-    }
+    // I did not write this method: commented out this whole thing because it was making the login & signup forms dissapear when clicked.
+    // console.log("this is when mystery gets called", showForm, form)
+    // var clickover = $(event.target);
+    // var _opened = $(".navbar-collapse").hasClass(
+    //   "navbar-collapse collapse show"
+    // );
+    // if (
+    //   _opened === true &&
+    //   !clickover.hasClass("navbar-toggler") &&
+    //   !clickover.hasClass("login-link")
+    // ) {
+    //   $("button.navbar-toggler").click();
+    // }
   });
 });
 
