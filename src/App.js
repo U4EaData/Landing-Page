@@ -39,7 +39,7 @@ function App() {
   });
 
   useEffect(() => {
-    console.log(`${process.env.REACT_APP_BACKEND_URL}`)
+    console.log(`${process.env.REACT_APP_BACKEND_URL}`) // if you're wondering why it's named this way, environment variables in a create react app project apparently have to start with REACT_APP
   }, [])
 
   /* Form Input Handlers */
