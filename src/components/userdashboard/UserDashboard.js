@@ -338,7 +338,7 @@ const UserDashboard = (props) => {
               )}
             </div>
           </div>
-          <div className={userClasses.smallContainer}>
+          <div className={userClasses.smallContainer} id={userClasses.reqs}>
             <span className={userClasses.userName}>Reccomendations</span>
             <div className={userClasses.innerContainer}>
               <FontAwesomeIcon
@@ -350,7 +350,7 @@ const UserDashboard = (props) => {
             </div>
           </div>
         </Col>
-        <Col className={userClasses.infoPanel2}>
+        <Col className={userClasses.infoPanel3}>
           <div className={userClasses.smallContainerTop}>
             <span className={userClasses.userName}>Geography</span>
             <div className={userClasses.innerContainer}>
