@@ -24,9 +24,7 @@ function App() {
   const [route, setRoute] = "";
   const [isSignedin, setIsSignedin] = useState(false);
   const [formOpen, setFormOpen] = useState(false);
-
   const [showForm, setShowForm] = useState(false);
-
   const [user, setUser] = useState({
     name: "",
     email: "",
